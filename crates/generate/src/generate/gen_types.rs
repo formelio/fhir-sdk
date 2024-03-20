@@ -7,7 +7,7 @@ use inflector::Inflector;
 use proc_macro2::{Ident, TokenStream};
 use quote::{format_ident, quote};
 
-use super::{comments::sanitize, map_field_ident, map_type};
+use super::{comments::sanitize, gen_traits, map_field_ident, map_type};
 use crate::model::{
 	structures::{ChoiceField, CodeField, Field, ObjectField, ReferenceField, StandardField, Type},
 	StructureDefinitionKind,
@@ -16,6 +16,7 @@ use crate::model::{
 /// Generate struct definition for a FHIR type.
 pub fn generate_type_struct(
 	ty: &Type,
+	element: &Type,
 	implemented_codes: &HashMap<String, String>,
 ) -> Result<TokenStream> {
 	let name = &ty.name;
@@ -63,11 +64,14 @@ pub fn generate_type_struct(
 		.elements
 		.fields
 		.iter()
-		.map(|field| generate_field(field, &ident, ty, implemented_codes))
+		.map(|field| generate_field(field, &ident, ty, element, implemented_codes))
 		.unzip();
 
 	let lookup_references_impl = (ty.kind == StructureDefinitionKind::Resource)
 		.then(|| lookup_references_impl(&ident, &ty.elements, true));
+
+	let element_impl = (ty.kind == StructureDefinitionKind::ComplexType)
+		.then(|| gen_traits::generate_element_impl(&ident, element));
 
 	let wrapper_impls = wrapper_impls(&ident, &ident_inner, &ident_builder);
 
@@ -100,6 +104,7 @@ pub fn generate_type_struct(
 		}
 
 		#lookup_references_impl
+		#element_impl
 		#wrapper_impls
 		#resource_type_fn
 
@@ -224,13 +229,16 @@ fn generate_field(
 	field: &Field,
 	type_ident: &Ident,
 	base_type: &Type,
+	element: &Type,
 	implemented_codes: &HashMap<String, String>,
 ) -> (TokenStream, TokenStream) {
 	let (doc_comment, (field_type, extension_type), structs) = match field {
 		Field::Standard(f) => generate_standard_field(f),
 		Field::Code(f) => generate_code_field(f, implemented_codes),
 		Field::Choice(f) => generate_choice_field(f, type_ident),
-		Field::Object(f) => generate_object_field(f, type_ident, base_type, implemented_codes),
+		Field::Object(f) => {
+			generate_object_field(f, type_ident, base_type, element, implemented_codes)
+		}
 		Field::Reference(f) => generate_reference_field(f, type_ident),
 	};
 
@@ -394,6 +402,7 @@ fn generate_object_field(
 	field: &ObjectField,
 	type_ident: &Ident,
 	base_type: &Type,
+	element: &Type,
 	implemented_codes: &HashMap<String, String>,
 ) -> (String, (TokenStream, Ident), TokenStream) {
 	let mut doc_comment =
@@ -416,10 +425,12 @@ fn generate_object_field(
 	let (fields, structs): (Vec<_>, Vec<_>) = field
 		.fields
 		.iter()
-		.map(|f| generate_field(f, &struct_type, base_type, implemented_codes))
+		.map(|f| generate_field(f, &struct_type, base_type, element, implemented_codes))
 		.unzip();
 
 	let lookup_references_impl = lookup_references_impl(&struct_type, field, false);
+
+	let element_impl = gen_traits::generate_element_impl(&struct_type, element);
 
 	let object_struct_builder = format_ident!("{struct_type}Builder");
 	let object_struct_builder_name = object_struct_builder.to_string();
@@ -441,6 +452,8 @@ fn generate_object_field(
 				#object_struct_builder ::default()
 			}
 		}
+
+		#element_impl
 
 		#lookup_references_impl
 	};

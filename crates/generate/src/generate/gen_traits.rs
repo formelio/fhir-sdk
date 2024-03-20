@@ -16,6 +16,26 @@ use crate::model::{
 	StructureDefinitionKind,
 };
 
+/// Generate the Element trait definition
+pub fn generate_element_def(element: &Type) -> TokenStream {
+	let (field_names, field_types) =
+		get_field_names_and_types(&element.elements.fields, &HashMap::new());
+
+	let ident = format_ident!("Element");
+
+	make_trait_definition(element, &field_names, &field_types, &ident, &[])
+}
+
+/// Generate an impl of the Element trait
+pub fn generate_element_impl(ident: &Ident, element: &Type) -> TokenStream {
+	let (field_names, field_types) =
+		get_field_names_and_types(&element.elements.fields, &HashMap::new());
+
+	let trait_ident = format_ident!("Element");
+
+	make_trait_implementation(ident, &field_names, &field_types, &trait_ident)
+}
+
 /// Generate the BaseResource trait and its implementations.
 pub fn generate_base_resource(
 	resources: &[Type],
@@ -35,13 +55,16 @@ pub fn generate_base_resource(
 	let trait_definition =
 		make_trait_definition(resource, &field_names, &field_types, &ident, &supertraits);
 
-	let mut filtered_resources = Vec::new();
-	let trait_implementations: TokenStream = resources
+	let filtered_resource_names: Vec<_> = resources
 		.iter()
 		.filter(|ty| !ty.r#abstract)
 		.filter(|ty| ty.kind == StructureDefinitionKind::Resource)
-		.inspect(|ty| filtered_resources.push(format_ident!("{}", ty.name)))
-		.map(|ty| make_trait_implementation(ty, &field_names, &field_types, &ident))
+		.map(|ty| format_ident!("{}", ty.name))
+		.collect();
+
+	let trait_implementations: TokenStream = filtered_resource_names
+		.iter()
+		.map(|name| make_trait_implementation(&name, &field_names, &field_types, &ident))
 		.collect();
 
 	let impl_resource_as_trait = quote! {
@@ -52,7 +75,7 @@ pub fn generate_base_resource(
 			pub fn as_base_resource(&self) -> &dyn #ident {
 				match self {
 					#(
-						Self::#filtered_resources(r) => r,
+						Self::#filtered_resource_names(r) => r,
 					)*
 				}
 			}
@@ -63,7 +86,7 @@ pub fn generate_base_resource(
 			pub fn as_base_resource_mut(&mut self) -> &mut dyn #ident {
 				match self {
 					#(
-						Self::#filtered_resources(r) => r,
+						Self::#filtered_resource_names(r) => r,
 					)*
 				}
 			}
@@ -101,14 +124,17 @@ pub fn generate_domain_resource(
 	let trait_definition =
 		make_trait_definition(resource, &field_names, &field_types, &ident, &supertraits);
 
-	let mut filtered_resources = Vec::new();
-	let trait_implementations: TokenStream = resources
+	let filtered_resource_names: Vec<_> = resources
 		.iter()
 		.filter(|ty| !ty.r#abstract)
 		.filter(|ty| ty.kind == StructureDefinitionKind::Resource)
 		.filter(|ty| ty.base.as_ref().map_or(false, |base| base.ends_with("DomainResource")))
-		.inspect(|ty| filtered_resources.push(format_ident!("{}", ty.name)))
-		.map(|ty| make_trait_implementation(ty, &field_names, &field_types, &ident))
+		.map(|ty| format_ident!("{}", ty.name))
+		.collect();
+
+	let trait_implementations: TokenStream = filtered_resource_names
+		.iter()
+		.map(|name| make_trait_implementation(&name, &field_names, &field_types, &ident))
 		.collect();
 
 	let impl_resource_as_trait = quote! {
@@ -119,7 +145,7 @@ pub fn generate_domain_resource(
 			pub fn as_domain_resource(&self) -> Option<&dyn #ident> {
 				match self {
 					#(
-						Self::#filtered_resources(r) => Some(r),
+						Self::#filtered_resource_names(r) => Some(r),
 					)*
 					_ => None,
 				}
@@ -131,7 +157,7 @@ pub fn generate_domain_resource(
 			pub fn as_domain_resource_mut(&mut self) -> Option<&mut dyn #ident> {
 				match self {
 					#(
-						Self::#filtered_resources(r) => Some(r),
+						Self::#filtered_resource_names(r) => Some(r),
 					)*
 					_ => None,
 				}
@@ -242,25 +268,25 @@ fn get_field_names_and_types(
 		.unzip()
 }
 
-/// Make a trait definition from the resource, field names and types for the
+/// Make a trait definition from a FHIR type, field names and types for the
 /// given trait name.
 fn make_trait_definition(
-	resource: &Type,
+	r#type: &Type,
 	field_names: &[Ident],
 	field_types: &[TokenStream],
 	ident: &Ident,
 	supertraits: &[Ident],
 ) -> TokenStream {
-	assert_eq!(resource.name, resource.elements.name);
+	assert_eq!(r#type.name, r#type.elements.name);
 	let mut doc_comment = format!(
 		" {} \n\n **{} v{}** \n\n {} \n\n {} \n\n ",
-		sanitize(&resource.description),
-		resource.name,
-		resource.version,
-		sanitize(&resource.elements.short),
-		sanitize(&resource.elements.definition),
+		sanitize(&r#type.description),
+		r#type.name,
+		r#type.version,
+		sanitize(&r#type.elements.short),
+		sanitize(&r#type.elements.definition),
 	);
-	if let Some(comment) = &resource.elements.comment {
+	if let Some(comment) = &r#type.elements.comment {
 		doc_comment.push_str(&sanitize(comment));
 		doc_comment.push(' ');
 	}
@@ -291,12 +317,11 @@ fn make_trait_definition(
 /// Make a trait implementation for the resource, given the field names and
 /// types for the given trait name.
 fn make_trait_implementation(
-	resource: &Type,
+	name: &Ident,
 	field_names: &[Ident],
 	field_types: &[TokenStream],
 	ident: &Ident,
 ) -> TokenStream {
-	let name = format_ident!("{}", resource.name);
 	let mut_getters = field_names.iter().map(|name| format_ident!("{name}_mut"));
 	let setters = field_names.iter().map(|name| format_ident!("set_{name}"));
 

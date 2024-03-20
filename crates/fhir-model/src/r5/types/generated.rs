@@ -212,6 +212,32 @@ impl AddressBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Address {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<AddressInner> for Address {
     fn from(inner: AddressInner) -> Self {
         Self(Box::new(inner))
@@ -340,6 +366,32 @@ impl AgeBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Age {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<AgeInner> for Age {
     fn from(inner: AgeInner) -> Self {
         Self(Box::new(inner))
@@ -461,6 +513,32 @@ impl AnnotationBuilder {
     #[doc = concat!("Finalize building ", "Annotation", ".")]
     pub fn build(self) -> Result<Annotation, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Annotation {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<AnnotationInner> for Annotation {
@@ -750,6 +828,32 @@ impl AttachmentBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Attachment {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<AttachmentInner> for Attachment {
     fn from(inner: AttachmentInner) -> Self {
         Self(Box::new(inner))
@@ -859,6 +963,32 @@ impl AvailabilityBuilder {
     #[doc = concat!("Finalize building ", "Availability", ".")]
     pub fn build(self) -> Result<Availability, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Availability {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<AvailabilityInner> for Availability {
@@ -981,6 +1111,32 @@ impl AvailabilityAvailableTime {
         AvailabilityAvailableTimeBuilder::default()
     }
 }
+impl Element for AvailabilityAvailableTime {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl LookupReferences for AvailabilityAvailableTime {
     fn lookup_references(&mut self) -> Vec<Box<&mut dyn ReferenceField>> {
         Vec::new()
@@ -1054,6 +1210,32 @@ impl AvailabilityNotAvailableTime {
     #[must_use]
     pub fn builder() -> AvailabilityNotAvailableTimeBuilder {
         AvailabilityNotAvailableTimeBuilder::default()
+    }
+}
+impl Element for AvailabilityNotAvailableTime {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl LookupReferences for AvailabilityNotAvailableTime {
@@ -1146,6 +1328,32 @@ impl CodeableConceptBuilder {
     #[doc = concat!("Finalize building ", "CodeableConcept", ".")]
     pub fn build(self) -> Result<CodeableConcept, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for CodeableConcept {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<CodeableConceptInner> for CodeableConcept {
@@ -1257,6 +1465,32 @@ impl CodeableReferenceBuilder {
     #[doc = concat!("Finalize building ", "CodeableReference", ".")]
     pub fn build(self) -> Result<CodeableReference, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for CodeableReference {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<CodeableReferenceInner> for CodeableReference {
@@ -1439,6 +1673,32 @@ impl CodingBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Coding {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<CodingInner> for Coding {
     fn from(inner: CodingInner) -> Self {
         Self(Box::new(inner))
@@ -1548,6 +1808,32 @@ impl ContactDetailBuilder {
     #[doc = concat!("Finalize building ", "ContactDetail", ".")]
     pub fn build(self) -> Result<ContactDetail, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for ContactDetail {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<ContactDetailInner> for ContactDetail {
@@ -1707,6 +1993,32 @@ impl ContactPointBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for ContactPoint {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<ContactPointInner> for ContactPoint {
     fn from(inner: ContactPointInner) -> Self {
         Self(Box::new(inner))
@@ -1826,6 +2138,32 @@ impl ContributorBuilder {
     #[doc = concat!("Finalize building ", "Contributor", ".")]
     pub fn build(self) -> Result<Contributor, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Contributor {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<ContributorInner> for Contributor {
@@ -1954,6 +2292,32 @@ impl CountBuilder {
     #[doc = concat!("Finalize building ", "Count", ".")]
     pub fn build(self) -> Result<Count, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Count {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<CountInner> for Count {
@@ -2165,6 +2529,32 @@ impl DataRequirementBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for DataRequirement {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<DataRequirementInner> for DataRequirement {
     fn from(inner: DataRequirementInner) -> Self {
         Self(Box::new(inner))
@@ -2307,6 +2697,32 @@ impl DataRequirementCodeFilter {
         DataRequirementCodeFilterBuilder::default()
     }
 }
+impl Element for DataRequirementCodeFilter {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl LookupReferences for DataRequirementCodeFilter {
     fn lookup_references(&mut self) -> Vec<Box<&mut dyn ReferenceField>> {
         Vec::new()
@@ -2392,6 +2808,32 @@ impl DataRequirementDateFilter {
     #[must_use]
     pub fn builder() -> DataRequirementDateFilterBuilder {
         DataRequirementDateFilterBuilder::default()
+    }
+}
+impl Element for DataRequirementDateFilter {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl LookupReferences for DataRequirementDateFilter {
@@ -2523,6 +2965,32 @@ impl DataRequirementValueFilter {
         DataRequirementValueFilterBuilder::default()
     }
 }
+impl Element for DataRequirementValueFilter {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl LookupReferences for DataRequirementValueFilter {
     fn lookup_references(&mut self) -> Vec<Box<&mut dyn ReferenceField>> {
         Vec::new()
@@ -2618,6 +3086,32 @@ impl DataRequirementSort {
     #[must_use]
     pub fn builder() -> DataRequirementSortBuilder {
         DataRequirementSortBuilder::default()
+    }
+}
+impl Element for DataRequirementSort {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl LookupReferences for DataRequirementSort {
@@ -2727,6 +3221,32 @@ impl DistanceBuilder {
     #[doc = concat!("Finalize building ", "Distance", ".")]
     pub fn build(self) -> Result<Distance, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Distance {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<DistanceInner> for Distance {
@@ -3019,6 +3539,32 @@ impl DosageBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Dosage {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<DosageInner> for Dosage {
     fn from(inner: DosageInner) -> Self {
         Self(Box::new(inner))
@@ -3125,6 +3671,32 @@ impl DosageDoseAndRate {
     #[must_use]
     pub fn builder() -> DosageDoseAndRateBuilder {
         DosageDoseAndRateBuilder::default()
+    }
+}
+impl Element for DosageDoseAndRate {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl LookupReferences for DosageDoseAndRate {
@@ -3284,6 +3856,32 @@ impl DurationBuilder {
     #[doc = concat!("Finalize building ", "Duration", ".")]
     pub fn build(self) -> Result<Duration, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Duration {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<DurationInner> for Duration {
@@ -3904,6 +4502,32 @@ impl ElementDefinitionBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for ElementDefinition {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<ElementDefinitionInner> for ElementDefinition {
     fn from(inner: ElementDefinitionInner) -> Self {
         Self(Box::new(inner))
@@ -4022,6 +4646,32 @@ impl ElementDefinitionSlicing {
         ElementDefinitionSlicingBuilder::default()
     }
 }
+impl Element for ElementDefinitionSlicing {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl LookupReferences for ElementDefinitionSlicing {
     fn lookup_references(&mut self) -> Vec<Box<&mut dyn ReferenceField>> {
         let mut refs: Vec<Box<&mut dyn ReferenceField>> = Vec::new();
@@ -4095,6 +4745,32 @@ impl ElementDefinitionSlicingDiscriminator {
     #[must_use]
     pub fn builder() -> ElementDefinitionSlicingDiscriminatorBuilder {
         ElementDefinitionSlicingDiscriminatorBuilder::default()
+    }
+}
+impl Element for ElementDefinitionSlicingDiscriminator {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl LookupReferences for ElementDefinitionSlicingDiscriminator {
@@ -4176,6 +4852,32 @@ impl ElementDefinitionBase {
     #[must_use]
     pub fn builder() -> ElementDefinitionBaseBuilder {
         ElementDefinitionBaseBuilder::default()
+    }
+}
+impl Element for ElementDefinitionBase {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl LookupReferences for ElementDefinitionBase {
@@ -4289,6 +4991,32 @@ impl ElementDefinitionType {
     #[must_use]
     pub fn builder() -> ElementDefinitionTypeBuilder {
         ElementDefinitionTypeBuilder::default()
+    }
+}
+impl Element for ElementDefinitionType {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl LookupReferences for ElementDefinitionType {
@@ -5362,6 +6090,32 @@ impl ElementDefinitionExample {
         ElementDefinitionExampleBuilder::default()
     }
 }
+impl Element for ElementDefinitionExample {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl LookupReferences for ElementDefinitionExample {
     fn lookup_references(&mut self) -> Vec<Box<&mut dyn ReferenceField>> {
         Vec::new()
@@ -5973,6 +6727,32 @@ impl ElementDefinitionConstraint {
         ElementDefinitionConstraintBuilder::default()
     }
 }
+impl Element for ElementDefinitionConstraint {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl LookupReferences for ElementDefinitionConstraint {
     fn lookup_references(&mut self) -> Vec<Box<&mut dyn ReferenceField>> {
         Vec::new()
@@ -6070,6 +6850,32 @@ impl ElementDefinitionBinding {
     #[must_use]
     pub fn builder() -> ElementDefinitionBindingBuilder {
         ElementDefinitionBindingBuilder::default()
+    }
+}
+impl Element for ElementDefinitionBinding {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl LookupReferences for ElementDefinitionBinding {
@@ -6203,6 +7009,32 @@ impl ElementDefinitionBindingAdditional {
         ElementDefinitionBindingAdditionalBuilder::default()
     }
 }
+impl Element for ElementDefinitionBindingAdditional {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl LookupReferences for ElementDefinitionBindingAdditional {
     fn lookup_references(&mut self) -> Vec<Box<&mut dyn ReferenceField>> {
         Vec::new()
@@ -6298,6 +7130,32 @@ impl ElementDefinitionMapping {
     #[must_use]
     pub fn builder() -> ElementDefinitionMappingBuilder {
         ElementDefinitionMappingBuilder::default()
+    }
+}
+impl Element for ElementDefinitionMapping {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl LookupReferences for ElementDefinitionMapping {
@@ -6432,6 +7290,32 @@ impl ExpressionBuilder {
     #[doc = concat!("Finalize building ", "Expression", ".")]
     pub fn build(self) -> Result<Expression, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Expression {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<ExpressionInner> for Expression {
@@ -6601,6 +7485,32 @@ impl ExtendedContactDetailBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for ExtendedContactDetail {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<ExtendedContactDetailInner> for ExtendedContactDetail {
     fn from(inner: ExtendedContactDetailInner) -> Self {
         Self(Box::new(inner))
@@ -6730,6 +7640,32 @@ impl ExtensionBuilder {
     #[doc = concat!("Finalize building ", "Extension", ".")]
     pub fn build(self) -> Result<Extension, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Extension {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<ExtensionInner> for Extension {
@@ -7247,6 +8183,32 @@ impl HumanNameBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for HumanName {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<HumanNameInner> for HumanName {
     fn from(inner: HumanNameInner) -> Self {
         Self(Box::new(inner))
@@ -7412,6 +8374,32 @@ impl IdentifierBuilder {
     #[doc = concat!("Finalize building ", "Identifier", ".")]
     pub fn build(self) -> Result<Identifier, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Identifier {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<IdentifierInner> for Identifier {
@@ -7603,6 +8591,32 @@ impl MarketingStatusBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for MarketingStatus {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<MarketingStatusInner> for MarketingStatus {
     fn from(inner: MarketingStatusInner) -> Self {
         Self(Box::new(inner))
@@ -7772,6 +8786,32 @@ impl MetaBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Meta {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<MetaInner> for Meta {
     fn from(inner: MetaInner) -> Self {
         Self(Box::new(inner))
@@ -7909,6 +8949,32 @@ impl MonetaryComponentBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for MonetaryComponent {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<MonetaryComponentInner> for MonetaryComponent {
     fn from(inner: MonetaryComponentInner) -> Self {
         Self(Box::new(inner))
@@ -8020,6 +9086,32 @@ impl MoneyBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Money {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<MoneyInner> for Money {
     fn from(inner: MoneyInner) -> Self {
         Self(Box::new(inner))
@@ -8125,6 +9217,32 @@ impl NarrativeBuilder {
     #[doc = concat!("Finalize building ", "Narrative", ".")]
     pub fn build(self) -> Result<Narrative, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Narrative {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<NarrativeInner> for Narrative {
@@ -8304,6 +9422,32 @@ impl ParameterDefinitionBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for ParameterDefinition {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<ParameterDefinitionInner> for ParameterDefinition {
     fn from(inner: ParameterDefinitionInner) -> Self {
         Self(Box::new(inner))
@@ -8417,6 +9561,32 @@ impl PeriodBuilder {
     #[doc = concat!("Finalize building ", "Period", ".")]
     pub fn build(self) -> Result<Period, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Period {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<PeriodInner> for Period {
@@ -8553,6 +9723,32 @@ impl ProductShelfLifeBuilder {
     #[doc = concat!("Finalize building ", "ProductShelfLife", ".")]
     pub fn build(self) -> Result<ProductShelfLife, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for ProductShelfLife {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<ProductShelfLifeInner> for ProductShelfLife {
@@ -8730,6 +9926,32 @@ impl QuantityBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Quantity {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<QuantityInner> for Quantity {
     fn from(inner: QuantityInner) -> Self {
         Self(Box::new(inner))
@@ -8841,6 +10063,32 @@ impl RangeBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Range {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<RangeInner> for Range {
     fn from(inner: RangeInner) -> Self {
         Self(Box::new(inner))
@@ -8950,6 +10198,32 @@ impl RatioBuilder {
     #[doc = concat!("Finalize building ", "Ratio", ".")]
     pub fn build(self) -> Result<Ratio, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Ratio {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<RatioInner> for Ratio {
@@ -9075,6 +10349,32 @@ impl RatioRangeBuilder {
     #[doc = concat!("Finalize building ", "RatioRange", ".")]
     pub fn build(self) -> Result<RatioRange, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for RatioRange {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<RatioRangeInner> for RatioRange {
@@ -9224,6 +10524,32 @@ impl ReferenceBuilder {
     #[doc = concat!("Finalize building ", "Reference", ".")]
     pub fn build(self) -> Result<Reference, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Reference {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<ReferenceInner> for Reference {
@@ -9445,6 +10771,32 @@ impl RelatedArtifactBuilder {
     #[doc = concat!("Finalize building ", "RelatedArtifact", ".")]
     pub fn build(self) -> Result<RelatedArtifact, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for RelatedArtifact {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<RelatedArtifactInner> for RelatedArtifact {
@@ -9691,6 +11043,32 @@ impl SampledDataBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for SampledData {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<SampledDataInner> for SampledData {
     fn from(inner: SampledDataInner) -> Self {
         Self(Box::new(inner))
@@ -9866,6 +11244,32 @@ impl SignatureBuilder {
     #[doc = concat!("Finalize building ", "Signature", ".")]
     pub fn build(self) -> Result<Signature, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for Signature {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<SignatureInner> for Signature {
@@ -10194,6 +11598,32 @@ impl TimingBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for Timing {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<TimingInner> for Timing {
     fn from(inner: TimingInner) -> Self {
         Self(Box::new(inner))
@@ -10470,6 +11900,32 @@ impl TimingRepeat {
         TimingRepeatBuilder::default()
     }
 }
+impl Element for TimingRepeat {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl LookupReferences for TimingRepeat {
     fn lookup_references(&mut self) -> Vec<Box<&mut dyn ReferenceField>> {
         Vec::new()
@@ -10658,6 +12114,32 @@ impl TriggerDefinitionBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for TriggerDefinition {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<TriggerDefinitionInner> for TriggerDefinition {
     fn from(inner: TriggerDefinitionInner) -> Self {
         Self(Box::new(inner))
@@ -10797,6 +12279,32 @@ impl UsageContextBuilder {
     #[doc = concat!("Finalize building ", "UsageContext", ".")]
     pub fn build(self) -> Result<UsageContext, crate::error::BuilderError> {
         self.build_inner().map(Into::into)
+    }
+}
+impl Element for UsageContext {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }
 impl From<UsageContextInner> for UsageContext {
@@ -10992,6 +12500,32 @@ impl VirtualServiceDetailBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for VirtualServiceDetail {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<VirtualServiceDetailInner> for VirtualServiceDetail {
     fn from(inner: VirtualServiceDetailInner) -> Self {
         Self(Box::new(inner))
@@ -11179,6 +12713,32 @@ impl MoneyQuantityBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for MoneyQuantity {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<MoneyQuantityInner> for MoneyQuantity {
     fn from(inner: MoneyQuantityInner) -> Self {
         Self(Box::new(inner))
@@ -11332,6 +12892,32 @@ impl SimpleQuantityBuilder {
         self.build_inner().map(Into::into)
     }
 }
+impl Element for SimpleQuantity {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+}
 impl From<SimpleQuantityInner> for SimpleQuantity {
     fn from(inner: SimpleQuantityInner) -> Self {
         Self(Box::new(inner))
@@ -11355,6 +12941,29 @@ impl SimpleQuantity {
     pub fn builder() -> SimpleQuantityBuilder {
         SimpleQuantityBuilder::default()
     }
+}
+/** Element Type: Base definition for all elements in a resource.
+
+ **Element v5.0.0**
+
+ Base for all elements
+
+ Base definition for all elements in a resource.
+
+ */
+pub trait Element {
+    #[doc = concat!("Get `", stringify!(id), "`.")]
+    fn id(&self) -> &Option<String>;
+    #[doc = concat!("Get `", stringify!(id), "` mutably.")]
+    fn id_mut(&mut self) -> &mut Option<String>;
+    #[doc = concat!("Set `", stringify!(id), "`.")]
+    fn set_id(&mut self, value: Option<String>);
+    #[doc = concat!("Get `", stringify!(extension), "`.")]
+    fn extension(&self) -> &Vec<Extension>;
+    #[doc = concat!("Get `", stringify!(extension), "` mutably.")]
+    fn extension_mut(&mut self) -> &mut Vec<Extension>;
+    #[doc = concat!("Set `", stringify!(extension), "`.")]
+    fn set_extension(&mut self, value: Vec<Extension>);
 }
 /// Extension of a field.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -11384,5 +12993,31 @@ impl FieldExtension {
     #[must_use]
     pub fn builder() -> FieldExtensionBuilder {
         FieldExtensionBuilder::default()
+    }
+}
+impl Element for FieldExtension {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
     }
 }

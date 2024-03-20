@@ -40,7 +40,8 @@ pub fn generate_code(version_folder: &str) -> Result<()> {
 		"r5" => parse::structures::parse_r5(&types_file),
 		_ => panic!("Unrecognized version `{version_folder}`"),
 	};
-	let generated_code = generate::generate_types(types, &generated_codes)?;
+
+	let generated_code = generate::generate_types(&types, &generated_codes)?;
 	fs::write(
 		format!("{base_folder}/../fhir-model/src/{version_folder}/types/generated.rs"),
 		format_code(generated_code)?,
@@ -70,7 +71,7 @@ pub fn generate_code(version_folder: &str) -> Result<()> {
 		.collect::<Vec<_>>();
 	println!("Identifiable resources: {identifiable:?}");
 
-	let generated_code = generate::generate_resources(resources, &generated_codes)?;
+	let generated_code = generate::generate_resources(&resources, &types, &generated_codes)?;
 	fs::write(
 		format!("{base_folder}/../fhir-model/src/{version_folder}/resources/generated.rs"),
 		format_code(generated_code)?,

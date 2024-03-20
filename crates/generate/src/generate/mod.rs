@@ -7,7 +7,7 @@ mod gen_types;
 
 use std::collections::HashMap;
 
-use anyhow::Result;
+use anyhow::{anyhow, Result};
 use inflector::Inflector;
 use proc_macro2::{Ident, TokenStream};
 use quote::{format_ident, quote};
@@ -55,17 +55,30 @@ pub fn generate_codes(mut codes: Vec<Code>) -> Result<(TokenStream, HashMap<Stri
 
 /// Generate the Rust code for the FHIR types.
 pub fn generate_types(
-	types: Vec<Type>,
+	types: &[Type],
 	implemented_codes: &HashMap<String, String>,
 ) -> Result<TokenStream> {
 	// Set generation variables.
 	let module_doc = " Generated code! Take a look at the generator-crate for changing this file!";
 
+	let element = types
+		.iter()
+		.filter(|ty| ty.r#abstract)
+		.filter(|ty| ty.kind == StructureDefinitionKind::ComplexType)
+		.find(|ty| ty.name == "Element")
+		.ok_or(anyhow!("Missing base Element definition"))?;
+
+	let element_def = gen_traits::generate_element_def(&element);
+
+	let field_extension_ident = format_ident!("FieldExtension");
+	let field_extension_element_impl =
+		gen_traits::generate_element_impl(&field_extension_ident, &element);
+
 	let types: Vec<TokenStream> = types
 		.iter()
 		.filter(|ty| !ty.r#abstract)
 		.filter(|ty| ty.kind == StructureDefinitionKind::ComplexType)
-		.map(|ty| gen_types::generate_type_struct(ty, implemented_codes))
+		.map(|ty| gen_types::generate_type_struct(ty, element, implemented_codes))
 		.collect::<Result<_, _>>()?;
 
 	// Generate the code.
@@ -85,6 +98,8 @@ pub fn generate_types(
 
 		#(#types)*
 
+		#element_def
+
 		/// Extension of a field.
 		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 		#[cfg_attr(feature = "builders", derive(Builder))]
@@ -94,7 +109,7 @@ pub fn generate_types(
 			name = "FieldExtensionBuilder",
 			build_fn(error = "crate::error::BuilderError")
 		))]
-		pub struct FieldExtension {
+		pub struct #field_extension_ident {
 			/// Unique id for inter-element referencing
 			#[serde(default, skip_serializing_if = "Option::is_none")]
 			#[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
@@ -112,16 +127,26 @@ pub fn generate_types(
 				FieldExtensionBuilder::default()
 			}
 		}
+
+		#field_extension_element_impl
 	})
 }
 
 /// Generate the Rust code for the FHIR resources.
 pub fn generate_resources(
-	resources: Vec<Type>,
+	resources: &[Type],
+	types: &[Type],
 	implemented_codes: &HashMap<String, String>,
 ) -> Result<TokenStream> {
 	// Set generation variables.
 	let module_doc = " Generated code! Take a look at the generator-crate for changing this file!";
+
+	let element = types
+		.iter()
+		.filter(|ty| ty.r#abstract)
+		.filter(|ty| ty.kind == StructureDefinitionKind::ComplexType)
+		.find(|ty| ty.name == "Element")
+		.ok_or(anyhow!("Missing base Element definition"))?;
 
 	let mut resource_names = Vec::new();
 	let resource_defs: Vec<TokenStream> = resources
@@ -129,7 +154,7 @@ pub fn generate_resources(
 		.filter(|ty| !ty.r#abstract)
 		.filter(|ty| ty.kind == StructureDefinitionKind::Resource)
 		.inspect(|ty| resource_names.push(format_ident!("{}", ty.name)))
-		.map(|ty| gen_types::generate_type_struct(ty, implemented_codes))
+		.map(|ty| gen_types::generate_type_struct(ty, element, implemented_codes))
 		.collect::<Result<_, _>>()?;
 
 	let resource_conversions = resource_conversion_impls(&resource_names);
