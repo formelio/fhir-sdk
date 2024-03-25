@@ -1,5 +1,6 @@
 //! Generated code! Take a look at the generator-crate for changing this file!
 #![allow(clippy::too_many_lines)]
+use std::default::Default;
 use serde::{Serialize, Deserialize};
 use super::super::types::{Coding, CodingInner, CodeableConcept, CodeableConceptInner};
 #[doc = "**[ACMECholCodesBlood](http://hl7.org/fhir/CodeSystem/example)**. This is an example code system that includes all the ACME codes for serum/plasma cholesterol from v2.36.\n\nFHIR version: 5.0.0."]
@@ -76,15 +77,7 @@ impl From<ACMECholCodesBlood> for Coding {
             system: Some("http://hl7.org/fhir/CodeSystem/example".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -96,10 +89,7 @@ impl From<ACMECholCodesBlood> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -268,15 +258,7 @@ impl From<ASTMSignatureTypeCodes> for Coding {
             system: Some("urn:iso-astm:E1762-95:2013".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -288,10 +270,7 @@ impl From<ASTMSignatureTypeCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -368,15 +347,7 @@ impl From<AccountAggregate> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/account-aggregate".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -388,10 +359,7 @@ impl From<AccountAggregate> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -482,15 +450,7 @@ impl From<AccountBalanceTerm> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -502,10 +462,7 @@ impl From<AccountBalanceTerm> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -608,15 +565,7 @@ impl From<AccountBillingStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -628,10 +577,7 @@ impl From<AccountBillingStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -702,15 +648,7 @@ impl From<AccountRelationship> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/account-relationship".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -722,10 +660,7 @@ impl From<AccountRelationship> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -814,15 +749,7 @@ impl From<AccountStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/account-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -834,10 +761,7 @@ impl From<AccountStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -910,15 +834,7 @@ impl From<ActionCardinalityBehavior> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -930,10 +846,7 @@ impl From<ActionCardinalityBehavior> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1046,15 +959,7 @@ impl From<ActionCode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/action-code".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1066,10 +971,7 @@ impl From<ActionCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1148,15 +1050,7 @@ impl From<ActionConditionKind> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1168,10 +1062,7 @@ impl From<ActionConditionKind> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1250,15 +1141,7 @@ impl From<ActionGroupingBehavior> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1270,10 +1153,7 @@ impl From<ActionGroupingBehavior> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1358,15 +1238,7 @@ impl From<ActionParticipantFunction> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1378,10 +1250,7 @@ impl From<ActionParticipantFunction> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1502,15 +1371,7 @@ impl From<ActionParticipantType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1522,10 +1383,7 @@ impl From<ActionParticipantType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1598,15 +1456,7 @@ impl From<ActionPrecheckBehavior> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1618,10 +1468,7 @@ impl From<ActionPrecheckBehavior> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1710,15 +1557,7 @@ impl From<ActionReasonCode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/action-reason-code".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1730,10 +1569,7 @@ impl From<ActionReasonCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1848,15 +1684,7 @@ impl From<ActionRelationshipType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1868,10 +1696,7 @@ impl From<ActionRelationshipType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1950,15 +1775,7 @@ impl From<ActionRequiredBehavior> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -1970,10 +1787,7 @@ impl From<ActionRequiredBehavior> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2070,15 +1884,7 @@ impl From<ActionSelectionBehavior> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2090,10 +1896,7 @@ impl From<ActionSelectionBehavior> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2214,15 +2017,7 @@ impl From<AdditionalBindingPurposeCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2234,10 +2029,7 @@ impl From<AdditionalBindingPurposeCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2305,15 +2097,7 @@ impl From<AdditionalMonitoring> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2325,10 +2109,7 @@ impl From<AdditionalMonitoring> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2405,15 +2186,7 @@ impl From<AddressType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/address-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2425,10 +2198,7 @@ impl From<AddressType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2517,15 +2287,7 @@ impl From<AddressUse> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/address-use".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -2537,10 +2299,7 @@ impl From<AddressUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -3807,15 +3566,7 @@ impl From<AdministrableDoseForm> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -3827,10 +3578,7 @@ impl From<AdministrableDoseForm> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -3930,15 +3678,7 @@ impl From<AdministrationSubPotentReason> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -3950,10 +3690,7 @@ impl From<AdministrationSubPotentReason> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4038,15 +3775,7 @@ impl From<AdministrativeGender> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4058,10 +3787,7 @@ impl From<AdministrativeGender> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4134,15 +3860,7 @@ impl From<AdverseEventActuality> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4154,10 +3872,7 @@ impl From<AdverseEventActuality> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4236,15 +3951,7 @@ impl From<AggregationMode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4256,10 +3963,7 @@ impl From<AggregationMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4344,15 +4048,7 @@ impl From<AllergyIntoleranceCategory> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4364,10 +4060,7 @@ impl From<AllergyIntoleranceCategory> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4446,15 +4139,7 @@ impl From<AllergyIntoleranceCriticality> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4466,10 +4151,7 @@ impl From<AllergyIntoleranceCriticality> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4548,15 +4230,7 @@ impl From<AllergyIntoleranceSeverity> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4568,10 +4242,7 @@ impl From<AllergyIntoleranceSeverity> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4644,15 +4315,7 @@ impl From<AllergyIntoleranceType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -4664,10 +4327,7 @@ impl From<AllergyIntoleranceType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -5860,15 +5520,7 @@ impl From<AnimalTissueType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/animal-tissue-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -5880,10 +5532,7 @@ impl From<AnimalTissueType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6003,15 +5652,7 @@ impl From<AppointmentStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/appointmentstatus".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6023,10 +5664,7 @@ impl From<AppointmentStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6117,15 +5755,7 @@ impl From<ArtifactAssessmentDisposition> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6137,10 +5767,7 @@ impl From<ArtifactAssessmentDisposition> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6238,15 +5865,7 @@ impl From<ArtifactAssessmentInformationType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6258,10 +5877,7 @@ impl From<ArtifactAssessmentInformationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6383,15 +5999,7 @@ impl From<ArtifactAssessmentWorkflowStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6403,10 +6011,7 @@ impl From<ArtifactAssessmentWorkflowStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6486,15 +6091,7 @@ impl From<ArtifactContributionInstanceType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6506,10 +6103,7 @@ impl From<ArtifactContributionInstanceType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6654,15 +6248,7 @@ impl From<ArtifactContributionType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6674,10 +6260,7 @@ impl From<ArtifactContributionType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6828,15 +6411,7 @@ impl From<ArtifactUrlClassifier> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6848,10 +6423,7 @@ impl From<ArtifactUrlClassifier> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6924,15 +6496,7 @@ impl From<AssertionDirectionType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -6944,10 +6508,7 @@ impl From<AssertionDirectionType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7032,15 +6593,7 @@ impl From<AssertionManualCompletionType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7052,10 +6605,7 @@ impl From<AssertionManualCompletionType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7188,15 +6738,7 @@ impl From<AssertionOperatorType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7208,10 +6750,7 @@ impl From<AssertionOperatorType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7536,15 +7075,7 @@ impl From<AssertionResponseTypes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7556,10 +7087,7 @@ impl From<AssertionResponseTypes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7648,15 +7176,7 @@ impl From<AuditEventAction> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/audit-event-action".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7668,10 +7188,7 @@ impl From<AuditEventAction> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7778,15 +7295,7 @@ impl From<AuditEventSeverity> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/audit-event-severity".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7798,10 +7307,7 @@ impl From<AuditEventSeverity> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7890,15 +7396,7 @@ impl From<BeneficiaryRelationshipCodes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/relationship".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7910,10 +7408,7 @@ impl From<BeneficiaryRelationshipCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -7996,15 +7491,7 @@ impl From<BindingStrength> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/binding-strength".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8016,10 +7503,7 @@ impl From<BindingStrength> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8108,15 +7592,7 @@ impl From<BiologicallyDerivedProductCategory> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/product-category".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8128,10 +7604,7 @@ impl From<BiologicallyDerivedProductCategory> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8247,15 +7720,7 @@ impl From<BiologicallyDerivedProductCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8267,10 +7732,7 @@ impl From<BiologicallyDerivedProductCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8380,15 +7842,7 @@ impl From<BiologicallyDerivedProductDispense> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8400,10 +7854,7 @@ impl From<BiologicallyDerivedProductDispense> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8489,15 +7940,7 @@ impl From<BiologicallyDerivedProductDispenseMatchStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8509,10 +7952,7 @@ impl From<BiologicallyDerivedProductDispenseMatchStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8604,15 +8044,7 @@ impl From<BiologicallyDerivedProductDispenseOriginRelationship> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8624,10 +8056,7 @@ impl From<BiologicallyDerivedProductDispenseOriginRelationship> for CodeableConc
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8731,15 +8160,7 @@ impl From<BiologicallyDerivedProductDispensePerformerFunction> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8751,10 +8172,7 @@ impl From<BiologicallyDerivedProductDispensePerformerFunction> for CodeableConce
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8828,15 +8246,7 @@ impl From<BiologicallyDerivedProductStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8848,10 +8258,7 @@ impl From<BiologicallyDerivedProductStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8970,15 +8377,7 @@ impl From<BundleType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/bundle-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -8990,10 +8389,7 @@ impl From<BundleType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9072,15 +8468,7 @@ impl From<CapabilityStatementKind> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9092,10 +8480,7 @@ impl From<CapabilityStatementKind> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9184,15 +8569,7 @@ impl From<CareTeamStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/care-team-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9204,10 +8581,7 @@ impl From<CareTeamStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9286,15 +8660,7 @@ impl From<CatalogType> for Coding {
             system: Some("http://hl7.org/fhir/catalogType".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9306,10 +8672,7 @@ impl From<CatalogType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9412,15 +8775,7 @@ impl From<CharacteristicCombination> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9432,10 +8787,7 @@ impl From<CharacteristicCombination> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9508,15 +8860,7 @@ impl From<CharacteristicOffset> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9528,10 +8872,7 @@ impl From<CharacteristicOffset> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9632,15 +8973,7 @@ impl From<ChargeItemStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/chargeitem-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9652,10 +8985,7 @@ impl From<ChargeItemStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9902,15 +9232,7 @@ impl From<CitationArtifactClassifier> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -9922,10 +9244,7 @@ impl From<CitationArtifactClassifier> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10004,15 +9323,7 @@ impl From<CitationClassificationType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10024,10 +9335,7 @@ impl From<CitationClassificationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10256,15 +9564,7 @@ impl From<CitationStatusType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/citation-status-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10276,10 +9576,7 @@ impl From<CitationStatusType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10424,15 +9721,7 @@ impl From<CitationSummaryStyle> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10444,10 +9733,7 @@ impl From<CitationSummaryStyle> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10574,15 +9860,7 @@ impl From<CitedArtifactAbstractType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10594,10 +9872,7 @@ impl From<CitedArtifactAbstractType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10725,15 +10000,7 @@ impl From<CitedArtifactClassificationType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10745,10 +10012,7 @@ impl From<CitedArtifactClassificationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10863,15 +10127,7 @@ impl From<CitedArtifactPartType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -10883,10 +10139,7 @@ impl From<CitedArtifactPartType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11043,15 +10296,7 @@ impl From<CitedArtifactStatusType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11063,10 +10308,7 @@ impl From<CitedArtifactStatusType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11165,15 +10407,7 @@ impl From<CitedMedium> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/cited-medium".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11185,10 +10419,7 @@ impl From<CitedMedium> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11273,15 +10504,7 @@ impl From<ClaimAdjudicationDecisionCodes> for Coding {
             system: Some("http://hl7.org/fhir/claim-decision".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11293,10 +10516,7 @@ impl From<ClaimAdjudicationDecisionCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11387,15 +10607,7 @@ impl From<ClaimAdjudicationDecisionReasonCodes> for Coding {
             system: Some("http://hl7.org/fhir/claim-decision-reason".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11407,10 +10619,7 @@ impl From<ClaimAdjudicationDecisionReasonCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11493,15 +10702,7 @@ impl From<ClaimProcessingCodes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/eligibility-outcome".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11513,10 +10714,7 @@ impl From<ClaimProcessingCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11601,15 +10799,7 @@ impl From<ClaimProcessingOutcomeCodes> for Coding {
             system: Some("http://hl7.org/fhir/claim-outcome".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11621,10 +10811,7 @@ impl From<ClaimProcessingOutcomeCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11704,15 +10891,7 @@ impl From<ClinicalUseDefinitionCategory> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11724,10 +10903,7 @@ impl From<ClinicalUseDefinitionCategory> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11818,15 +10994,7 @@ impl From<ClinicalUseDefinitionType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11838,10 +11006,7 @@ impl From<ClinicalUseDefinitionType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11918,15 +11083,7 @@ impl From<CodeSearchSupport> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/code-search-support".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -11938,10 +11095,7 @@ impl From<CodeSearchSupport> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -12032,15 +11186,7 @@ impl From<CodeSystemContentMode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -12052,10 +11198,7 @@ impl From<CodeSystemContentMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -12140,15 +11283,7 @@ impl From<CodeSystemHierarchyMeaning> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -12160,10 +11295,7 @@ impl From<CodeSystemHierarchyMeaning> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -13112,15 +12244,7 @@ impl From<ColorCodes> for Coding {
             system: Some("http://hl7.org/fhir/color-names".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -13132,10 +12256,7 @@ impl From<ColorCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -13656,15 +12777,7 @@ impl From<CombinedDoseForm> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/combined-dose-form".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -13676,10 +12789,7 @@ impl From<CombinedDoseForm> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -13774,15 +12884,7 @@ impl From<CompartmentType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/compartment-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -13794,10 +12896,7 @@ impl From<CompartmentType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -13882,15 +12981,7 @@ impl From<CompositionAttestationMode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -13902,10 +12993,7 @@ impl From<CompositionAttestationMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14030,15 +13118,7 @@ impl From<CompositionStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/composition-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14050,10 +13130,7 @@ impl From<CompositionStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14144,15 +13221,7 @@ impl From<ConceptMapAttributeType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14164,10 +13233,7 @@ impl From<ConceptMapAttributeType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14246,15 +13312,7 @@ impl From<ConceptMapGroupUnmappedMode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14266,10 +13324,7 @@ impl From<ConceptMapGroupUnmappedMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14336,15 +13391,7 @@ impl From<ConceptMapProperties> for Coding {
             system: Some("http://hl7.org/fhir/conceptmap-properties".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14356,10 +13403,7 @@ impl From<ConceptMapProperties> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14462,15 +13506,7 @@ impl From<ConceptMapPropertyType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14482,10 +13518,7 @@ impl From<ConceptMapPropertyType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14576,15 +13609,7 @@ impl From<ConceptMapRelationship> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14596,10 +13621,7 @@ impl From<ConceptMapRelationship> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14736,15 +13758,7 @@ impl From<ConceptProperties> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/concept-properties".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14756,10 +13770,7 @@ impl From<ConceptProperties> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14844,15 +13855,7 @@ impl From<ConceptSubsumptionOutcome> for Coding {
             system: Some("http://hl7.org/fhir/concept-subsumption-outcome".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14864,10 +13867,7 @@ impl From<ConceptSubsumptionOutcome> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14940,15 +13940,7 @@ impl From<ConditionPreconditionType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -14960,10 +13952,7 @@ impl From<ConditionPreconditionType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15042,15 +14031,7 @@ impl From<ConditionQuestionnairePurpose> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15062,10 +14043,7 @@ impl From<ConditionQuestionnairePurpose> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15144,15 +14122,7 @@ impl From<ConditionalDeleteStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15164,10 +14134,7 @@ impl From<ConditionalDeleteStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15252,15 +14219,7 @@ impl From<ConditionalReadStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15272,10 +14231,7 @@ impl From<ConditionalReadStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15360,15 +14316,7 @@ impl From<ConformanceExpectation> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15380,10 +14328,7 @@ impl From<ConformanceExpectation> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15466,15 +14411,7 @@ impl From<ConsentDataMeaning> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/consent-data-meaning".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15486,10 +14423,7 @@ impl From<ConsentDataMeaning> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15562,15 +14496,7 @@ impl From<ConsentProvisionType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15582,10 +14508,7 @@ impl From<ConsentProvisionType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15680,15 +14603,7 @@ impl From<ConsentState> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/consent-state-codes".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15700,10 +14615,7 @@ impl From<ConsentState> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15774,15 +14686,7 @@ impl From<ConstraintSeverity> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/constraint-severity".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15794,10 +14698,7 @@ impl From<ConstraintSeverity> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15898,15 +14799,7 @@ impl From<ContactPointSystem> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/contact-point-system".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -15918,10 +14811,7 @@ impl From<ContactPointSystem> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16010,15 +14900,7 @@ impl From<ContactPointUse> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/contact-point-use".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16030,10 +14912,7 @@ impl From<ContactPointUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16100,15 +14979,7 @@ impl From<ContractActionStatus> for Coding {
             system: Some("http://hl7.org/fhir/contract-action-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16120,10 +14991,7 @@ impl From<ContractActionStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16190,15 +15058,7 @@ impl From<ContractAssetAvailability> for Coding {
             system: Some("http://hl7.org/fhir/asset-availability".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16210,10 +15070,7 @@ impl From<ContractAssetAvailability> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16280,15 +15137,7 @@ impl From<ContractAssetContext> for Coding {
             system: Some("http://hl7.org/fhir/contract-asset-context".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16300,10 +15149,7 @@ impl From<ContractAssetContext> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16370,15 +15216,7 @@ impl From<ContractAssetScope> for Coding {
             system: Some("http://hl7.org/fhir/contract-asset-scope".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16390,10 +15228,7 @@ impl From<ContractAssetScope> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16460,15 +15295,7 @@ impl From<ContractAssetSubtype> for Coding {
             system: Some("http://hl7.org/fhir/contract-asset-subtype".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16480,10 +15307,7 @@ impl From<ContractAssetSubtype> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16550,15 +15374,7 @@ impl From<ContractAssetType> for Coding {
             system: Some("http://hl7.org/fhir/contract-asset-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16570,10 +15386,7 @@ impl From<ContractAssetType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16640,15 +15453,7 @@ impl From<ContractDecisionMode> for Coding {
             system: Some("http://hl7.org/fhir/contract-decision-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16660,10 +15465,7 @@ impl From<ContractDecisionMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16730,15 +15532,7 @@ impl From<ContractDefinitionSubtype> for Coding {
             system: Some("http://hl7.org/fhir/contract-definition-subtype".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16750,10 +15544,7 @@ impl From<ContractDefinitionSubtype> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16820,15 +15611,7 @@ impl From<ContractDefinitionType> for Coding {
             system: Some("http://hl7.org/fhir/contract-definition-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16840,10 +15623,7 @@ impl From<ContractDefinitionType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16910,15 +15690,7 @@ impl From<ContractExpirationType> for Coding {
             system: Some("http://hl7.org/fhir/contract-expiration-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -16930,10 +15702,7 @@ impl From<ContractExpirationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17084,15 +15853,7 @@ impl From<ContractLegalState> for Coding {
             system: Some("http://hl7.org/fhir/contract-legalstate".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17104,10 +15865,7 @@ impl From<ContractLegalState> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17174,15 +15932,7 @@ impl From<ContractPartyRole> for Coding {
             system: Some("http://hl7.org/fhir/contract-party-role".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17194,10 +15944,7 @@ impl From<ContractPartyRole> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17348,15 +16095,7 @@ impl From<ContractPublicationStatus> for Coding {
             system: Some("http://hl7.org/fhir/contract-publicationstatus".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17368,10 +16107,7 @@ impl From<ContractPublicationStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17438,15 +16174,7 @@ impl From<ContractScope> for Coding {
             system: Some("http://hl7.org/fhir/contract-scope".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17458,10 +16186,7 @@ impl From<ContractScope> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17528,15 +16253,7 @@ impl From<ContractSecurityCategory> for Coding {
             system: Some("http://hl7.org/fhir/contract-security-category".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17548,10 +16265,7 @@ impl From<ContractSecurityCategory> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17620,15 +16334,7 @@ impl From<ContractSecurityClassification> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17640,10 +16346,7 @@ impl From<ContractSecurityClassification> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17710,15 +16413,7 @@ impl From<ContractSecurityControl> for Coding {
             system: Some("http://hl7.org/fhir/contract-security-control".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17730,10 +16425,7 @@ impl From<ContractSecurityControl> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17884,15 +16576,7 @@ impl From<ContractStatus> for Coding {
             system: Some("http://hl7.org/fhir/contract-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -17904,10 +16588,7 @@ impl From<ContractStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18008,15 +16689,7 @@ impl From<ContributorRole> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/contributor-role".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18028,10 +16701,7 @@ impl From<ContributorRole> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18116,15 +16786,7 @@ impl From<ContributorSummarySource> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18136,10 +16798,7 @@ impl From<ContributorSummarySource> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18296,15 +16955,7 @@ impl From<ContributorSummaryStyle> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18316,10 +16967,7 @@ impl From<ContributorSummaryStyle> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18422,15 +17070,7 @@ impl From<ContributorSummaryType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18442,10 +17082,7 @@ impl From<ContributorSummaryType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18528,15 +17165,7 @@ impl From<ContributorType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/contributor-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18548,10 +17177,7 @@ impl From<ContributorType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18624,15 +17250,7 @@ impl From<CriteriaNotExistsBehavior> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18644,10 +17262,7 @@ impl From<CriteriaNotExistsBehavior> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18726,15 +17341,7 @@ impl From<DatesEventTypeCodes> for Coding {
             system: Some("http://hl7.org/fhir/datestype".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18746,10 +17353,7 @@ impl From<DatesEventTypeCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18850,15 +17454,7 @@ impl From<DaysOfWeek> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/days-of-week".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18870,10 +17466,7 @@ impl From<DaysOfWeek> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -18980,15 +17573,7 @@ impl From<DefinitionMethod> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/definition-method".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19000,10 +17585,7 @@ impl From<DefinitionMethod> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19082,15 +17664,7 @@ impl From<DetectedIssueSeverity> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19102,10 +17676,7 @@ impl From<DetectedIssueSeverity> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19172,15 +17743,7 @@ impl From<DetectedIssueStatus> for Coding {
             system: Some("http://hl7.org/fhir/detectedissue-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19192,10 +17755,7 @@ impl From<DetectedIssueStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19286,15 +17846,7 @@ impl From<DeviceAssociation> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19306,10 +17858,7 @@ impl From<DeviceAssociation> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19388,15 +17937,7 @@ impl From<DeviceCorrectiveActionScope> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19408,10 +17949,7 @@ impl From<DeviceCorrectiveActionScope> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19488,15 +18026,7 @@ impl From<DeviceDefinitionRelationType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/device-relationtype".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19508,10 +18038,7 @@ impl From<DeviceDefinitionRelationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19626,15 +18153,7 @@ impl From<DeviceDispenseStatusCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19646,10 +18165,7 @@ impl From<DeviceDispenseStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19748,15 +18264,7 @@ impl From<DeviceDispenseStatusReasonCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19768,10 +18276,7 @@ impl From<DeviceDispenseStatusReasonCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19856,15 +18361,7 @@ impl From<DeviceMetricCalibrationState> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19876,10 +18373,7 @@ impl From<DeviceMetricCalibrationState> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19964,15 +18458,7 @@ impl From<DeviceMetricCalibrationType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -19984,10 +18470,7 @@ impl From<DeviceMetricCalibrationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20070,15 +18553,7 @@ impl From<DeviceMetricCategory> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/metric-category".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20090,10 +18565,7 @@ impl From<DeviceMetricCategory> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20178,15 +18650,7 @@ impl From<DeviceMetricOperationalStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20198,10 +18662,7 @@ impl From<DeviceMetricOperationalStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20278,15 +18739,7 @@ impl From<DeviceNameType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/device-nametype".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20298,10 +18751,7 @@ impl From<DeviceNameType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20398,15 +18848,7 @@ impl From<DeviceProductionIdentifierInUDI> for Coding {
             system: Some("http://hl7.org/fhir/device-productidentifierinudi".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20418,10 +18860,7 @@ impl From<DeviceProductionIdentifierInUDI> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20503,15 +18942,7 @@ impl From<DeviceRegulatoryIdentifierType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20523,10 +18954,7 @@ impl From<DeviceRegulatoryIdentifierType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20605,15 +19033,7 @@ impl From<DeviceUsageAdherenceCode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20625,10 +19045,7 @@ impl From<DeviceUsageAdherenceCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20725,15 +19142,7 @@ impl From<DeviceUsageAdherenceReason> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20745,10 +19154,7 @@ impl From<DeviceUsageAdherenceReason> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20849,15 +19255,7 @@ impl From<DeviceUsageStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/deviceusage-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20869,10 +19267,7 @@ impl From<DeviceUsageStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -20999,15 +19394,7 @@ impl From<DiagnosticReportStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21019,10 +19406,7 @@ impl From<DiagnosticReportStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21117,15 +19501,7 @@ impl From<DiscriminatorType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/discriminator-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21137,10 +19513,7 @@ impl From<DiscriminatorType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21211,15 +19584,7 @@ impl From<DocumentMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/document-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21231,10 +19596,7 @@ impl From<DocumentMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21313,15 +19675,7 @@ impl From<DocumentReferenceStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21333,10 +19687,7 @@ impl From<DocumentReferenceStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21433,15 +19784,7 @@ impl From<DocumentRelationshipType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21453,10 +19796,7 @@ impl From<DocumentRelationshipType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21553,15 +19893,7 @@ impl From<ETSISignatureTypeCodes> for Coding {
             system: Some("http://uri.etsi.org/01903/v1.2.2".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21573,10 +19905,7 @@ impl From<ETSISignatureTypeCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21661,15 +19990,7 @@ impl From<EligibilityRequestPurpose> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21681,10 +20002,7 @@ impl From<EligibilityRequestPurpose> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21769,15 +20087,7 @@ impl From<EligibilityResponsePurpose> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21789,10 +20099,7 @@ impl From<EligibilityResponsePurpose> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21865,15 +20172,7 @@ impl From<EnableWhenBehavior> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21885,10 +20184,7 @@ impl From<EnableWhenBehavior> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21961,15 +20257,7 @@ impl From<EncounterDiagnosisUse> for Coding {
             system: Some("http://hl7.org/fhir/encounter-diagnosis-use".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -21981,10 +20269,7 @@ impl From<EncounterDiagnosisUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22073,15 +20358,7 @@ impl From<EncounterLocationStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22093,10 +20370,7 @@ impl From<EncounterLocationStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22185,15 +20459,7 @@ impl From<EncounterReasonUse> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/encounter-reason-use".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22205,10 +20471,7 @@ impl From<EncounterReasonUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22321,15 +20584,7 @@ impl From<EncounterStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/encounter-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22341,10 +20596,7 @@ impl From<EncounterStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22433,15 +20685,7 @@ impl From<EndpointEnvironment> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/endpoint-environment".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22453,10 +20697,7 @@ impl From<EndpointEnvironment> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22545,15 +20786,7 @@ impl From<EndpointStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/endpoint-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22565,10 +20798,7 @@ impl From<EndpointStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22671,15 +20901,7 @@ impl From<EpisodeOfCareStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22691,10 +20913,7 @@ impl From<EpisodeOfCareStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22767,15 +20986,7 @@ impl From<EventCapabilityMode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22787,10 +20998,7 @@ impl From<EventCapabilityMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22897,15 +21105,7 @@ impl From<EventStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/event-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -22917,10 +21117,7 @@ impl From<EventStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23059,15 +21256,7 @@ impl From<EventTiming> for Coding {
             system: Some("http://hl7.org/fhir/event-timing".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23079,10 +21268,7 @@ impl From<EventTiming> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23237,15 +21423,7 @@ impl From<EvidenceCertaintyRating> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/certainty-rating".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23257,10 +21435,7 @@ impl From<EvidenceCertaintyRating> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23373,15 +21548,7 @@ impl From<EvidenceCertaintyType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/certainty-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23393,10 +21560,7 @@ impl From<EvidenceCertaintyType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23643,15 +21807,7 @@ impl From<EvidenceClassifier> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23663,10 +21819,7 @@ impl From<EvidenceClassifier> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23749,15 +21902,7 @@ impl From<EvidenceReportType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/evidence-report-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23769,10 +21914,7 @@ impl From<EvidenceReportType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23875,15 +22017,7 @@ impl From<EvidenceVariableEvent> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23895,10 +22029,7 @@ impl From<EvidenceVariableEvent> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -23981,15 +22112,7 @@ impl From<EvidenceVariableHandling> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/variable-handling".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24001,10 +22124,7 @@ impl From<EvidenceVariableHandling> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24083,15 +22203,7 @@ impl From<ExampleMetadata> for Coding {
             system: Some("http://hl7.org/fhir/CodeSystem/example-metadata".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24103,10 +22215,7 @@ impl From<ExampleMetadata> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24179,15 +22288,7 @@ impl From<ExampleScenarioActorType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24199,10 +22300,7 @@ impl From<ExampleScenarioActorType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24287,15 +22385,7 @@ impl From<ExplanationOfBenefitStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24307,10 +22397,7 @@ impl From<ExplanationOfBenefitStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24389,15 +22476,7 @@ impl From<ExtensionContextType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24409,10 +22488,7 @@ impl From<ExtensionContextType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24491,15 +22567,7 @@ impl From<ExtraActivityType> for Coding {
             system: Some("http://hl7.org/fhir/extra-activity-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24511,10 +22579,7 @@ impl From<ExtraActivityType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24759,15 +22824,7 @@ impl From<FHIRCanonicalStatusCodes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/resource-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24779,10 +22836,7 @@ impl From<FHIRCanonicalStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24874,15 +22928,7 @@ impl From<FHIRDeviceAssociationOperationStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24894,10 +22940,7 @@ impl From<FHIRDeviceAssociationOperationStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -24982,15 +23025,7 @@ impl From<FHIRDeviceAvailabilityStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25002,10 +23037,7 @@ impl From<FHIRDeviceAvailabilityStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25124,15 +23156,7 @@ impl From<FHIRDeviceCategory> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/device-category".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25144,10 +23168,7 @@ impl From<FHIRDeviceCategory> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25238,15 +23259,7 @@ impl From<FHIRDeviceOperationMode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25258,10 +23271,7 @@ impl From<FHIRDeviceOperationMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25364,15 +23374,7 @@ impl From<FHIRDeviceSpecializationCategory> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25384,10 +23386,7 @@ impl From<FHIRDeviceSpecializationCategory> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25464,15 +23463,7 @@ impl From<FHIRDeviceStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/device-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25484,10 +23475,7 @@ impl From<FHIRDeviceStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25564,15 +23552,7 @@ impl From<FHIRFormatType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/fhir-content-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25584,10 +23564,7 @@ impl From<FHIRFormatType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25898,15 +23875,7 @@ impl From<FHIROldTypes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/fhir-old-types".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -25918,10 +23887,7 @@ impl From<FHIROldTypes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -26046,15 +24012,7 @@ impl From<FHIRPathTypesCodeSystem> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/fhirpath-types".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -26066,10 +24024,7 @@ impl From<FHIRPathTypesCodeSystem> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -26236,15 +24191,7 @@ impl From<FHIRRestfulInteractions> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/restful-interaction".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -26256,10 +24203,7 @@ impl From<FHIRRestfulInteractions> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -26564,15 +24508,7 @@ impl From<FHIRSafetyCheckListEntries> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/safety-entries".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -26584,10 +24520,7 @@ impl From<FHIRSafetyCheckListEntries> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -26664,15 +24597,7 @@ impl From<FHIRSubstanceStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/substance-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -26684,10 +24609,7 @@ impl From<FHIRSubstanceStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28139,15 +26061,7 @@ impl From<FHIRTypes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/fhir-types".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28159,10 +26073,7 @@ impl From<FHIRTypes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28563,15 +26474,7 @@ impl From<FHIRVersion> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/FHIR-version".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28583,10 +26486,7 @@ impl From<FHIRVersion> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28669,15 +26569,7 @@ impl From<FamilyHistoryStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/history-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28689,10 +26581,7 @@ impl From<FamilyHistoryStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28817,15 +26706,7 @@ impl From<FilterOperator> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/filter-operator".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28837,10 +26718,7 @@ impl From<FilterOperator> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28925,15 +26803,7 @@ impl From<FinancialResourceStatusCodes> for Coding {
             system: Some("http://hl7.org/fhir/fm-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -28945,10 +26815,7 @@ impl From<FinancialResourceStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29025,15 +26892,7 @@ impl From<FlagStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/flag-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29045,10 +26904,7 @@ impl From<FlagStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29157,15 +27013,7 @@ impl From<FocusCharacteristicCode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29177,10 +27025,7 @@ impl From<FocusCharacteristicCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29257,15 +27102,7 @@ impl From<FormularyItemStatusCodes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/formularyitem-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29277,10 +27114,7 @@ impl From<FormularyItemStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29371,15 +27205,7 @@ impl From<GenomicStudyChangeType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29391,10 +27217,7 @@ impl From<GenomicStudyChangeType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29699,15 +27522,7 @@ impl From<GenomicStudyDataFormat> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -29719,10 +27534,7 @@ impl From<GenomicStudyDataFormat> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30317,15 +28129,7 @@ impl From<GenomicStudyMethodType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30337,10 +28141,7 @@ impl From<GenomicStudyMethodType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30429,15 +28230,7 @@ impl From<GenomicStudyStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/genomicstudy-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30449,10 +28242,7 @@ impl From<GenomicStudyStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30583,15 +28373,7 @@ impl From<GenomicStudyType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/genomicstudy-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30603,10 +28385,7 @@ impl From<GenomicStudyType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30719,15 +28498,7 @@ impl From<GoalLifecycleStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/goal-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30739,10 +28510,7 @@ impl From<GoalLifecycleStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30827,15 +28595,7 @@ impl From<GraphCompartmentRule> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30847,10 +28607,7 @@ impl From<GraphCompartmentRule> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30923,15 +28680,7 @@ impl From<GraphCompartmentUse> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -30943,10 +28692,7 @@ impl From<GraphCompartmentUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31019,15 +28765,7 @@ impl From<GroupMembershipBasis> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31039,10 +28777,7 @@ impl From<GroupMembershipBasis> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31161,15 +28896,7 @@ impl From<GroupType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/group-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31181,10 +28908,7 @@ impl From<GroupType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31279,15 +29003,7 @@ impl From<GuidanceModuleCode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/guidance-module-code".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31299,10 +29015,7 @@ impl From<GuidanceModuleCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31399,15 +29112,7 @@ impl From<GuidanceResponseStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31419,10 +29124,7 @@ impl From<GuidanceResponseStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31507,15 +29209,7 @@ impl From<GuidePageGeneration> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31527,10 +29221,7 @@ impl From<GuidePageGeneration> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31651,15 +29342,7 @@ impl From<GuideParameterCode> for Coding {
             system: Some("http://hl7.org/fhir/guide-parameter-code".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31671,10 +29354,7 @@ impl From<GuideParameterCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31769,15 +29449,7 @@ impl From<HTTPVerb> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/http-verb".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31789,10 +29461,7 @@ impl From<HTTPVerb> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31871,15 +29540,7 @@ impl From<ICD10ProcedureCodes> for Coding {
             system: Some("http://hl7.org/fhir/sid/ex-icd-10-procedures".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31891,10 +29552,7 @@ impl From<ICD10ProcedureCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -31983,15 +29641,7 @@ impl From<IdentifierUse> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/identifier-use".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32003,10 +29653,7 @@ impl From<IdentifierUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32091,15 +29738,7 @@ impl From<IdentityAssuranceLevel> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32111,10 +29750,7 @@ impl From<IdentityAssuranceLevel> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32205,15 +29841,7 @@ impl From<ImagingSelection2DGraphicType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32225,10 +29853,7 @@ impl From<ImagingSelection2DGraphicType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32325,15 +29950,7 @@ impl From<ImagingSelection3DGraphicType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32345,10 +29962,7 @@ impl From<ImagingSelection3DGraphicType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32427,15 +30041,7 @@ impl From<ImagingSelectionStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32447,10 +30053,7 @@ impl From<ImagingSelectionStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32539,15 +30142,7 @@ impl From<ImagingStudyStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/imagingstudy-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32559,10 +30154,7 @@ impl From<ImagingStudyStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32639,15 +30231,7 @@ impl From<Indicator> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/cdshooks-indicator".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32659,10 +30243,7 @@ impl From<Indicator> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32733,15 +30314,7 @@ impl From<IngredientFunction> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/ingredient-function".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32753,10 +30326,7 @@ impl From<IngredientFunction> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32835,15 +30405,7 @@ impl From<IngredientManufacturerRole> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32855,10 +30417,7 @@ impl From<IngredientManufacturerRole> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32971,15 +30530,7 @@ impl From<IngredientRole> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/ingredient-role".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -32991,10 +30542,7 @@ impl From<IngredientRole> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33067,15 +30615,7 @@ impl From<InteractionIncidence> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33087,10 +30627,7 @@ impl From<InteractionIncidence> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33173,15 +30710,7 @@ impl From<InteractionType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/interaction-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33193,10 +30722,7 @@ impl From<InteractionType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33269,15 +30795,7 @@ impl From<InventoryCountType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33289,10 +30807,7 @@ impl From<InventoryCountType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33377,15 +30892,7 @@ impl From<InventoryItemNameType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33397,10 +30904,7 @@ impl From<InventoryItemNameType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33483,15 +30987,7 @@ impl From<InventoryItemStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/inventoryitem-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33503,10 +30999,7 @@ impl From<InventoryItemStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33591,15 +31084,7 @@ impl From<InventoryReportStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33611,10 +31096,7 @@ impl From<InventoryReportStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33703,15 +31185,7 @@ impl From<InvoiceStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/invoice-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33723,10 +31197,7 @@ impl From<InvoiceStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33815,15 +31286,7 @@ impl From<IssueSeverity> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/issue-severity".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -33835,10 +31298,7 @@ impl From<IssueSeverity> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -34095,15 +31555,7 @@ impl From<IssueType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/issue-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -34115,10 +31567,7 @@ impl From<IssueType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -34195,15 +31644,7 @@ impl From<Kind> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/coverage-kind".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -34215,10 +31656,7 @@ impl From<Kind> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -34304,15 +31742,7 @@ impl From<KnowledgeRepresentationLevel> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -34324,10 +31754,7 @@ impl From<KnowledgeRepresentationLevel> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -34436,15 +31863,7 @@ impl From<LegalStatusOfSupply> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -34456,10 +31875,7 @@ impl From<LegalStatusOfSupply> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35426,15 +32842,7 @@ impl From<LinkRelationTypes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/iana-link-relations".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35446,10 +32854,7 @@ impl From<LinkRelationTypes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35532,15 +32937,7 @@ impl From<LinkType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/link-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35552,10 +32949,7 @@ impl From<LinkType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35632,15 +33026,7 @@ impl From<LinkageType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/linkage-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35652,10 +33038,7 @@ impl From<LinkageType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35732,15 +33115,7 @@ impl From<ListMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/list-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35752,10 +33127,7 @@ impl From<ListMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35832,15 +33204,7 @@ impl From<ListStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/list-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35852,10 +33216,7 @@ impl From<ListStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35952,15 +33313,7 @@ impl From<LocationCharacteristic> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -35972,10 +33325,7 @@ impl From<LocationCharacteristic> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -36046,15 +33396,7 @@ impl From<LocationMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/location-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -36066,10 +33408,7 @@ impl From<LocationMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -36146,15 +33485,7 @@ impl From<LocationStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/location-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -36166,10 +33497,7 @@ impl From<LocationStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37436,15 +34764,7 @@ impl From<ManufacturedDoseForm> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37456,10 +34776,7 @@ impl From<ManufacturedDoseForm> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37554,15 +34871,7 @@ impl From<MeasureAggregateMethod> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/aggregate-method".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37574,10 +34883,7 @@ impl From<MeasureAggregateMethod> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37654,15 +34960,7 @@ impl From<MeasureDefinitionExample> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37674,10 +34972,7 @@ impl From<MeasureDefinitionExample> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37750,15 +35045,7 @@ impl From<MeasureGroupExample> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37770,10 +35057,7 @@ impl From<MeasureGroupExample> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37852,15 +35136,7 @@ impl From<MeasureReportStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37872,10 +35148,7 @@ impl From<MeasureReportStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37961,15 +35234,7 @@ impl From<MeasureReportStratifierValueExample> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -37981,10 +35246,7 @@ impl From<MeasureReportStratifierValueExample> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38067,15 +35329,7 @@ impl From<MeasureReportType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/measure-report-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38087,10 +35341,7 @@ impl From<MeasureReportType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38169,15 +35420,7 @@ impl From<MeasureStratifierExample> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38189,10 +35432,7 @@ impl From<MeasureStratifierExample> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38278,15 +35518,7 @@ impl From<MeasureSupplementalDataExample> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38298,10 +35530,7 @@ impl From<MeasureSupplementalDataExample> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38381,15 +35610,7 @@ impl From<MedDispenseAdminLocationCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38401,10 +35622,7 @@ impl From<MedDispenseAdminLocationCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38507,15 +35725,7 @@ impl From<MedicationAdministrationStatusCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38527,10 +35737,7 @@ impl From<MedicationAdministrationStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38603,15 +35810,7 @@ impl From<MedicationCostCategoryCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38623,10 +35822,7 @@ impl From<MedicationCostCategoryCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38741,15 +35937,7 @@ impl From<MedicationDispenseStatusCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38761,10 +35949,7 @@ impl From<MedicationDispenseStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38952,15 +36137,7 @@ impl From<MedicationDispenseStatusReasonCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -38972,10 +36149,7 @@ impl From<MedicationDispenseStatusReasonCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39052,15 +36226,7 @@ impl From<MedicationDoseAid> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/medication-dose-aid".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39072,10 +36238,7 @@ impl From<MedicationDoseAid> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39148,15 +36311,7 @@ impl From<MedicationIngredientStrengthCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39168,10 +36323,7 @@ impl From<MedicationIngredientStrengthCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39263,15 +36415,7 @@ impl From<MedicationIntendedPerformerRole> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39283,10 +36427,7 @@ impl From<MedicationIntendedPerformerRole> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39365,15 +36506,7 @@ impl From<MedicationKnowledgeStatusCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39385,10 +36518,7 @@ impl From<MedicationKnowledgeStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39497,15 +36627,7 @@ impl From<MedicationRequestIntentCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39517,10 +36639,7 @@ impl From<MedicationRequestIntentCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39635,15 +36754,7 @@ impl From<MedicationRequestStatusCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39655,10 +36766,7 @@ impl From<MedicationRequestStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39785,15 +36893,7 @@ impl From<MedicationStatementAdherenceCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39805,10 +36905,7 @@ impl From<MedicationStatementAdherenceCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39887,15 +36984,7 @@ impl From<MedicationStatementStatusCodes> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39907,10 +36996,7 @@ impl From<MedicationStatementStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -39987,15 +37073,7 @@ impl From<MedicationStatusCodes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/medication-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40007,10 +37085,7 @@ impl From<MedicationStatusCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40089,15 +37164,7 @@ impl From<MedicinalProductDomain> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40109,10 +37176,7 @@ impl From<MedicinalProductDomain> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40245,15 +37309,7 @@ impl From<MedicinalProductPackageType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40265,10 +37321,7 @@ impl From<MedicinalProductPackageType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40341,15 +37394,7 @@ impl From<MedicinalProductType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40361,10 +37406,7 @@ impl From<MedicinalProductType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40425,15 +37467,7 @@ impl From<MessageEvent> for Coding {
             system: Some("http://hl7.org/fhir/message-events".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40445,10 +37479,7 @@ impl From<MessageEvent> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40527,15 +37558,7 @@ impl From<MessageSignificanceCategory> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40547,10 +37570,7 @@ impl From<MessageSignificanceCategory> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40627,15 +37647,7 @@ impl From<MessageTransport> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/message-transport".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40647,10 +37659,7 @@ impl From<MessageTransport> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40735,15 +37744,7 @@ impl From<MessageheaderResponseRequest> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40755,10 +37756,7 @@ impl From<MessageheaderResponseRequest> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40979,15 +37977,7 @@ impl From<NHINPurposeOfUse> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/nhin-purposeofuse".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -40999,10 +37989,7 @@ impl From<NHINPurposeOfUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41103,15 +38090,7 @@ impl From<NameUse> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/name-use".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41123,10 +38102,7 @@ impl From<NameUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41223,15 +38199,7 @@ impl From<NamingSystemIdentifierType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41243,10 +38211,7 @@ impl From<NamingSystemIdentifierType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41323,15 +38288,7 @@ impl From<NamingSystemType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/namingsystem-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41343,10 +38300,7 @@ impl From<NamingSystemType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41429,15 +38383,7 @@ impl From<NarrativeStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/narrative-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41449,10 +38395,7 @@ impl From<NarrativeStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41529,15 +38472,7 @@ impl From<NoteType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/note-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41549,10 +38484,7 @@ impl From<NoteType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41631,15 +38563,7 @@ impl From<NutritionProductStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41651,10 +38575,7 @@ impl From<NutritionProductStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41779,15 +38700,7 @@ impl From<ObservationDataType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/permitted-data-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41799,10 +38712,7 @@ impl From<ObservationDataType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41881,15 +38791,7 @@ impl From<ObservationRangeCategory> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41901,10 +38803,7 @@ impl From<ObservationRangeCategory> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41978,15 +38877,7 @@ impl From<ObservationReferenceRangeNormalValue> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -41998,10 +38889,7 @@ impl From<ObservationReferenceRangeNormalValue> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42108,15 +38996,7 @@ impl From<ObservationStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/observation-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42128,10 +39008,7 @@ impl From<ObservationStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42202,15 +39079,7 @@ impl From<OperationKind> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/operation-kind".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42222,10 +39091,7 @@ impl From<OperationKind> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42592,15 +39458,7 @@ impl From<OperationOutcomeCodes> for Coding {
             system: Some("http://hl7.org/fhir/operation-outcome".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42612,10 +39470,7 @@ impl From<OperationOutcomeCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42694,15 +39549,7 @@ impl From<OperationParameterScope> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42714,10 +39561,7 @@ impl From<OperationParameterScope> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42790,15 +39634,7 @@ impl From<OperationParameterUse> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42810,10 +39646,7 @@ impl From<OperationParameterUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42922,15 +39755,7 @@ impl From<OrganizationAffiliationRole> for Coding {
             system: Some("http://hl7.org/fhir/organization-role".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -42942,10 +39767,7 @@ impl From<OrganizationAffiliationRole> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -43016,15 +39838,7 @@ impl From<OrientationType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/orientation-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -43036,10 +39850,7 @@ impl From<OrientationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -43356,15 +40167,7 @@ impl From<PackageMaterial> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/package-material".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -43376,10 +40179,7 @@ impl From<PackageMaterial> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -43456,15 +40256,7 @@ impl From<PackageType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/package-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -43476,10 +40268,7 @@ impl From<PackageType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44150,15 +40939,7 @@ impl From<PackagingType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/packaging-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44170,10 +40951,7 @@ impl From<PackagingType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44256,15 +41034,7 @@ impl From<ParticipationStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/participationstatus".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44276,10 +41046,7 @@ impl From<ParticipationStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44374,15 +41141,7 @@ impl From<PatientMedicineChangeTypes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/list-item-flag".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44394,10 +41153,7 @@ impl From<PatientMedicineChangeTypes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44468,15 +41224,7 @@ impl From<PaymentIssuerTypeCodes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/payment-issuertype".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44488,10 +41236,7 @@ impl From<PaymentIssuerTypeCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44574,15 +41319,7 @@ impl From<PaymentKindCodes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/payment-kind".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44594,10 +41331,7 @@ impl From<PaymentKindCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44742,15 +41476,7 @@ impl From<PediatricUse> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44762,10 +41488,7 @@ impl From<PediatricUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44862,15 +41585,7 @@ impl From<PermissionRuleCombining> for Coding {
             system: Some("http://hl7.org/fhir/permission-rule-combining".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44882,10 +41597,7 @@ impl From<PermissionRuleCombining> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44968,15 +41680,7 @@ impl From<PermissionStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/permission-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -44988,10 +41692,7 @@ impl From<PermissionStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45086,15 +41787,7 @@ impl From<PriceComponentType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/price-component-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45106,10 +41799,7 @@ impl From<PriceComponentType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45188,15 +41878,7 @@ impl From<ProcedureDeviceActionCodes> for Coding {
             system: Some("http://hl7.org/fhir/device-action".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45208,10 +41890,7 @@ impl From<ProcedureDeviceActionCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45285,15 +41964,7 @@ impl From<ProductConfidentiality> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45305,10 +41976,7 @@ impl From<ProductConfidentiality> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45399,15 +42067,7 @@ impl From<ProductContactType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45419,10 +42079,7 @@ impl From<ProductContactType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45520,15 +42177,7 @@ impl From<ProductCrossReferenceType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45540,10 +42189,7 @@ impl From<ProductCrossReferenceType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45632,15 +42278,7 @@ impl From<ProductIntendedUse> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/product-intended-use".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45652,10 +42290,7 @@ impl From<ProductIntendedUse> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45813,15 +42448,7 @@ impl From<ProductNamePartType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45833,10 +42460,7 @@ impl From<ProductNamePartType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45927,15 +42551,7 @@ impl From<ProductNameType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -45947,10 +42563,7 @@ impl From<ProductNameType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46021,15 +42634,7 @@ impl From<ProductStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/product-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46041,10 +42646,7 @@ impl From<ProductStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46135,15 +42737,7 @@ impl From<PropertyRepresentation> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46155,10 +42749,7 @@ impl From<PropertyRepresentation> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46261,15 +42852,7 @@ impl From<PropertyType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46281,10 +42864,7 @@ impl From<PropertyType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46375,15 +42955,7 @@ impl From<ProvenanceEntityRole> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46395,10 +42967,7 @@ impl From<ProvenanceEntityRole> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46481,15 +43050,7 @@ impl From<PublicationStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/publication-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46501,10 +43062,7 @@ impl From<PublicationStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46587,15 +43145,7 @@ impl From<PublishedInType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/published-in-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46607,10 +43157,7 @@ impl From<PublishedInType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46699,15 +43246,7 @@ impl From<QuantityComparator> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/quantity-comparator".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46719,10 +43258,7 @@ impl From<QuantityComparator> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46803,15 +43339,7 @@ impl From<QuestionnaireAnswerConstraint> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46823,10 +43351,7 @@ impl From<QuestionnaireAnswerConstraint> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46901,15 +43426,7 @@ impl From<QuestionnaireItemDisabledDisplay> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -46921,10 +43438,7 @@ impl From<QuestionnaireItemDisabledDisplay> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47027,15 +43541,7 @@ impl From<QuestionnaireItemOperator> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47047,10 +43553,7 @@ impl From<QuestionnaireItemOperator> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47205,15 +43708,7 @@ impl From<QuestionnaireItemType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/item-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47225,10 +43720,7 @@ impl From<QuestionnaireItemType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47319,15 +43811,7 @@ impl From<QuestionnaireResponseStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47339,10 +43823,7 @@ impl From<QuestionnaireResponseStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47427,15 +43908,7 @@ impl From<ReasonMedicationNotGivenCodes> for Coding {
             system: Some("http://hl7.org/fhir/reason-medication-not-given".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47447,10 +43920,7 @@ impl From<ReasonMedicationNotGivenCodes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47541,15 +44011,7 @@ impl From<ReferenceHandlingPolicy> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47561,10 +44023,7 @@ impl From<ReferenceHandlingPolicy> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47643,15 +44102,7 @@ impl From<ReferenceVersionRules> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47663,10 +44114,7 @@ impl From<ReferenceVersionRules> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47787,15 +44235,7 @@ impl From<RegulatedAuthorizationBasis> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -47807,10 +44247,7 @@ impl From<RegulatedAuthorizationBasis> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48004,15 +44441,7 @@ impl From<RegulatedAuthorizationCaseType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48024,10 +44453,7 @@ impl From<RegulatedAuthorizationCaseType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48106,15 +44532,7 @@ impl From<RegulatedAuthorizationType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48126,10 +44544,7 @@ impl From<RegulatedAuthorizationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48406,15 +44821,7 @@ impl From<RelatedArtifactType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48426,10 +44833,7 @@ impl From<RelatedArtifactType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48718,15 +45122,7 @@ impl From<RelatedArtifactTypeExpanded> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48738,10 +45134,7 @@ impl From<RelatedArtifactTypeExpanded> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48818,15 +45211,7 @@ impl From<RemittanceOutcome> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/remittance-outcome".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48838,10 +45223,7 @@ impl From<RemittanceOutcome> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48948,15 +45330,7 @@ impl From<ReportRelationshipType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/report-relation-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -48968,10 +45342,7 @@ impl From<ReportRelationshipType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49206,15 +45577,7 @@ impl From<ReportSectionType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49226,10 +45589,7 @@ impl From<ReportSectionType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49342,15 +45702,7 @@ impl From<RequestIntent> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/request-intent".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49362,10 +45714,7 @@ impl From<RequestIntent> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49448,15 +45797,7 @@ impl From<RequestPriority> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/request-priority".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49468,10 +45809,7 @@ impl From<RequestPriority> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49572,15 +45910,7 @@ impl From<RequestStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/request-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49592,10 +45922,7 @@ impl From<RequestStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49692,15 +46019,7 @@ impl From<ResearchStudyArmType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49712,10 +46031,7 @@ impl From<ResearchStudyArmType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49800,15 +46116,7 @@ impl From<ResearchStudyClassifiers> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49820,10 +46128,7 @@ impl From<ResearchStudyClassifiers> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49908,15 +46213,7 @@ impl From<ResearchStudyFocusType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -49928,10 +46225,7 @@ impl From<ResearchStudyFocusType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50010,15 +46304,7 @@ impl From<ResearchStudyObjectiveType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50030,10 +46316,7 @@ impl From<ResearchStudyObjectiveType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50131,15 +46414,7 @@ impl From<ResearchStudyPartyOrganizationType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50151,10 +46426,7 @@ impl From<ResearchStudyPartyOrganizationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50287,15 +46559,7 @@ impl From<ResearchStudyPartyRole> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50307,10 +46571,7 @@ impl From<ResearchStudyPartyRole> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50417,15 +46678,7 @@ impl From<ResearchStudyPhase> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/research-study-phase".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50437,10 +46690,7 @@ impl From<ResearchStudyPhase> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50549,15 +46799,7 @@ impl From<ResearchStudyPrimaryPurposeType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50569,10 +46811,7 @@ impl From<ResearchStudyPrimaryPurposeType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50665,15 +46904,7 @@ impl From<ResearchStudyReasonStopped> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50685,10 +46916,7 @@ impl From<ResearchStudyReasonStopped> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50857,15 +47085,7 @@ impl From<ResearchStudyStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50877,10 +47097,7 @@ impl From<ResearchStudyStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50965,15 +47182,7 @@ impl From<ResourceValidationMode> for Coding {
             system: Some("http://hl7.org/fhir/resource-validation-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -50985,10 +47194,7 @@ impl From<ResourceValidationMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -51065,15 +47271,7 @@ impl From<ResourceVersionPolicy> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/versioning-policy".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -51085,10 +47283,7 @@ impl From<ResourceVersionPolicy> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -51165,15 +47360,7 @@ impl From<ResponseType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/response-code".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -51185,10 +47372,7 @@ impl From<ResponseType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -51261,15 +47445,7 @@ impl From<RestfulCapabilityMode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -51281,10 +47457,7 @@ impl From<RestfulCapabilityMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -51381,15 +47554,7 @@ impl From<RestfulSecurityService> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -51401,10 +47566,7 @@ impl From<RestfulSecurityService> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -53543,15 +49705,7 @@ impl From<SPDXLicense> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/spdx-license".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -53563,10 +49717,7 @@ impl From<SPDXLicense> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -53709,15 +49860,7 @@ impl From<SampleSecurityStructuralRoles> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -53729,10 +49872,7 @@ impl From<SampleSecurityStructuralRoles> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -53845,15 +49985,7 @@ impl From<SearchComparator> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/search-comparator".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -53865,10 +49997,7 @@ impl From<SearchComparator> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -53945,15 +50074,7 @@ impl From<SearchEntryMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/search-entry-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -53965,10 +50086,7 @@ impl From<SearchEntryMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54117,15 +50235,7 @@ impl From<SearchModifierCode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/search-modifier-code".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54137,10 +50247,7 @@ impl From<SearchModifierCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54253,15 +50360,7 @@ impl From<SearchParamType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/search-param-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54273,10 +50372,7 @@ impl From<SearchParamType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54355,15 +50451,7 @@ impl From<SearchProcessingModeType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54375,10 +50463,7 @@ impl From<SearchProcessingModeType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54455,15 +50540,7 @@ impl From<SequenceType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/sequence-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54475,10 +50552,7 @@ impl From<SequenceType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54561,15 +50635,7 @@ impl From<ServiceMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/service-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54581,10 +50647,7 @@ impl From<ServiceMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54670,15 +50733,7 @@ impl From<ServiceRequestOrderDetailParameterCode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54690,10 +50745,7 @@ impl From<ServiceRequestOrderDetailParameterCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54772,15 +50824,7 @@ impl From<SlicingRules> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54792,10 +50836,7 @@ impl From<SlicingRules> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54884,15 +50925,7 @@ impl From<SlotStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/slotstatus".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54904,10 +50937,7 @@ impl From<SlotStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54978,15 +51008,7 @@ impl From<SortDirection> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/sort-direction".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -54998,10 +51020,7 @@ impl From<SortDirection> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55069,15 +51088,7 @@ impl From<SpecialMeasures> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55089,10 +51100,7 @@ impl From<SpecialMeasures> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55163,15 +51171,7 @@ impl From<SpecimenCombined> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/specimen-combined".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55183,10 +51183,7 @@ impl From<SpecimenCombined> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55259,15 +51256,7 @@ impl From<SpecimenContainedPreference> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55279,10 +51268,7 @@ impl From<SpecimenContainedPreference> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55395,15 +51381,7 @@ impl From<SpecimenRole> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/specimen-role".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55415,10 +51393,7 @@ impl From<SpecimenRole> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55501,15 +51476,7 @@ impl From<SpecimenStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/specimen-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -55521,10 +51488,7 @@ impl From<SpecimenStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56063,15 +52027,7 @@ impl From<StatisticModelCode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/statistic-model-code".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56083,10 +52039,7 @@ impl From<StatisticModelCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56273,15 +52226,7 @@ impl From<StatisticsCode> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56293,10 +52238,7 @@ impl From<StatisticsCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56397,15 +52339,7 @@ impl From<Status> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56417,10 +52351,7 @@ impl From<Status> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56491,15 +52422,7 @@ impl From<StrandType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/strand-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56511,10 +52434,7 @@ impl From<StrandType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56599,15 +52519,7 @@ impl From<StructureDefinitionKind> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56619,10 +52531,7 @@ impl From<StructureDefinitionKind> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56693,15 +52602,7 @@ impl From<StructureMapGroupTypeMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/map-group-type-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56713,10 +52614,7 @@ impl From<StructureMapGroupTypeMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56787,15 +52685,7 @@ impl From<StructureMapInputMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/map-input-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56807,10 +52697,7 @@ impl From<StructureMapInputMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56893,15 +52780,7 @@ impl From<StructureMapModelMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/map-model-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -56913,10 +52792,7 @@ impl From<StructureMapModelMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57005,15 +52881,7 @@ impl From<StructureMapSourceListMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/map-source-list-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57025,10 +52893,7 @@ impl From<StructureMapSourceListMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57111,15 +52976,7 @@ impl From<StructureMapTargetListMode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/map-target-list-mode".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57131,10 +52988,7 @@ impl From<StructureMapTargetListMode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57295,15 +53149,7 @@ impl From<StructureMapTransform> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/map-transform".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57315,10 +53161,7 @@ impl From<StructureMapTransform> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57809,15 +53652,7 @@ impl From<StudyDesign> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/study-design".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57829,10 +53664,7 @@ impl From<StudyDesign> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57905,15 +53737,7 @@ impl From<SubmitDataUpdateType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -57925,10 +53749,7 @@ impl From<SubmitDataUpdateType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58019,15 +53840,7 @@ impl From<SubscriptionNotificationType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58039,10 +53852,7 @@ impl From<SubscriptionNotificationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58121,15 +53931,7 @@ impl From<SubscriptionPayloadContent> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58141,10 +53943,7 @@ impl From<SubscriptionPayloadContent> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58235,15 +54034,7 @@ impl From<SubscriptionStatus> for Coding {
             system: Some("http://hl7.org/fhir/subscription-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58255,10 +54046,7 @@ impl From<SubscriptionStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58343,15 +54131,7 @@ impl From<SubstanceAmountType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58363,10 +54143,7 @@ impl From<SubstanceAmountType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58437,15 +54214,7 @@ impl From<SubstanceForm> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/substance-form".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58457,10 +54226,7 @@ impl From<SubstanceForm> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58549,15 +54315,7 @@ impl From<SubstanceGrade> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/substance-grade".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58569,10 +54327,7 @@ impl From<SubstanceGrade> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58723,15 +54478,7 @@ impl From<SubstanceNameAuthority> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58743,10 +54490,7 @@ impl From<SubstanceNameAuthority> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58819,15 +54563,7 @@ impl From<SubstanceNameDomain> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58839,10 +54575,7 @@ impl From<SubstanceNameDomain> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58919,15 +54652,7 @@ impl From<SubstanceNameType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/substance-name-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -58939,10 +54664,7 @@ impl From<SubstanceNameType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59015,15 +54737,7 @@ impl From<SubstanceOpticalActivity> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59035,10 +54749,7 @@ impl From<SubstanceOpticalActivity> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59129,15 +54840,7 @@ impl From<SubstanceRelationshipType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59149,10 +54852,7 @@ impl From<SubstanceRelationshipType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59255,15 +54955,7 @@ impl From<SubstanceRepresentationFormat> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59275,10 +54967,7 @@ impl From<SubstanceRepresentationFormat> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59357,15 +55046,7 @@ impl From<SubstanceRepresentationType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59377,10 +55058,7 @@ impl From<SubstanceRepresentationType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59459,15 +55137,7 @@ impl From<SubstanceSourceMaterialGenus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59479,10 +55149,7 @@ impl From<SubstanceSourceMaterialGenus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59561,15 +55228,7 @@ impl From<SubstanceSourceMaterialPart> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59581,10 +55240,7 @@ impl From<SubstanceSourceMaterialPart> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59658,15 +55314,7 @@ impl From<SubstanceSourceMaterialSpecies> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59678,10 +55326,7 @@ impl From<SubstanceSourceMaterialSpecies> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59760,15 +55405,7 @@ impl From<SubstanceSourceMaterialType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59780,10 +55417,7 @@ impl From<SubstanceSourceMaterialType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59862,15 +55496,7 @@ impl From<SubstanceStereochemistry> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59882,10 +55508,7 @@ impl From<SubstanceStereochemistry> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59976,15 +55599,7 @@ impl From<SubstanceStructureTechnique> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -59996,10 +55611,7 @@ impl From<SubstanceStructureTechnique> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60108,15 +55720,7 @@ impl From<SubstanceWeightMethod> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60128,10 +55732,7 @@ impl From<SubstanceWeightMethod> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60210,15 +55811,7 @@ impl From<SubstanceWeightType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60230,10 +55823,7 @@ impl From<SubstanceWeightType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60318,15 +55908,7 @@ impl From<SupplyDeliveryStatus> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60338,10 +55920,7 @@ impl From<SupplyDeliveryStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60420,15 +55999,7 @@ impl From<SupplyDeliverySupplyItemType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60440,10 +56011,7 @@ impl From<SupplyDeliverySupplyItemType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60544,15 +56112,7 @@ impl From<SupplyRequestStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/supplyrequest-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -60564,10 +56124,7 @@ impl From<SupplyRequestStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -61826,15 +57383,7 @@ impl From<TargetSpecies> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/target-species".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -61846,10 +57395,7 @@ impl From<TargetSpecies> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -61956,15 +57502,7 @@ impl From<TaskCode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/task-code.html".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -61976,10 +57514,7 @@ impl From<TaskCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62046,15 +57581,7 @@ impl From<TaskIntent> for Coding {
             system: Some("http://hl7.org/fhir/task-intent".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62066,10 +57593,7 @@ impl From<TaskIntent> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62200,15 +57724,7 @@ impl From<TaskStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/task-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62220,10 +57736,7 @@ impl From<TaskStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62312,15 +57825,7 @@ impl From<TaskStatusReason> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/task-status-reason".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62332,10 +57837,7 @@ impl From<TaskStatusReason> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62442,15 +57944,7 @@ impl From<TemplateStatusCodeLifeCycle> for Coding {
             system: Some("urn:oid:2.16.840.1.113883.3.1937.98.11.8".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62462,10 +57956,7 @@ impl From<TemplateStatusCodeLifeCycle> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62556,15 +58047,7 @@ impl From<TestReportActionResult> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62576,10 +58059,7 @@ impl From<TestReportActionResult> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62658,15 +58138,7 @@ impl From<TestReportParticipantType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62678,10 +58150,7 @@ impl From<TestReportParticipantType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62758,15 +58227,7 @@ impl From<TestReportResult> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/report-result-codes".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62778,10 +58239,7 @@ impl From<TestReportResult> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62870,15 +58328,7 @@ impl From<TestReportStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/report-status-codes".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62890,10 +58340,7 @@ impl From<TestReportStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -62994,15 +58441,7 @@ impl From<TestScriptRequestMethodCode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/http-operations".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63014,10 +58453,7 @@ impl From<TestScriptRequestMethodCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63097,15 +58533,7 @@ impl From<TestScriptScopeConformanceType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63117,10 +58545,7 @@ impl From<TestScriptScopeConformanceType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63199,15 +58624,7 @@ impl From<TestScriptScopePhaseType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63219,10 +58636,7 @@ impl From<TestScriptScopePhaseType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63355,15 +58769,7 @@ impl From<TherapyRelationshipType> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63375,10 +58781,7 @@ impl From<TherapyRelationshipType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63447,15 +58850,7 @@ impl From<TimingAbbreviation> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63467,10 +58862,7 @@ impl From<TimingAbbreviation> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63607,15 +58999,7 @@ impl From<TitleType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/title-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63627,10 +59011,7 @@ impl From<TitleType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63737,15 +59118,7 @@ impl From<TransportCode> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/transport-code.html".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63757,10 +59130,7 @@ impl From<TransportCode> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63827,15 +59197,7 @@ impl From<TransportIntent> for Coding {
             system: Some("http://hl7.org/fhir/transport-intent".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63847,10 +59209,7 @@ impl From<TransportIntent> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63945,15 +59304,7 @@ impl From<TransportStatus> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/transport-status".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -63965,10 +59316,7 @@ impl From<TransportStatus> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64075,15 +59423,7 @@ impl From<TriggerType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/trigger-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64095,10 +59435,7 @@ impl From<TriggerType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64177,15 +59514,7 @@ impl From<TriggeredBytype> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64197,10 +59526,7 @@ impl From<TriggeredBytype> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64271,15 +59597,7 @@ impl From<TypeDerivationRule> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/type-derivation-rule".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64291,10 +59609,7 @@ impl From<TypeDerivationRule> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64395,15 +59710,7 @@ impl From<UDIEntryType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/udi-entry-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64415,10 +59722,7 @@ impl From<UDIEntryType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64497,15 +59801,7 @@ impl From<UndesirablEffectFrequency> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64517,10 +59813,7 @@ impl From<UndesirablEffectFrequency> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64915,15 +60208,7 @@ impl From<UnitOfPresentation> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/unit-of-presentation".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -64935,10 +60220,7 @@ impl From<UnitOfPresentation> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65035,15 +60317,7 @@ impl From<UsageContextAgreementScope> for Coding {
             ),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65055,10 +60329,7 @@ impl From<UsageContextAgreementScope> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65135,15 +60406,7 @@ impl From<Use> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/claim-use".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65155,10 +60418,7 @@ impl From<Use> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65247,15 +60507,7 @@ impl From<VersionAlgorithm> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/version-algorithm".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65267,10 +60519,7 @@ impl From<VersionAlgorithm> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65347,15 +60596,7 @@ impl From<VirtualServiceType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/virtual-service-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65367,10 +60608,7 @@ impl From<VirtualServiceType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65453,15 +60691,7 @@ impl From<VisionBase> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/vision-base-codes".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65473,10 +60703,7 @@ impl From<VisionBase> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65547,15 +60774,7 @@ impl From<VisionEyes> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/vision-eye-codes".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65567,10 +60786,7 @@ impl From<VisionEyes> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65703,15 +60919,7 @@ impl From<W3cProvenanceActivityType> for Coding {
             system: Some("http://hl7.org/fhir/w3c-provenance-activity-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65723,10 +60931,7 @@ impl From<W3cProvenanceActivityType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65845,15 +61050,7 @@ impl From<WarningType> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/warning-type".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65865,10 +61062,7 @@ impl From<WarningType> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65957,15 +61151,7 @@ impl From<WeekOfMonth> for Coding {
             system: Some("http://hl7.org/fhir/ValueSet/week-of-month".to_owned()),
             code: Some(code.as_ref().to_owned()),
             display: Some(format!("{code}")),
-            id: None,
-            extension: Vec::new(),
-            system_ext: None,
-            version: None,
-            version_ext: None,
-            code_ext: None,
-            display_ext: None,
-            user_selected: None,
-            user_selected_ext: None,
+            ..Default::default()
         }
             .into()
     }
@@ -65977,10 +61163,7 @@ impl From<WeekOfMonth> for CodeableConcept {
         CodeableConceptInner {
             coding: vec![Some(coding)],
             text: Some(text),
-            id: None,
-            extension: Vec::new(),
-            coding_ext: Vec::new(),
-            text_ext: None,
+            ..Default::default()
         }
             .into()
     }

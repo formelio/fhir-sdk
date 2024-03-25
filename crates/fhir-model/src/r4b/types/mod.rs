@@ -80,25 +80,26 @@ impl Reference {
 
 impl From<ParsedReference<'_>> for Reference {
 	fn from(parsed: ParsedReference<'_>) -> Self {
-		let mut reference = Self::builder().reference(parsed.to_string()).build().unwrap();
-
-		reference.r#type = parsed.resource_type().map(|rt| rt.to_string());
-
-		reference
+		ReferenceInner {
+			reference: Some(parsed.to_string()),
+			r#type: parsed.resource_type().map(|rt| rt.to_string()),
+			..Default::default()
+		}
+		.into()
 	}
 }
 
 #[cfg(test)]
 mod tests {
-	use super::super::types::{CodeableConcept, Coding};
+	use super::*;
 
 	#[test]
 	fn display_coding() {
 		let display = "test";
-		let with_display = Coding::builder().display(display.to_string()).build().unwrap();
-		assert_eq!(with_display.to_string(), display.to_string());
+		let with_display: Coding =
+			CodingInner { display: Some(display.to_string()), ..Default::default() }.into();
 
-		let without_display = Coding::builder().build().unwrap();
+		let without_display = Coding::default();
 		assert_eq!(without_display.to_string(), String::new());
 	}
 
@@ -106,21 +107,34 @@ mod tests {
 	fn display_codeable_concept() {
 		let display = "test";
 
-		let user_selected =
-			Coding::builder().display(display.to_string()).user_selected(true).build().unwrap();
-		let with_user_selected =
-			CodeableConcept::builder().coding(vec![Some(user_selected)]).build().unwrap();
+		let with_user_selected: CodeableConcept = CodeableConceptInner {
+			coding: vec![Some(
+				CodingInner {
+					display: Some(display.to_string()),
+					user_selected: Some(true),
+					..Default::default()
+				}
+				.into(),
+			)],
+			..Default::default()
+		}
+		.into();
 		assert_eq!(with_user_selected.to_string(), display.to_string());
 
-		let with_text = CodeableConcept::builder().text(display.to_string()).build().unwrap();
+		let with_text: CodeableConcept =
+			CodeableConceptInner { text: Some(display.to_string()), ..Default::default() }.into();
 		assert_eq!(with_text.to_string(), display);
 
-		let not_user_selected = Coding::builder().display(display.to_string()).build().unwrap();
-		let without_user_selected =
-			CodeableConcept::builder().coding(vec![Some(not_user_selected)]).build().unwrap();
+		let without_user_selected: CodeableConcept = CodeableConceptInner {
+			coding: vec![Some(
+				CodingInner { display: Some(display.to_string()), ..Default::default() }.into(),
+			)],
+			..Default::default()
+		}
+		.into();
 		assert_eq!(without_user_selected.to_string(), display.to_string());
 
-		let without_display = CodeableConcept::builder().build().unwrap();
+		let without_display = CodeableConcept::default();
 		assert_eq!(without_display.to_string(), String::new());
 	}
 }

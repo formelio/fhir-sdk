@@ -4,11 +4,148 @@ use ::core::num::NonZeroU32;
 use serde::{Serialize, Deserialize};
 #[cfg(feature = "builders")]
 use derive_builder::Builder;
+use smart_default::SmartDefault;
 use super::super::*;
 use super::super::codes;
 use super::super::resources::*;
 #[allow(unused_imports)]
 use crate::{Base64Binary, Date, DateTime, Instant, Time, Integer64};
+/** Base StructureDefinition for Element Type
+
+ **[Element](http://hl7.org/fhir/StructureDefinition/Element) v3.0.2**
+
+ Base for all elements
+
+ Base definition for all elements in a resource.
+
+ */
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(transparent)]
+#[derive(SmartDefault)]
+pub struct Element(pub Box<ElementInner>);
+/** Base StructureDefinition for Element Type
+
+ **[Element](http://hl7.org/fhir/StructureDefinition/Element) v3.0.2**
+
+ Base for all elements
+
+ Base definition for all elements in a resource.
+
+ */
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[derive(SmartDefault)]
+pub struct ElementInner {
+    /** **xml:id (or equivalent in JSON)**
+
+ unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+
+ */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "id")]
+    pub id: Option<String>,
+    /// Extension field.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "_id")]
+    pub id_ext: Option<FieldExtension>,
+    /** **Additional Content defined by implementations**
+
+ May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+
+ There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(rename = "extension")]
+    pub extension: Vec<Option<Extension>>,
+    /// Extension field.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(rename = "_extension")]
+    pub extension_ext: Vec<Option<FieldExtension>>,
+}
+impl From<ElementInner> for Element {
+    fn from(inner: ElementInner) -> Self {
+        Self(Box::new(inner))
+    }
+}
+impl ::core::ops::Deref for Element {
+    type Target = ElementInner;
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl ::core::ops::DerefMut for Element {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+/** Base StructureDefinition for BackboneElement Type
+
+ **[BackboneElement](http://hl7.org/fhir/StructureDefinition/BackboneElement) v3.0.2**
+
+ Base for elements defined inside a resource
+
+ Base definition for all elements that are defined inside a resource - but not those in a data type.
+
+ */
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(transparent)]
+#[derive(SmartDefault)]
+pub struct BackboneElement(pub Box<BackboneElementInner>);
+/** Base StructureDefinition for BackboneElement Type
+
+ **[BackboneElement](http://hl7.org/fhir/StructureDefinition/BackboneElement) v3.0.2**
+
+ Base for elements defined inside a resource
+
+ Base definition for all elements that are defined inside a resource - but not those in a data type.
+
+ */
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[derive(SmartDefault)]
+pub struct BackboneElementInner {
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
+    /** **Extensions that cannot be ignored**
+
+ May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+ There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(rename = "modifierExtension")]
+    pub modifier_extension: Vec<Option<Extension>>,
+    /// Extension field.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(rename = "_modifierExtension")]
+    pub modifier_extension_ext: Vec<Option<FieldExtension>>,
+}
+impl From<BackboneElementInner> for BackboneElement {
+    fn from(inner: BackboneElementInner) -> Self {
+        Self(Box::new(inner))
+    }
+}
+impl ::core::ops::Deref for BackboneElement {
+    type Target = BackboneElementInner;
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl ::core::ops::DerefMut for BackboneElement {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl ::core::ops::Deref for BackboneElementInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for BackboneElementInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
+    }
+}
 /** Base StructureDefinition for Address Type
 
  **[Address](http://hl7.org/fhir/StructureDefinition/Address) v3.0.2**
@@ -20,6 +157,7 @@ use crate::{Base64Binary, Date, DateTime, Instant, Time, Integer64};
  Note: address is for postal addresses, not physical locations. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Address(pub Box<AddressInner>);
 /** Base StructureDefinition for Address Type
 
@@ -31,35 +169,21 @@ pub struct Address(pub Box<AddressInner>);
 
  Note: address is for postal addresses, not physical locations. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "AddressBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct AddressInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[AddressUse](http://hl7.org/fhir/ValueSet/address-use); home | work | temp | old - purpose of this address**
 
  The purpose of this address.
@@ -201,13 +325,6 @@ pub struct AddressInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub period_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl AddressBuilder {
-    #[doc = concat!("Finalize building ", "Address", ".")]
-    pub fn build(self) -> Result<Address, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<AddressInner> for Address {
     fn from(inner: AddressInner) -> Self {
         Self(Box::new(inner))
@@ -224,12 +341,23 @@ impl ::core::ops::DerefMut for Address {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Address {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> AddressBuilder {
         AddressBuilder::default()
+    }
+}
+impl ::core::ops::Deref for AddressInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for AddressInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Age Type
@@ -240,9 +368,10 @@ impl Address {
 
  A duration of time during which an organism (or a process) has existed.
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Age(pub Box<AgeInner>);
 /** Base StructureDefinition for Age Type
 
@@ -252,89 +381,23 @@ pub struct Age(pub Box<AgeInner>);
 
  A duration of time during which an organism (or a process) has existed.
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "AgeBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct AgeInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
-    /** **Numerical value (with implicit precision)**
-
- The value of the measured amount. The value includes an implicit precision in the presentation of the value.
-
- The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books). */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "value")]
-    pub value: Option<f64>,
-    /** **[QuantityComparator](http://hl7.org/fhir/ValueSet/quantity-comparator); < | <= | >= | > - how to understand the value**
-
- How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
-
- This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
-    /** **Unit representation**
-
- A human-readable form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "unit")]
-    pub unit: Option<String>,
-    /** **System that defines coded unit form**
-
- The identification of the system that provides the coded form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "system")]
-    pub system: Option<String>,
-    /** **Coded form of the unit**
-
- A computer processable form of the unit in some unit representation system.
-
- The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "code")]
-    pub code: Option<String>,
-}
-#[cfg(feature = "builders")]
-impl AgeBuilder {
-    #[doc = concat!("Finalize building ", "Age", ".")]
-    pub fn build(self) -> Result<Age, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
+    /// The base Quantity
+    #[serde(flatten)]
+    pub q: Quantity,
 }
 impl From<AgeInner> for Age {
     fn from(inner: AgeInner) -> Self {
@@ -352,12 +415,23 @@ impl ::core::ops::DerefMut for Age {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Age {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> AgeBuilder {
         AgeBuilder::default()
+    }
+}
+impl ::core::ops::Deref for AgeInner {
+    type Target = Quantity;
+    fn deref(&self) -> &Self::Target {
+        &self.q
+    }
+}
+impl ::core::ops::DerefMut for AgeInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.q
     }
 }
 /** Base StructureDefinition for Annotation Type
@@ -382,35 +456,20 @@ pub struct Annotation(pub Box<AnnotationInner>);
 
  For systems that do not have structured annotations, they can simply communicate a single annotation with no author or time.  This element may need to be included in narrative because of the potential for modifying information.  *Annotations SHOULD NOT* be used to communicate "modifying" information that could be computable. (This is a SHOULD because enforcing user behavior is nearly impossible). */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "AnnotationBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct AnnotationInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Individual responsible for the annotation**
 
  The individual responsible for making the annotation.
@@ -452,13 +511,6 @@ pub struct AnnotationInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub text_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl AnnotationBuilder {
-    #[doc = concat!("Finalize building ", "Annotation", ".")]
-    pub fn build(self) -> Result<Annotation, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<AnnotationInner> for Annotation {
     fn from(inner: AnnotationInner) -> Self {
         Self(Box::new(inner))
@@ -475,12 +527,23 @@ impl ::core::ops::DerefMut for Annotation {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Annotation {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> AnnotationBuilder {
         AnnotationBuilder::default()
+    }
+}
+impl ::core::ops::Deref for AnnotationInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for AnnotationInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /// Choice of types for the author[x] field in Annotation
@@ -516,6 +579,7 @@ pub enum AnnotationAuthorExtension {
  When providing a summary view (for example with Observation.value[x]) Attachment should be represented with a brief display text such as "Attachment". */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Attachment(pub Box<AttachmentInner>);
 /** Base StructureDefinition for Attachment Type
 
@@ -527,35 +591,21 @@ pub struct Attachment(pub Box<AttachmentInner>);
 
  When providing a summary view (for example with Observation.value[x]) Attachment should be represented with a brief display text such as "Attachment". */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "AttachmentBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct AttachmentInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[MimeType](http://www.rfc-editor.org/bcp/bcp13.txt); Mime type of the content, with charset etc.**
 
  Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
@@ -669,13 +719,6 @@ pub struct AttachmentInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub creation_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl AttachmentBuilder {
-    #[doc = concat!("Finalize building ", "Attachment", ".")]
-    pub fn build(self) -> Result<Attachment, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<AttachmentInner> for Attachment {
     fn from(inner: AttachmentInner) -> Self {
         Self(Box::new(inner))
@@ -692,12 +735,23 @@ impl ::core::ops::DerefMut for Attachment {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Attachment {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> AttachmentBuilder {
         AttachmentBuilder::default()
+    }
+}
+impl ::core::ops::Deref for AttachmentInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for AttachmentInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for CodeableConcept Type
@@ -711,6 +765,7 @@ impl Attachment {
  Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct CodeableConcept(pub Box<CodeableConceptInner>);
 /** Base StructureDefinition for CodeableConcept Type
 
@@ -722,35 +777,21 @@ pub struct CodeableConcept(pub Box<CodeableConceptInner>);
 
  Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "CodeableConceptBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct CodeableConceptInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Code defined by a terminology system**
 
  A reference to a code defined by a terminology system.
@@ -780,13 +821,6 @@ pub struct CodeableConceptInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub text_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl CodeableConceptBuilder {
-    #[doc = concat!("Finalize building ", "CodeableConcept", ".")]
-    pub fn build(self) -> Result<CodeableConcept, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<CodeableConceptInner> for CodeableConcept {
     fn from(inner: CodeableConceptInner) -> Self {
         Self(Box::new(inner))
@@ -803,12 +837,23 @@ impl ::core::ops::DerefMut for CodeableConcept {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl CodeableConcept {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> CodeableConceptBuilder {
         CodeableConceptBuilder::default()
+    }
+}
+impl ::core::ops::Deref for CodeableConceptInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for CodeableConceptInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Coding Type
@@ -822,6 +867,7 @@ impl CodeableConcept {
  Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Coding(pub Box<CodingInner>);
 /** Base StructureDefinition for Coding Type
 
@@ -833,35 +879,21 @@ pub struct Coding(pub Box<CodingInner>);
 
  Codes may be defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "CodingBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct CodingInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Identity of the terminology system**
 
  The identification of the code system that defines the meaning of the symbol in the code.
@@ -933,13 +965,6 @@ pub struct CodingInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub user_selected_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl CodingBuilder {
-    #[doc = concat!("Finalize building ", "Coding", ".")]
-    pub fn build(self) -> Result<Coding, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<CodingInner> for Coding {
     fn from(inner: CodingInner) -> Self {
         Self(Box::new(inner))
@@ -956,12 +981,23 @@ impl ::core::ops::DerefMut for Coding {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Coding {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> CodingBuilder {
         CodingBuilder::default()
+    }
+}
+impl ::core::ops::Deref for CodingInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for CodingInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for ContactDetail Type
@@ -975,6 +1011,7 @@ impl Coding {
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct ContactDetail(pub Box<ContactDetailInner>);
 /** Base StructureDefinition for ContactDetail Type
 
@@ -986,35 +1023,21 @@ pub struct ContactDetail(pub Box<ContactDetailInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ContactDetailBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct ContactDetailInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Name of an individual to contact**
 
  The name of an individual to contact.
@@ -1044,13 +1067,6 @@ pub struct ContactDetailInner {
     #[cfg_attr(feature = "builders", builder(default))]
     pub telecom_ext: Vec<Option<FieldExtension>>,
 }
-#[cfg(feature = "builders")]
-impl ContactDetailBuilder {
-    #[doc = concat!("Finalize building ", "ContactDetail", ".")]
-    pub fn build(self) -> Result<ContactDetail, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<ContactDetailInner> for ContactDetail {
     fn from(inner: ContactDetailInner) -> Self {
         Self(Box::new(inner))
@@ -1067,12 +1083,23 @@ impl ::core::ops::DerefMut for ContactDetail {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl ContactDetail {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> ContactDetailBuilder {
         ContactDetailBuilder::default()
+    }
+}
+impl ::core::ops::Deref for ContactDetailInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for ContactDetailInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for ContactPoint Type
@@ -1086,6 +1113,7 @@ impl ContactDetail {
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct ContactPoint(pub Box<ContactPointInner>);
 /** Base StructureDefinition for ContactPoint Type
 
@@ -1097,35 +1125,21 @@ pub struct ContactPoint(pub Box<ContactPointInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ContactPointBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct ContactPointInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[ContactPointSystem](http://hl7.org/fhir/ValueSet/contact-point-system); phone | fax | email | pager | url | sms | other**
 
  Telecommunications form for contact point - what communications system is required to make use of the contact.
@@ -1197,13 +1211,6 @@ pub struct ContactPointInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub period_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl ContactPointBuilder {
-    #[doc = concat!("Finalize building ", "ContactPoint", ".")]
-    pub fn build(self) -> Result<ContactPoint, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<ContactPointInner> for ContactPoint {
     fn from(inner: ContactPointInner) -> Self {
         Self(Box::new(inner))
@@ -1220,12 +1227,23 @@ impl ::core::ops::DerefMut for ContactPoint {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl ContactPoint {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> ContactPointBuilder {
         ContactPointBuilder::default()
+    }
+}
+impl ::core::ops::Deref for ContactPointInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for ContactPointInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Contributor Type
@@ -1250,35 +1268,20 @@ pub struct Contributor(pub Box<ContributorInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ContributorBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ContributorInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[ContributorType](http://hl7.org/fhir/ValueSet/contributor-type); author | editor | reviewer | endorser**
 
  The type of contributor.
@@ -1318,13 +1321,6 @@ pub struct ContributorInner {
     #[cfg_attr(feature = "builders", builder(default))]
     pub contact_ext: Vec<Option<FieldExtension>>,
 }
-#[cfg(feature = "builders")]
-impl ContributorBuilder {
-    #[doc = concat!("Finalize building ", "Contributor", ".")]
-    pub fn build(self) -> Result<Contributor, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<ContributorInner> for Contributor {
     fn from(inner: ContributorInner) -> Self {
         Self(Box::new(inner))
@@ -1341,12 +1337,23 @@ impl ::core::ops::DerefMut for Contributor {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Contributor {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> ContributorBuilder {
         ContributorBuilder::default()
+    }
+}
+impl ::core::ops::Deref for ContributorInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for ContributorInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Count Type
@@ -1360,6 +1367,7 @@ impl Contributor {
  The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Count(pub Box<CountInner>);
 /** Base StructureDefinition for Count Type
 
@@ -1371,87 +1379,21 @@ pub struct Count(pub Box<CountInner>);
 
  The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "CountBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct CountInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
-    /** **Numerical value (with implicit precision)**
-
- The value of the measured amount. The value includes an implicit precision in the presentation of the value.
-
- The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books). */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "value")]
-    pub value: Option<f64>,
-    /** **[QuantityComparator](http://hl7.org/fhir/ValueSet/quantity-comparator); < | <= | >= | > - how to understand the value**
-
- How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
-
- This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
-    /** **Unit representation**
-
- A human-readable form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "unit")]
-    pub unit: Option<String>,
-    /** **System that defines coded unit form**
-
- The identification of the system that provides the coded form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "system")]
-    pub system: Option<String>,
-    /** **Coded form of the unit**
-
- A computer processable form of the unit in some unit representation system.
-
- The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "code")]
-    pub code: Option<String>,
-}
-#[cfg(feature = "builders")]
-impl CountBuilder {
-    #[doc = concat!("Finalize building ", "Count", ".")]
-    pub fn build(self) -> Result<Count, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
+    /// The base Quantity
+    #[serde(flatten)]
+    pub q: Quantity,
 }
 impl From<CountInner> for Count {
     fn from(inner: CountInner) -> Self {
@@ -1469,12 +1411,23 @@ impl ::core::ops::DerefMut for Count {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Count {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> CountBuilder {
         CountBuilder::default()
+    }
+}
+impl ::core::ops::Deref for CountInner {
+    type Target = Quantity;
+    fn deref(&self) -> &Self::Target {
+        &self.q
+    }
+}
+impl ::core::ops::DerefMut for CountInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.q
     }
 }
 /** Base StructureDefinition for DataRequirement Type
@@ -1499,35 +1452,20 @@ pub struct DataRequirement(pub Box<DataRequirementInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "DataRequirementBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct DataRequirementInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[FHIRAllTypes](http://hl7.org/fhir/ValueSet/all-types); The type of the required data**
 
  The type of the required data, specified as the type name of a resource. For profiles, this value is set to the type of the base resource of the profile.
@@ -1597,13 +1535,6 @@ pub struct DataRequirementInner {
     #[cfg_attr(feature = "builders", builder(default))]
     pub date_filter_ext: Vec<Option<FieldExtension>>,
 }
-#[cfg(feature = "builders")]
-impl DataRequirementBuilder {
-    #[doc = concat!("Finalize building ", "DataRequirement", ".")]
-    pub fn build(self) -> Result<DataRequirement, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<DataRequirementInner> for DataRequirement {
     fn from(inner: DataRequirementInner) -> Self {
         Self(Box::new(inner))
@@ -1620,45 +1551,38 @@ impl ::core::ops::DerefMut for DataRequirement {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl DataRequirement {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> DataRequirementBuilder {
         DataRequirementBuilder::default()
     }
 }
+impl ::core::ops::Deref for DataRequirementInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for DataRequirementInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
+    }
+}
 /// Sub-fields of the codeFilter field in DataRequirement
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "DataRequirementCodeFilterBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct DataRequirementCodeFilter {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **The code-valued attribute of the filter**
 
  The code-valued attribute of the filter. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant. The path must resolve to an element of type code, Coding, or CodeableConcept.
@@ -1730,7 +1654,7 @@ pub struct DataRequirementCodeFilter {
 }
 #[cfg(feature = "builders")]
 impl DataRequirementCodeFilter {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> DataRequirementCodeFilterBuilder {
         DataRequirementCodeFilterBuilder::default()
@@ -1765,35 +1689,17 @@ pub enum DataRequirementCodeFilterValueSetExtension {
 }
 /// Sub-fields of the dateFilter field in DataRequirement
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "DataRequirementDateFilterBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct DataRequirementDateFilter {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **The date-valued attribute of the filter**
 
  The date-valued attribute of the filter. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant. The path must resolve to an element of type dateTime, Period, Schedule, or Timing.
@@ -1823,7 +1729,7 @@ pub struct DataRequirementDateFilter {
 }
 #[cfg(feature = "builders")]
 impl DataRequirementDateFilter {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> DataRequirementDateFilterBuilder {
         DataRequirementDateFilterBuilder::default()
@@ -1870,9 +1776,10 @@ pub enum DataRequirementDateFilterValueExtension {
 
  A length - a value with a unit that is a physical distance.
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Distance(pub Box<DistanceInner>);
 /** Base StructureDefinition for Distance Type
 
@@ -1882,89 +1789,23 @@ pub struct Distance(pub Box<DistanceInner>);
 
  A length - a value with a unit that is a physical distance.
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "DistanceBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct DistanceInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
-    /** **Numerical value (with implicit precision)**
-
- The value of the measured amount. The value includes an implicit precision in the presentation of the value.
-
- The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books). */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "value")]
-    pub value: Option<f64>,
-    /** **[QuantityComparator](http://hl7.org/fhir/ValueSet/quantity-comparator); < | <= | >= | > - how to understand the value**
-
- How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
-
- This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
-    /** **Unit representation**
-
- A human-readable form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "unit")]
-    pub unit: Option<String>,
-    /** **System that defines coded unit form**
-
- The identification of the system that provides the coded form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "system")]
-    pub system: Option<String>,
-    /** **Coded form of the unit**
-
- A computer processable form of the unit in some unit representation system.
-
- The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "code")]
-    pub code: Option<String>,
-}
-#[cfg(feature = "builders")]
-impl DistanceBuilder {
-    #[doc = concat!("Finalize building ", "Distance", ".")]
-    pub fn build(self) -> Result<Distance, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
+    /// The base Quantity
+    #[serde(flatten)]
+    pub q: Quantity,
 }
 impl From<DistanceInner> for Distance {
     fn from(inner: DistanceInner) -> Self {
@@ -1982,12 +1823,23 @@ impl ::core::ops::DerefMut for Distance {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Distance {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> DistanceBuilder {
         DistanceBuilder::default()
+    }
+}
+impl ::core::ops::Deref for DistanceInner {
+    type Target = Quantity;
+    fn deref(&self) -> &Self::Target {
+        &self.q
+    }
+}
+impl ::core::ops::DerefMut for DistanceInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.q
     }
 }
 /** Base StructureDefinition for Dosage Type
@@ -2001,6 +1853,7 @@ impl Distance {
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Dosage(pub Box<DosageInner>);
 /** Base StructureDefinition for Dosage Type
 
@@ -2012,35 +1865,21 @@ pub struct Dosage(pub Box<DosageInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "DosageBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct DosageInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **The order of the dosage instructions**
 
  Indicates the order in which the dosage instructions should be applied or interpreted.
@@ -2238,13 +2077,6 @@ pub struct DosageInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub rate_ext: Option<DosageRateExtension>,
 }
-#[cfg(feature = "builders")]
-impl DosageBuilder {
-    #[doc = concat!("Finalize building ", "Dosage", ".")]
-    pub fn build(self) -> Result<Dosage, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<DosageInner> for Dosage {
     fn from(inner: DosageInner) -> Self {
         Self(Box::new(inner))
@@ -2261,12 +2093,23 @@ impl ::core::ops::DerefMut for Dosage {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Dosage {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> DosageBuilder {
         DosageBuilder::default()
+    }
+}
+impl ::core::ops::Deref for DosageInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for DosageInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /// Choice of types for the asNeeded[x] field in Dosage
@@ -2349,9 +2192,10 @@ pub enum DosageRateExtension {
 
  A length of time.
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Duration(pub Box<DurationInner>);
 /** Base StructureDefinition for Duration Type
 
@@ -2361,89 +2205,23 @@ pub struct Duration(pub Box<DurationInner>);
 
  A length of time.
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "DurationBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct DurationInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
-    /** **Numerical value (with implicit precision)**
-
- The value of the measured amount. The value includes an implicit precision in the presentation of the value.
-
- The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books). */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "value")]
-    pub value: Option<f64>,
-    /** **[QuantityComparator](http://hl7.org/fhir/ValueSet/quantity-comparator); < | <= | >= | > - how to understand the value**
-
- How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
-
- This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
-    /** **Unit representation**
-
- A human-readable form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "unit")]
-    pub unit: Option<String>,
-    /** **System that defines coded unit form**
-
- The identification of the system that provides the coded form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "system")]
-    pub system: Option<String>,
-    /** **Coded form of the unit**
-
- A computer processable form of the unit in some unit representation system.
-
- The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "code")]
-    pub code: Option<String>,
-}
-#[cfg(feature = "builders")]
-impl DurationBuilder {
-    #[doc = concat!("Finalize building ", "Duration", ".")]
-    pub fn build(self) -> Result<Duration, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
+    /// The base Quantity
+    #[serde(flatten)]
+    pub q: Quantity,
 }
 impl From<DurationInner> for Duration {
     fn from(inner: DurationInner) -> Self {
@@ -2461,12 +2239,23 @@ impl ::core::ops::DerefMut for Duration {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Duration {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> DurationBuilder {
         DurationBuilder::default()
+    }
+}
+impl ::core::ops::Deref for DurationInner {
+    type Target = Quantity;
+    fn deref(&self) -> &Self::Target {
+        &self.q
+    }
+}
+impl ::core::ops::DerefMut for DurationInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.q
     }
 }
 /** Base StructureDefinition for ElementDefinition Type
@@ -2491,35 +2280,20 @@ pub struct ElementDefinition(pub Box<ElementDefinitionInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ElementDefinitionBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ElementDefinitionInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Path of the element in the hierarchy of elements**
 
  The path identifies the element and is expressed as a "."-separated list of ancestor elements, beginning with the name of the resource or extension.
@@ -2971,13 +2745,6 @@ Note that an element that has the property IsModifier is not necessarily a "key"
     #[cfg_attr(feature = "builders", builder(default))]
     pub mapping_ext: Vec<Option<FieldExtension>>,
 }
-#[cfg(feature = "builders")]
-impl ElementDefinitionBuilder {
-    #[doc = concat!("Finalize building ", "ElementDefinition", ".")]
-    pub fn build(self) -> Result<ElementDefinition, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<ElementDefinitionInner> for ElementDefinition {
     fn from(inner: ElementDefinitionInner) -> Self {
         Self(Box::new(inner))
@@ -2994,45 +2761,38 @@ impl ::core::ops::DerefMut for ElementDefinition {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl ElementDefinition {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> ElementDefinitionBuilder {
         ElementDefinitionBuilder::default()
     }
 }
+impl ::core::ops::Deref for ElementDefinitionInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for ElementDefinitionInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
+    }
+}
 /// Sub-fields of the slicing field in ElementDefinition
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ElementDefinitionSlicingBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ElementDefinitionSlicing {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **Element values that are used to distinguish the slices**
 
  Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
@@ -3090,7 +2850,7 @@ pub struct ElementDefinitionSlicing {
 }
 #[cfg(feature = "builders")]
 impl ElementDefinitionSlicing {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> ElementDefinitionSlicingBuilder {
         ElementDefinitionSlicingBuilder::default()
@@ -3109,35 +2869,17 @@ impl LookupReferences for ElementDefinitionSlicing {
 }
 /// Sub-fields of the discriminator field in ElementDefinitionSlicing
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ElementDefinitionSlicingDiscriminatorBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ElementDefinitionSlicingDiscriminator {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **[DiscriminatorType](http://hl7.org/fhir/ValueSet/discriminator-type); value | exists | pattern | type | profile**
 
  How the element value is interpreted when discrimination is evaluated.
@@ -3165,7 +2907,7 @@ pub struct ElementDefinitionSlicingDiscriminator {
 }
 #[cfg(feature = "builders")]
 impl ElementDefinitionSlicingDiscriminator {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> ElementDefinitionSlicingDiscriminatorBuilder {
         ElementDefinitionSlicingDiscriminatorBuilder::default()
@@ -3178,35 +2920,17 @@ impl LookupReferences for ElementDefinitionSlicingDiscriminator {
 }
 /// Sub-fields of the base field in ElementDefinition
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ElementDefinitionBaseBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ElementDefinitionBase {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **Path that identifies the base element**
 
  The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [StructureDefinition](structuredefinition.html#) without a StructureDefinition.base.
@@ -3246,7 +2970,7 @@ pub struct ElementDefinitionBase {
 }
 #[cfg(feature = "builders")]
 impl ElementDefinitionBase {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> ElementDefinitionBaseBuilder {
         ElementDefinitionBaseBuilder::default()
@@ -3259,35 +2983,17 @@ impl LookupReferences for ElementDefinitionBase {
 }
 /// Sub-fields of the type field in ElementDefinition
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ElementDefinitionTypeBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ElementDefinitionType {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **[FHIRDefinedTypeExt](http://hl7.org/fhir/ValueSet/defined-types); Data type or Resource (reference to definition)**
 
  URL of Data type or Resource that is a(or the) type used for this element. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only allowed in logical models.
@@ -3359,7 +3065,7 @@ pub struct ElementDefinitionType {
 }
 #[cfg(feature = "builders")]
 impl ElementDefinitionType {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> ElementDefinitionTypeBuilder {
         ElementDefinitionTypeBuilder::default()
@@ -4086,35 +3792,17 @@ pub enum ElementDefinitionPatternExtension {
 }
 /// Sub-fields of the example field in ElementDefinition
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ElementDefinitionExampleBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ElementDefinitionExample {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **Describes the purpose of this example**
 
  Describes the purpose of this example amoung the set of examples.
@@ -4142,7 +3830,7 @@ pub struct ElementDefinitionExample {
 }
 #[cfg(feature = "builders")]
 impl ElementDefinitionExample {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> ElementDefinitionExampleBuilder {
         ElementDefinitionExampleBuilder::default()
@@ -4521,35 +4209,17 @@ pub enum ElementDefinitionMaxValueExtension {
 }
 /// Sub-fields of the constraint field in ElementDefinition
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ElementDefinitionConstraintBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ElementDefinitionConstraint {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **Target of 'condition' reference above**
 
  Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality.
@@ -4645,7 +4315,7 @@ Note: we are considering deprecating the xpath element. Implementer feedback is 
 }
 #[cfg(feature = "builders")]
 impl ElementDefinitionConstraint {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> ElementDefinitionConstraintBuilder {
         ElementDefinitionConstraintBuilder::default()
@@ -4658,35 +4328,17 @@ impl LookupReferences for ElementDefinitionConstraint {
 }
 /// Sub-fields of the binding field in ElementDefinition
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ElementDefinitionBindingBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ElementDefinitionBinding {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **[BindingStrength](http://hl7.org/fhir/ValueSet/binding-strength); required | extensible | preferred | example**
 
  Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
@@ -4730,7 +4382,7 @@ pub struct ElementDefinitionBinding {
 }
 #[cfg(feature = "builders")]
 impl ElementDefinitionBinding {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> ElementDefinitionBindingBuilder {
         ElementDefinitionBindingBuilder::default()
@@ -4765,35 +4417,17 @@ pub enum ElementDefinitionBindingValueSetExtension {
 }
 /// Sub-fields of the mapping field in ElementDefinition
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ElementDefinitionMappingBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ElementDefinitionMapping {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **Reference to mapping declaration**
 
  An internal reference to the definition of a mapping.
@@ -4849,7 +4483,7 @@ pub struct ElementDefinitionMapping {
 }
 #[cfg(feature = "builders")]
 impl ElementDefinitionMapping {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> ElementDefinitionMappingBuilder {
         ElementDefinitionMappingBuilder::default()
@@ -4882,35 +4516,20 @@ pub struct Extension(pub Box<ExtensionInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ExtensionBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ExtensionInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **identifies the meaning of the extension**
 
  Source of the definition for the extension code - a logical name or a URL.
@@ -4938,13 +4557,6 @@ pub struct ExtensionInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub value_ext: Option<ExtensionValueExtension>,
 }
-#[cfg(feature = "builders")]
-impl ExtensionBuilder {
-    #[doc = concat!("Finalize building ", "Extension", ".")]
-    pub fn build(self) -> Result<Extension, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<ExtensionInner> for Extension {
     fn from(inner: ExtensionInner) -> Self {
         Self(Box::new(inner))
@@ -4961,12 +4573,23 @@ impl ::core::ops::DerefMut for Extension {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Extension {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> ExtensionBuilder {
         ExtensionBuilder::default()
+    }
+}
+impl ::core::ops::Deref for ExtensionInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for ExtensionInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /// Choice of types for the value[x] field in Extension
@@ -5218,6 +4841,7 @@ pub enum ExtensionValueExtension {
  Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts may or may not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct HumanName(pub Box<HumanNameInner>);
 /** Base StructureDefinition for HumanName Type
 
@@ -5229,35 +4853,21 @@ pub struct HumanName(pub Box<HumanNameInner>);
 
  Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts may or may not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "HumanNameBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct HumanNameInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[NameUse](http://hl7.org/fhir/ValueSet/name-use); usual | official | temp | nickname | anonymous | old | maiden**
 
  Identifies the purpose for this name.
@@ -5357,13 +4967,6 @@ pub struct HumanNameInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub period_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl HumanNameBuilder {
-    #[doc = concat!("Finalize building ", "HumanName", ".")]
-    pub fn build(self) -> Result<HumanName, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<HumanNameInner> for HumanName {
     fn from(inner: HumanNameInner) -> Self {
         Self(Box::new(inner))
@@ -5380,12 +4983,23 @@ impl ::core::ops::DerefMut for HumanName {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl HumanName {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> HumanNameBuilder {
         HumanNameBuilder::default()
+    }
+}
+impl ::core::ops::Deref for HumanNameInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for HumanNameInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Identifier Type
@@ -5399,6 +5013,7 @@ impl HumanName {
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Identifier(pub Box<IdentifierInner>);
 /** Base StructureDefinition for Identifier Type
 
@@ -5410,35 +5025,21 @@ pub struct Identifier(pub Box<IdentifierInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "IdentifierBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct IdentifierInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[IdentifierUse](http://hl7.org/fhir/ValueSet/identifier-use); usual | official | temp | secondary (If known)**
 
  The purpose of this identifier.
@@ -5526,13 +5127,6 @@ Where the system is known, a type is unnecessary because the type is always part
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub assigner_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl IdentifierBuilder {
-    #[doc = concat!("Finalize building ", "Identifier", ".")]
-    pub fn build(self) -> Result<Identifier, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<IdentifierInner> for Identifier {
     fn from(inner: IdentifierInner) -> Self {
         Self(Box::new(inner))
@@ -5549,12 +5143,23 @@ impl ::core::ops::DerefMut for Identifier {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Identifier {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> IdentifierBuilder {
         IdentifierBuilder::default()
+    }
+}
+impl ::core::ops::Deref for IdentifierInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for IdentifierInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /// Reference wrapper type of the assigner field in Identifier
@@ -5595,6 +5200,7 @@ impl ReferenceField for IdentifierAssignerReference {
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Meta(pub Box<MetaInner>);
 /** Base StructureDefinition for Meta Type
 
@@ -5606,35 +5212,21 @@ pub struct Meta(pub Box<MetaInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "MetaBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct MetaInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Version specific identifier**
 
  The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.
@@ -5706,13 +5298,6 @@ pub struct MetaInner {
     #[cfg_attr(feature = "builders", builder(default))]
     pub tag_ext: Vec<Option<FieldExtension>>,
 }
-#[cfg(feature = "builders")]
-impl MetaBuilder {
-    #[doc = concat!("Finalize building ", "Meta", ".")]
-    pub fn build(self) -> Result<Meta, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<MetaInner> for Meta {
     fn from(inner: MetaInner) -> Self {
         Self(Box::new(inner))
@@ -5729,12 +5314,23 @@ impl ::core::ops::DerefMut for Meta {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Meta {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> MetaBuilder {
         MetaBuilder::default()
+    }
+}
+impl ::core::ops::Deref for MetaInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for MetaInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Money Type
@@ -5745,9 +5341,10 @@ impl Meta {
 
  An amount of economic utility in some recognized currency.
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Money(pub Box<MoneyInner>);
 /** Base StructureDefinition for Money Type
 
@@ -5757,89 +5354,23 @@ pub struct Money(pub Box<MoneyInner>);
 
  An amount of economic utility in some recognized currency.
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "MoneyBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct MoneyInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
-    /** **Numerical value (with implicit precision)**
-
- The value of the measured amount. The value includes an implicit precision in the presentation of the value.
-
- The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books). */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "value")]
-    pub value: Option<f64>,
-    /** **[QuantityComparator](http://hl7.org/fhir/ValueSet/quantity-comparator); < | <= | >= | > - how to understand the value**
-
- How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
-
- This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "comparator")]
-    pub comparator: Option<codes::QuantityComparator>,
-    /** **Unit representation**
-
- A human-readable form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "unit")]
-    pub unit: Option<String>,
-    /** **System that defines coded unit form**
-
- The identification of the system that provides the coded form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "system")]
-    pub system: Option<String>,
-    /** **Coded form of the unit**
-
- A computer processable form of the unit in some unit representation system.
-
- The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "code")]
-    pub code: Option<String>,
-}
-#[cfg(feature = "builders")]
-impl MoneyBuilder {
-    #[doc = concat!("Finalize building ", "Money", ".")]
-    pub fn build(self) -> Result<Money, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
+    /// The base Quantity
+    #[serde(flatten)]
+    pub q: Quantity,
 }
 impl From<MoneyInner> for Money {
     fn from(inner: MoneyInner) -> Self {
@@ -5857,12 +5388,23 @@ impl ::core::ops::DerefMut for Money {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Money {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> MoneyBuilder {
         MoneyBuilder::default()
+    }
+}
+impl ::core::ops::Deref for MoneyInner {
+    type Target = Quantity;
+    fn deref(&self) -> &Self::Target {
+        &self.q
+    }
+}
+impl ::core::ops::DerefMut for MoneyInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.q
     }
 }
 /** Base StructureDefinition for Narrative Type
@@ -5887,35 +5429,20 @@ pub struct Narrative(pub Box<NarrativeInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "NarrativeBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct NarrativeInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[NarrativeStatus](http://hl7.org/fhir/ValueSet/narrative-status); generated | extensions | additional | empty**
 
  The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.
@@ -5941,13 +5468,6 @@ pub struct NarrativeInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub div_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl NarrativeBuilder {
-    #[doc = concat!("Finalize building ", "Narrative", ".")]
-    pub fn build(self) -> Result<Narrative, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<NarrativeInner> for Narrative {
     fn from(inner: NarrativeInner) -> Self {
         Self(Box::new(inner))
@@ -5964,12 +5484,23 @@ impl ::core::ops::DerefMut for Narrative {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Narrative {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> NarrativeBuilder {
         NarrativeBuilder::default()
+    }
+}
+impl ::core::ops::Deref for NarrativeInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for NarrativeInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for ParameterDefinition Type
@@ -5994,35 +5525,20 @@ pub struct ParameterDefinition(pub Box<ParameterDefinitionInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ParameterDefinitionBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct ParameterDefinitionInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Name used to access the parameter value**
 
  The name of the parameter used to allow access to the value of the parameter in evaluation contexts.
@@ -6118,13 +5634,6 @@ pub struct ParameterDefinitionInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub profile_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl ParameterDefinitionBuilder {
-    #[doc = concat!("Finalize building ", "ParameterDefinition", ".")]
-    pub fn build(self) -> Result<ParameterDefinition, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<ParameterDefinitionInner> for ParameterDefinition {
     fn from(inner: ParameterDefinitionInner) -> Self {
         Self(Box::new(inner))
@@ -6141,12 +5650,23 @@ impl ::core::ops::DerefMut for ParameterDefinition {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl ParameterDefinition {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> ParameterDefinitionBuilder {
         ParameterDefinitionBuilder::default()
+    }
+}
+impl ::core::ops::Deref for ParameterDefinitionInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for ParameterDefinitionInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /// Reference wrapper type of the profile field in ParameterDefinition
@@ -6187,6 +5707,7 @@ impl ReferenceField for ParameterDefinitionProfileReference {
  This is not a duration - that's a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. "the patient was an inpatient of the hospital for this time range") or one value from the range applies (e.g. "give to the patient between these two times"). If duration is required, specify the type as Interval|Duration. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Period(pub Box<PeriodInner>);
 /** Base StructureDefinition for Period Type
 
@@ -6198,35 +5719,21 @@ pub struct Period(pub Box<PeriodInner>);
 
  This is not a duration - that's a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. "the patient was an inpatient of the hospital for this time range") or one value from the range applies (e.g. "give to the patient between these two times"). If duration is required, specify the type as Interval|Duration. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "PeriodBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct PeriodInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Starting time with inclusive boundary**
 
  The start of the period. The boundary is inclusive.
@@ -6256,13 +5763,6 @@ pub struct PeriodInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub end_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl PeriodBuilder {
-    #[doc = concat!("Finalize building ", "Period", ".")]
-    pub fn build(self) -> Result<Period, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<PeriodInner> for Period {
     fn from(inner: PeriodInner) -> Self {
         Self(Box::new(inner))
@@ -6279,12 +5779,23 @@ impl ::core::ops::DerefMut for Period {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Period {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> PeriodBuilder {
         PeriodBuilder::default()
+    }
+}
+impl ::core::ops::Deref for PeriodInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for PeriodInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Quantity Type
@@ -6298,6 +5809,7 @@ impl Period {
  The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Quantity(pub Box<QuantityInner>);
 /** Base StructureDefinition for Quantity Type
 
@@ -6309,35 +5821,21 @@ pub struct Quantity(pub Box<QuantityInner>);
 
  The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "QuantityBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct QuantityInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Numerical value (with implicit precision)**
 
  The value of the measured amount. The value includes an implicit precision in the presentation of the value.
@@ -6409,13 +5907,6 @@ pub struct QuantityInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub code_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl QuantityBuilder {
-    #[doc = concat!("Finalize building ", "Quantity", ".")]
-    pub fn build(self) -> Result<Quantity, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<QuantityInner> for Quantity {
     fn from(inner: QuantityInner) -> Self {
         Self(Box::new(inner))
@@ -6432,12 +5923,23 @@ impl ::core::ops::DerefMut for Quantity {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Quantity {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> QuantityBuilder {
         QuantityBuilder::default()
+    }
+}
+impl ::core::ops::Deref for QuantityInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for QuantityInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Range Type
@@ -6451,6 +5953,7 @@ impl Quantity {
  The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -> 3. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Range(pub Box<RangeInner>);
 /** Base StructureDefinition for Range Type
 
@@ -6462,35 +5965,21 @@ pub struct Range(pub Box<RangeInner>);
 
  The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. I.e. 1.99 is not in the range 2 -> 3. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "RangeBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct RangeInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Low limit**
 
  The low limit. The boundary is inclusive.
@@ -6520,13 +6009,6 @@ pub struct RangeInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub high_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl RangeBuilder {
-    #[doc = concat!("Finalize building ", "Range", ".")]
-    pub fn build(self) -> Result<Range, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<RangeInner> for Range {
     fn from(inner: RangeInner) -> Self {
         Self(Box::new(inner))
@@ -6543,12 +6025,23 @@ impl ::core::ops::DerefMut for Range {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Range {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> RangeBuilder {
         RangeBuilder::default()
+    }
+}
+impl ::core::ops::Deref for RangeInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for RangeInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Ratio Type
@@ -6562,6 +6055,7 @@ impl Range {
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Ratio(pub Box<RatioInner>);
 /** Base StructureDefinition for Ratio Type
 
@@ -6573,35 +6067,21 @@ pub struct Ratio(pub Box<RatioInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "RatioBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct RatioInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Numerator value**
 
  The value of the numerator.
@@ -6631,13 +6111,6 @@ pub struct RatioInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub denominator_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl RatioBuilder {
-    #[doc = concat!("Finalize building ", "Ratio", ".")]
-    pub fn build(self) -> Result<Ratio, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<RatioInner> for Ratio {
     fn from(inner: RatioInner) -> Self {
         Self(Box::new(inner))
@@ -6654,12 +6127,23 @@ impl ::core::ops::DerefMut for Ratio {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Ratio {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> RatioBuilder {
         RatioBuilder::default()
+    }
+}
+impl ::core::ops::Deref for RatioInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for RatioInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Reference Type
@@ -6673,6 +6157,7 @@ impl Ratio {
  References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Reference(pub Box<ReferenceInner>);
 /** Base StructureDefinition for Reference Type
 
@@ -6684,35 +6169,21 @@ pub struct Reference(pub Box<ReferenceInner>);
 
  References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL and looking it up in a local registry/repository. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "ReferenceBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct ReferenceInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Literal reference, Relative, internal or absolute URL**
 
  A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources.
@@ -6760,13 +6231,6 @@ Applications converting a logical reference to a literal reference may choose to
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub display_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl ReferenceBuilder {
-    #[doc = concat!("Finalize building ", "Reference", ".")]
-    pub fn build(self) -> Result<Reference, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<ReferenceInner> for Reference {
     fn from(inner: ReferenceInner) -> Self {
         Self(Box::new(inner))
@@ -6783,12 +6247,23 @@ impl ::core::ops::DerefMut for Reference {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Reference {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> ReferenceBuilder {
         ReferenceBuilder::default()
+    }
+}
+impl ::core::ops::Deref for ReferenceInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for ReferenceInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for RelatedArtifact Type
@@ -6813,35 +6288,20 @@ pub struct RelatedArtifact(pub Box<RelatedArtifactInner>);
 
  Each related artifact is either an attachment, or a reference to another knowledge resource, but not both. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "RelatedArtifactBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct RelatedArtifactInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[RelatedArtifactType](http://hl7.org/fhir/ValueSet/related-artifact-type); documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of**
 
  The type of relationship to the related artifact.
@@ -6925,13 +6385,6 @@ pub struct RelatedArtifactInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub resource_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl RelatedArtifactBuilder {
-    #[doc = concat!("Finalize building ", "RelatedArtifact", ".")]
-    pub fn build(self) -> Result<RelatedArtifact, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<RelatedArtifactInner> for RelatedArtifact {
     fn from(inner: RelatedArtifactInner) -> Self {
         Self(Box::new(inner))
@@ -6948,12 +6401,23 @@ impl ::core::ops::DerefMut for RelatedArtifact {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl RelatedArtifact {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> RelatedArtifactBuilder {
         RelatedArtifactBuilder::default()
+    }
+}
+impl ::core::ops::Deref for RelatedArtifactInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for RelatedArtifactInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /// Reference wrapper type of the resource field in RelatedArtifact
@@ -7005,35 +6469,20 @@ pub struct SampledData(pub Box<SampledDataInner>);
 
  The data is not interpretable without at least origin, period, and dimensions, but these are optional to allow a separation between the template of measurement and the actual measurement, such as between DeviceCapabilities and DeviceLog.  When providing a summary view (for example with Observation.value[x]) SampledData should be represented with a brief display text such as "Sampled Data". */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "SampledDataBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct SampledDataInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **Zero value and units**
 
  The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.
@@ -7125,13 +6574,6 @@ pub struct SampledDataInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub data_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl SampledDataBuilder {
-    #[doc = concat!("Finalize building ", "SampledData", ".")]
-    pub fn build(self) -> Result<SampledData, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<SampledDataInner> for SampledData {
     fn from(inner: SampledDataInner) -> Self {
         Self(Box::new(inner))
@@ -7148,12 +6590,23 @@ impl ::core::ops::DerefMut for SampledData {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl SampledData {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> SampledDataBuilder {
         SampledDataBuilder::default()
+    }
+}
+impl ::core::ops::Deref for SampledDataInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for SampledDataInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /** Base StructureDefinition for Signature Type
@@ -7178,35 +6631,20 @@ pub struct Signature(pub Box<SignatureInner>);
 
  The elements of the Signature Resource are for ease of access of these elements. Foro digital signatures (Xml DigSig, JWT), the non-repudiation proof comes from the Signature  validation, which includes validation of the referenced objects (e.g. Resources) (a.k.a., Content) in the XML-Signature Detached form. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "SignatureBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct SignatureInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[SignatureType](http://hl7.org/fhir/ValueSet/signature-type); Indication of the reason the entity signed the object(s)**
 
  An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.
@@ -7282,13 +6720,6 @@ pub struct SignatureInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub blob_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl SignatureBuilder {
-    #[doc = concat!("Finalize building ", "Signature", ".")]
-    pub fn build(self) -> Result<Signature, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<SignatureInner> for Signature {
     fn from(inner: SignatureInner) -> Self {
         Self(Box::new(inner))
@@ -7305,12 +6736,23 @@ impl ::core::ops::DerefMut for Signature {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Signature {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> SignatureBuilder {
         SignatureBuilder::default()
+    }
+}
+impl ::core::ops::Deref for SignatureInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for SignatureInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /// Choice of types for the who[x] field in Signature
@@ -7368,6 +6810,7 @@ pub enum SignatureOnBehalfOfExtension {
  A timing schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event.  When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct Timing(pub Box<TimingInner>);
 /** Base StructureDefinition for Timing Type
 
@@ -7379,35 +6822,21 @@ pub struct Timing(pub Box<TimingInner>);
 
  A timing schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event.  When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure. */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "TimingBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct TimingInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **When the event occurs**
 
  Identifies specific times when the event occurs.
@@ -7451,13 +6880,6 @@ pub struct TimingInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub code_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl TimingBuilder {
-    #[doc = concat!("Finalize building ", "Timing", ".")]
-    pub fn build(self) -> Result<Timing, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<TimingInner> for Timing {
     fn from(inner: TimingInner) -> Self {
         Self(Box::new(inner))
@@ -7474,45 +6896,38 @@ impl ::core::ops::DerefMut for Timing {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl Timing {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> TimingBuilder {
         TimingBuilder::default()
     }
 }
+impl ::core::ops::Deref for TimingInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for TimingInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
+    }
+}
 /// Sub-fields of the repeat field in Timing
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "TimingRepeatBuilder",
-        build_fn(error = "crate::error::BuilderError")
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct TimingRepeat {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
     /** **Length/Range of lengths, or (Start and/or end) limits**
 
  Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.
@@ -7726,7 +7141,7 @@ pub struct TimingRepeat {
 }
 #[cfg(feature = "builders")]
 impl TimingRepeat {
-    ///Start building a new instance
+    /// Start building an instance.
     #[must_use]
     pub fn builder() -> TimingRepeatBuilder {
         TimingRepeatBuilder::default()
@@ -7787,35 +7202,20 @@ pub struct TriggerDefinition(pub Box<TriggerDefinitionInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "TriggerDefinitionBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct TriggerDefinitionInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[TriggerType](http://hl7.org/fhir/ValueSet/trigger-type); named-event | periodic | data-added | data-modified | data-removed | data-accessed | data-access-ended**
 
  The type of triggering event.
@@ -7871,13 +7271,6 @@ pub struct TriggerDefinitionInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub event_data_ext: Option<FieldExtension>,
 }
-#[cfg(feature = "builders")]
-impl TriggerDefinitionBuilder {
-    #[doc = concat!("Finalize building ", "TriggerDefinition", ".")]
-    pub fn build(self) -> Result<TriggerDefinition, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<TriggerDefinitionInner> for TriggerDefinition {
     fn from(inner: TriggerDefinitionInner) -> Self {
         Self(Box::new(inner))
@@ -7894,12 +7287,23 @@ impl ::core::ops::DerefMut for TriggerDefinition {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl TriggerDefinition {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> TriggerDefinitionBuilder {
         TriggerDefinitionBuilder::default()
+    }
+}
+impl ::core::ops::Deref for TriggerDefinitionInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for TriggerDefinitionInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /// Choice of types for the eventTiming[x] field in TriggerDefinition
@@ -7958,35 +7362,20 @@ pub struct UsageContext(pub Box<UsageContextInner>);
 
  */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "UsageContextBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
 pub struct UsageContextInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
+    /// The base Element
+    #[serde(flatten)]
+    pub e: Element,
     /** **[UsageContextType](http://hl7.org/fhir/ValueSet/usage-context-type); Type of context being specified**
 
  A code that identifies the type of context being specified by this usage context.
@@ -8012,13 +7401,6 @@ pub struct UsageContextInner {
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     pub value_ext: Option<UsageContextValueExtension>,
 }
-#[cfg(feature = "builders")]
-impl UsageContextBuilder {
-    #[doc = concat!("Finalize building ", "UsageContext", ".")]
-    pub fn build(self) -> Result<UsageContext, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
-}
 impl From<UsageContextInner> for UsageContext {
     fn from(inner: UsageContextInner) -> Self {
         Self(Box::new(inner))
@@ -8035,12 +7417,23 @@ impl ::core::ops::DerefMut for UsageContext {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl UsageContext {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> UsageContextBuilder {
         UsageContextBuilder::default()
+    }
+}
+impl ::core::ops::Deref for UsageContextInner {
+    type Target = Element;
+    fn deref(&self) -> &Self::Target {
+        &self.e
+    }
+}
+impl ::core::ops::DerefMut for UsageContextInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.e
     }
 }
 /// Choice of types for the value[x] field in UsageContext
@@ -8079,9 +7472,10 @@ pub enum UsageContextValueExtension {
 
  The comparator is not used on a SimpleQuantity
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(transparent)]
+#[derive(SmartDefault)]
 pub struct SimpleQuantity(pub Box<SimpleQuantityInner>);
 /** A fixed quantity (no comparator)
 
@@ -8091,114 +7485,23 @@ pub struct SimpleQuantity(pub Box<SimpleQuantityInner>);
 
  The comparator is not used on a SimpleQuantity
 
- The context of use may frequently define what kind of quantity this is and therefore what kind of units can be used. The context of use may also restrict the values for the comparator. */
+ */
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-#[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
+#[cfg_attr(feature = "builders", derive(Builder))]
 #[cfg_attr(
     feature = "builders",
     builder(
         pattern = "owned",
         name = "SimpleQuantityBuilder",
-        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+        build_fn(error = "crate::error::BuilderError"),
     )
 )]
+#[derive(SmartDefault)]
 pub struct SimpleQuantityInner {
-    /** **xml:id (or equivalent in JSON)**
-
- unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "id")]
-    pub id: Option<String>,
-    /** **Additional Content defined by implementations**
-
- May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
-
- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "extension")]
-    pub extension: Vec<Extension>,
-    /** **Numerical value (with implicit precision)**
-
- The value of the measured amount. The value includes an implicit precision in the presentation of the value.
-
- The implicit precision in the value should always be honored. Monetary values have their own rules for handling precision (refer to standard accounting text books). */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "value")]
-    pub value: Option<f64>,
-    /// Extension field.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[serde(rename = "_value")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    pub value_ext: Option<FieldExtension>,
-    /** **[QuantityComparator](http://hl7.org/fhir/ValueSet/quantity-comparator); < | <= | >= | > - how to understand the value**
-
- Not allowed to be used in this context
-
- This is labeled as "Is Modifier" because the comparator modifies the interpretation of the value significantly. If there is no comparator, then there is no modification of the value. */
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "comparator")]
-    pub comparator: Vec<Option<codes::QuantityComparator>>,
-    /// Extension field.
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    #[serde(rename = "_comparator")]
-    #[cfg_attr(feature = "builders", builder(default))]
-    pub comparator_ext: Vec<Option<FieldExtension>>,
-    /** **Unit representation**
-
- A human-readable form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "unit")]
-    pub unit: Option<String>,
-    /// Extension field.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[serde(rename = "_unit")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    pub unit_ext: Option<FieldExtension>,
-    /** **System that defines coded unit form**
-
- The identification of the system that provides the coded form of the unit.
-
- */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "system")]
-    pub system: Option<String>,
-    /// Extension field.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[serde(rename = "_system")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    pub system_ext: Option<FieldExtension>,
-    /** **Coded form of the unit**
-
- A computer processable form of the unit in some unit representation system.
-
- The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system. */
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    #[serde(rename = "code")]
-    pub code: Option<String>,
-    /// Extension field.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    #[serde(rename = "_code")]
-    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
-    pub code_ext: Option<FieldExtension>,
-}
-#[cfg(feature = "builders")]
-impl SimpleQuantityBuilder {
-    #[doc = concat!("Finalize building ", "SimpleQuantity", ".")]
-    pub fn build(self) -> Result<SimpleQuantity, crate::error::BuilderError> {
-        self.build_inner().map(Into::into)
-    }
+    /// The base Quantity
+    #[serde(flatten)]
+    pub q: Quantity,
 }
 impl From<SimpleQuantityInner> for SimpleQuantity {
     fn from(inner: SimpleQuantityInner) -> Self {
@@ -8216,12 +7519,23 @@ impl ::core::ops::DerefMut for SimpleQuantity {
         &mut self.0
     }
 }
+#[cfg(feature = "builders")]
 impl SimpleQuantity {
     /// Start building an instance.
-    #[cfg(feature = "builders")]
     #[must_use]
     pub fn builder() -> SimpleQuantityBuilder {
         SimpleQuantityBuilder::default()
+    }
+}
+impl ::core::ops::Deref for SimpleQuantityInner {
+    type Target = Quantity;
+    fn deref(&self) -> &Self::Target {
+        &self.q
+    }
+}
+impl ::core::ops::DerefMut for SimpleQuantityInner {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.q
     }
 }
 /// Extension of a field.

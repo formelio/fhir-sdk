@@ -1,6 +1,7 @@
 //! FHIR types generation.
 
 use std::collections::HashMap;
+use std::ops::Not;
 
 use anyhow::Result;
 use inflector::Inflector;
@@ -19,15 +20,13 @@ pub fn generate_type_struct(
 	implemented_codes: &HashMap<String, String>,
 ) -> Result<TokenStream> {
 	let name = &ty.name;
-	let ident = format_ident!("{name}");
-	let ident_inner = format_ident!("{name}Inner");
-	let ident_builder = format_ident!("{name}Builder");
-	let ident_builder_str = ident_builder.to_string();
+	let ident = map_type(name, true);
+	let ident_inner = format_ident!("{ident}Inner");
 
 	let mut doc_comment = format!(
 		" {} \n\n **[{}]({}) v{}** \n\n {} \n\n {} \n\n ",
 		sanitize(&ty.description),
-		ty.name,
+		name,
 		ty.url,
 		ty.version,
 		sanitize(&ty.elements.short),
@@ -38,26 +37,11 @@ pub fn generate_type_struct(
 		doc_comment.push(' ');
 	}
 
-	let resource_type_field = (ty.kind == StructureDefinitionKind::Resource).then(|| {
-		let serde_default = format!("{name}::resource_type");
-		let builder_default = format!("ResourceType::{ident}");
-		quote! {
-			/// Type of this FHIR resource.
-			#[doc(hidden)]
-			#[serde(default = #serde_default)]
-			#[cfg_attr(feature = "builders", builder(default = #builder_default, setter(skip)))]
-			resource_type: ResourceType,
-		}
-	});
-	let resource_type_fn = (ty.kind == StructureDefinitionKind::Resource).then_some(quote! {
-		impl #ident {
-			/// Get the resource type for this FHIR resource.
-			#[must_use]
-			pub fn resource_type() -> ResourceType {
-				ResourceType::#ident
-			}
-		}
-	});
+	let (base_field, base_deref_impls) = ty
+		.base
+		.as_ref()
+		.map(|base| generate_base_field(base, &ident_inner))
+		.unwrap_or((None, None));
 
 	let (fields, structs): (Vec<_>, Vec<_>) = ty
 		.elements
@@ -66,45 +50,156 @@ pub fn generate_type_struct(
 		.map(|field| generate_field(field, &ident, ty, implemented_codes))
 		.unzip();
 
+	// Impl of the LookupReferences trait
 	let lookup_references_impl = (ty.kind == StructureDefinitionKind::Resource)
 		.then(|| lookup_references_impl(&ident, &ty.elements, true));
 
-	let wrapper_impls = wrapper_impls(&ident, &ident_inner, &ident_builder);
+	// Impls to and from the inner struct
+	let wrapper_impls = generate_wrapper_impls(&ident, &ident_inner);
+
+	// Generate builder macros and impls for non abstract types
+	let (builder_macros, builder_impls) =
+		ty.r#abstract.not().then(|| generate_builder_parts(ty, &ident)).unwrap_or((None, None));
+
+	let no_mandatory_fields = ty.elements.fields.iter().any(|f| !f.optional()).not();
+
+	// Types with no mandatory fields can derive Default. This will cause issues if
+	// types with required fields ever become base types in the FHIR spec.
+	let default_derive = no_mandatory_fields.then_some(quote!(#[derive(SmartDefault)]));
+
+	// Non abstract resources get a resource type field
+	let resource_type_field = (ty.kind == StructureDefinitionKind::Resource && !ty.r#abstract)
+		.then(|| {
+			let default = no_mandatory_fields.then(|| quote!(#[default(ResourceType::#ident)]));
+
+			quote! {
+				#[doc(hidden)]
+				#default
+				pub(crate) resource_type: ResourceType,
+			}
+		});
+
+	// Non abstract resources also need the serde tag attribute
+	let resource_type_macro = (ty.kind == StructureDefinitionKind::Resource && !ty.r#abstract)
+		.then_some(quote!(#[serde(tag = "resource_type", rename = #name)]));
 
 	Ok(quote! {
 		#[doc = #doc_comment]
 		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 		#[serde(transparent)]
+		#default_derive
 		pub struct #ident(pub Box<#ident_inner>);
 
 		#[doc = #doc_comment]
 		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-		#[cfg_attr(feature = "builders", derive(Builder))]
 		#[serde(rename_all = "camelCase")]
-		#[cfg_attr(feature = "builders", builder(
-			pattern = "owned",
-			name = #ident_builder_str,
-			build_fn(error = "crate::error::BuilderError", name = "build_inner"),
-		))]
+		#builder_macros
+		#resource_type_macro
+		#default_derive
 		pub struct #ident_inner {
 			#resource_type_field
-			#(#fields)*
-		}
 
-		#[cfg(feature = "builders")]
-		impl #ident_builder {
-			#[doc = concat!("Finalize building ", #name, ".")]
-			pub fn build(self) -> Result<#ident, crate::error::BuilderError> {
-				self.build_inner().map(Into::into)
-			}
+			#base_field
+
+			#(#fields)*
 		}
 
 		#lookup_references_impl
 		#wrapper_impls
-		#resource_type_fn
+		#builder_impls
+		#base_deref_impls
 
 		#(#structs)*
 	})
+}
+
+fn generate_base_field(
+	base: &str,
+	ident_inner: &Ident,
+) -> (Option<TokenStream>, Option<TokenStream>) {
+	// The name of the base field is an abbreviation of the type, to shrink long chains
+	let field_name = format_ident!(
+		"{}",
+		base.chars().filter(|c| c.is_uppercase()).collect::<String>().to_lowercase()
+	);
+	let field_type = map_type(base, true);
+
+	let doc_comment = format!(" The base {base}");
+
+	let field = quote! {
+		#[doc = #doc_comment]
+		#[serde(flatten)]
+		pub #field_name: #field_type,
+	};
+
+	let deref_impls = quote! {
+		impl ::core::ops::Deref for #ident_inner {
+			type Target = #field_type;
+
+			fn deref(&self) -> &Self::Target {
+				&self.#field_name
+			}
+		}
+
+		impl ::core::ops::DerefMut for #ident_inner {
+			fn deref_mut(&mut self) -> &mut Self::Target {
+				&mut self.#field_name
+			}
+		}
+	};
+
+	(Some(field), Some(deref_impls))
+}
+
+fn generate_builder_parts(ty: &Type, ident: &Ident) -> (Option<TokenStream>, Option<TokenStream>) {
+	let ident_str = ident.to_string();
+	let ident_builder_str = format!("{ident_str}Builder");
+	let ident_builder = format_ident!("{ident_builder_str}");
+
+	let builder_macros = if ty.kind == StructureDefinitionKind::Resource {
+		quote! {
+			#[cfg_attr(feature = "builders", derive(Builder))]
+			#[cfg_attr(feature = "builders", builder(
+				pattern = "owned",
+				name = #ident_builder_str,
+				build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+			))]
+		}
+	} else {
+		quote! {
+			#[cfg_attr(feature = "builders", derive(Builder))]
+			#[cfg_attr(feature = "builders", builder(
+				pattern = "owned",
+				name = #ident_builder_str,
+				build_fn(error = "crate::error::BuilderError"),
+			))]
+		}
+	};
+
+	let inner_wrapper = (ty.kind == StructureDefinitionKind::Resource).then_some(quote! {
+		#[cfg(feature = "builders")]
+		impl #ident_builder {
+			#[doc = concat!("Finalize building ", #ident_str, ".")]
+			pub fn build(self) -> Result<#ident, crate::error::BuilderError> {
+				self.build_inner().map(Into::into)
+			}
+		}
+	});
+
+	let builder_impls = quote! {
+		#inner_wrapper
+
+		#[cfg(feature = "builders")]
+		impl #ident {
+			/// Start building an instance.
+			#[must_use]
+			pub fn builder() -> #ident_builder {
+				#ident_builder ::default()
+			}
+		}
+	};
+
+	(Some(builder_macros), Some(builder_impls))
 }
 
 /// Implement the LookupReferences trait for a type
@@ -186,7 +281,7 @@ fn lookup_references_impl(ident: &Ident, field: &ObjectField, is_type: bool) -> 
 }
 
 /// Implementations of From, Deref and DerefMut towards the inner type.
-fn wrapper_impls(ident: &Ident, ident_inner: &Ident, ident_builder: &Ident) -> TokenStream {
+fn generate_wrapper_impls(ident: &Ident, ident_inner: &Ident) -> TokenStream {
 	quote! {
 		impl From<#ident_inner> for #ident {
 			fn from(inner: #ident_inner) -> Self {
@@ -205,15 +300,6 @@ fn wrapper_impls(ident: &Ident, ident_inner: &Ident, ident_builder: &Ident) -> T
 		impl ::core::ops::DerefMut for #ident {
 			fn deref_mut(&mut self) -> &mut Self::Target {
 				&mut self.0
-			}
-		}
-
-		impl #ident {
-			/// Start building an instance.
-			#[cfg(feature = "builders")]
-			#[must_use]
-			pub fn builder() -> #ident_builder {
-				#ident_builder ::default()
 			}
 		}
 	}
@@ -245,9 +331,11 @@ fn generate_field(
 			quote!(#[serde(default, skip_serializing_if = "Option::is_none")])
 		}
 	});
-	let builder_attr = field.optional().then_some(
+
+	let builder_attr = (!base_type.r#abstract && field.optional()).then_some(
 		quote!(#[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]),
 	);
+
 	let serde_rename_or_flatten = if matches!(field, Field::Choice(_)) {
 		quote!(#[serde(flatten)])
 	} else {
@@ -263,12 +351,18 @@ fn generate_field(
 			quote!(#[serde(rename = #rename_ext)])
 		};
 
+		let builder_attr_ext = base_type.r#abstract.not().then_some(if field.is_array() {
+			quote!(#[cfg_attr(feature = "builders", builder(default))])
+		} else {
+			quote!(#[cfg_attr(feature = "builders", builder(default, setter(strip_option)))])
+		});
+
 		if field.is_array() {
 			quote! {
 				/// Extension field.
 				#[serde(default, skip_serializing_if = "Vec::is_empty")]
 				#serde_ext
-				#[cfg_attr(feature = "builders", builder(default))]
+				#builder_attr_ext
 				pub #ident_ext: Vec<Option<#extension_type>>,
 			}
 		} else {
@@ -276,7 +370,7 @@ fn generate_field(
 				/// Extension field.
 				#[serde(default, skip_serializing_if = "Option::is_none")]
 				#serde_ext
-				#[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+				#builder_attr_ext
 				pub #ident_ext: Option<#extension_type>,
 			}
 		}
@@ -302,7 +396,7 @@ fn generate_standard_field(field: &StandardField) -> (String, (TokenStream, Iden
 		doc_comment.push(' ');
 	}
 
-	let mapped_type = map_type(&field.r#type);
+	let mapped_type = map_type(&field.r#type, false);
 
 	(doc_comment, (quote!(#mapped_type), format_ident!("FieldExtension")), quote!())
 }
@@ -346,7 +440,7 @@ fn generate_choice_field(
 
 	let variants = field.types.iter().map(|ty| {
 		let variant_ident = format_ident!("{}", ty.to_pascal_case());
-		let variant_type = map_type(ty);
+		let variant_type = map_type(ty, false);
 		let variant_doc = format!(" Variant accepting the {variant_ident} type.");
 		let rename = field.name.replace("[x]", &variant_ident.to_string());
 
@@ -419,29 +513,24 @@ fn generate_object_field(
 		.map(|f| generate_field(f, &struct_type, base_type, implemented_codes))
 		.unzip();
 
+	let (builder_macros, builder_impls) = base_type
+		.r#abstract
+		.not()
+		.then(|| generate_builder_parts(&base_type, &struct_type))
+		.unwrap_or((None, None));
+
 	let lookup_references_impl = lookup_references_impl(&struct_type, field, false);
 
-	let object_struct_builder = format_ident!("{struct_type}Builder");
-	let object_struct_builder_name = object_struct_builder.to_string();
 	let object_struct = quote! {
 		#[doc = #struct_doc]
 		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-		#[cfg_attr(feature = "builders", derive(Builder))]
 		#[serde(rename_all = "camelCase")]
-		#[cfg_attr(feature = "builders", builder(pattern = "owned", name = #object_struct_builder_name, build_fn(error = "crate::error::BuilderError")))]
+		#builder_macros
 		pub struct #struct_type {
 			#(#fields)*
 		}
 
-		#[cfg(feature = "builders")]
-		impl #struct_type {
-			#[doc = "Start building a new instance"]
-			#[must_use]
-			pub fn builder() -> #object_struct_builder {
-				#object_struct_builder ::default()
-			}
-		}
-
+		#builder_impls
 		#lookup_references_impl
 	};
 
@@ -621,7 +710,7 @@ pub fn code_field_type_name(
 		let ty = format_ident!("{type_name}");
 		quote!(codes::#ty)
 	} else {
-		let mapped_type = map_type(&field.r#type);
+		let mapped_type = map_type(&field.r#type, false);
 		quote!(#mapped_type)
 	}
 }

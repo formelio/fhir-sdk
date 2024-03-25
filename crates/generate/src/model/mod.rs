@@ -28,5 +28,7 @@ pub enum CodeSystemContentMode {
 	Example,
 	Fragment,
 	NotPresent,
+	// Not in STU3
+	#[allow(dead_code)]
 	Supplement,
 }

@@ -19,7 +19,7 @@ pub struct Type {
 	pub kind: StructureDefinitionKind,
 	/// Whether this is an abstract type.
 	pub r#abstract: bool,
-	/// Base definition.
+	/// Base type.
 	pub base: Option<String>,
 	/// Status of the definition.
 	pub status: PublicationStatus,
@@ -111,17 +111,6 @@ impl Field {
 			Self::Choice(f) => f.is_base_field,
 			Self::Object(f) => f.is_base_field,
 			Self::Reference(f) => f.is_base_field,
-		}
-	}
-
-	/// Set the field to be a base field.
-	pub fn set_base_field(&mut self) {
-		match self {
-			Self::Standard(f) => f.is_base_field = true,
-			Self::Code(f) => f.is_base_field = true,
-			Self::Choice(f) => f.is_base_field = true,
-			Self::Object(f) => f.is_base_field = true,
-			Self::Reference(f) => f.is_base_field = true,
 		}
 	}
 }

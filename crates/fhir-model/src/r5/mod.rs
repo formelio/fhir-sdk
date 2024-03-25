@@ -5,27 +5,21 @@ pub mod resources;
 pub mod types;
 
 use self::{
-	resources::{BaseResource, NamedResource, Resource, WrongResourceType},
+	resources::{Resource, WrongResourceType},
 	types::{Reference, ReferenceInner},
 };
 
 /// Create relative [`Reference`] to the given resource.
-pub fn reference_to<R>(resource: &R) -> Option<Reference>
-where
-	R: NamedResource + BaseResource,
-{
+pub fn reference_to(resource: &Resource) -> Option<Reference> {
 	Some(
 		ReferenceInner {
-			id: None,
-			extension: Vec::new(),
-			reference: Some(format!("{}/{}", R::TYPE, resource.id().as_ref()?)),
-			reference_ext: None,
-			r#type: Some(R::TYPE.to_string()),
-			type_ext: None,
-			identifier: None,
-			identifier_ext: None,
-			display: None,
-			display_ext: None,
+			reference: Some(format!(
+				"{}/{}",
+				resource.resource_type(),
+				resource.as_base_resource().id.as_ref()?
+			)),
+			r#type: Some(resource.resource_type().to_string()),
+			..Default::default()
 		}
 		.into(),
 	)
@@ -33,22 +27,12 @@ where
 
 /// Create local [`Reference`] to the given resource. Make sure the resource is
 /// going to be in the `contained` field of the referencing resource.
-pub fn local_reference_to<R>(resource: &R) -> Option<Reference>
-where
-	R: NamedResource + BaseResource,
-{
+pub fn local_reference_to(resource: &Resource) -> Option<Reference> {
 	Some(
 		ReferenceInner {
-			id: None,
-			extension: Vec::new(),
-			reference: Some(format!("#{}", resource.id().as_ref()?)),
-			reference_ext: None,
-			r#type: Some(R::TYPE.to_string()),
-			type_ext: None,
-			identifier: None,
-			identifier_ext: None,
-			display: None,
-			display_ext: None,
+			reference: Some(format!("#{}", resource.as_base_resource().id.as_ref()?)),
+			r#type: Some(resource.resource_type().to_string()),
+			..Default::default()
 		}
 		.into(),
 	)

@@ -182,15 +182,7 @@ fn convert_impls(ident: &Ident, code: &Code) -> Result<TokenStream> {
 					system: Some(#system.to_owned()),
 					code: Some(code.as_ref().to_owned()),
 					display: Some(format!("{code}")),
-					id: None,
-					extension: Vec::new(),
-					system_ext: None,
-					version: None,
-					version_ext: None,
-					code_ext: None,
-					display_ext: None,
-					user_selected: None,
-					user_selected_ext: None,
+					..Default::default()
 				}.into()
 			}
 		}
@@ -199,13 +191,11 @@ fn convert_impls(ident: &Ident, code: &Code) -> Result<TokenStream> {
 			fn from(code: #ident) -> Self {
 				let text = format!("{code}");
 				let coding = Coding::from(code);
+
 				CodeableConceptInner {
 					coding: vec![Some(coding)],
 					text: Some(text),
-					id: None,
-					extension: Vec::new(),
-					coding_ext: Vec::new(),
-					text_ext: None,
+					..Default::default()
 				}.into()
 			}
 		}

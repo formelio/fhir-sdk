@@ -51,7 +51,7 @@ impl Bundle {
 				.filter(|e| e.full_url.as_ref() == Some(&full_url))
 				.filter_map(|e| e.resource.as_ref())
 				.max_by_key(|r| {
-					r.as_base_resource().meta().as_ref().and_then(|m| m.last_updated.as_ref())
+					r.as_base_resource().meta.as_ref().and_then(|m| m.last_updated.as_ref())
 				}),
 			// If the reference is absolute and versioned, look for an entry with the versionless version
 			// of the reference as its fullUrl and whose resource has a matching version ID.
@@ -64,7 +64,7 @@ impl Bundle {
 				.filter(|e| e.full_url.as_ref() == Some(&full_url))
 				.filter_map(|e| e.resource.as_ref())
 				.find(|r| {
-					r.as_base_resource().meta().as_ref().and_then(|m| m.version_id.as_ref())
+					r.as_base_resource().meta.as_ref().and_then(|m| m.version_id.as_ref())
 						== Some(&version_id.to_string())
 				}),
 			// If the reference is relative, use the `base_url` parameter to make it

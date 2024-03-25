@@ -2,7 +2,6 @@
 
 mod comments;
 mod gen_codes;
-mod gen_traits;
 mod gen_types;
 
 use std::collections::HashMap;
@@ -45,6 +44,7 @@ pub fn generate_codes(mut codes: Vec<Code>) -> Result<(TokenStream, HashMap<Stri
 		#![doc = #module_doc]
 		#![allow(clippy::too_many_lines)]
 
+		use std::default::Default;
 		use serde::{Serialize, Deserialize};
 		use super::super::types::{Coding, CodingInner, CodeableConcept, CodeableConceptInner};
 
@@ -63,7 +63,6 @@ pub fn generate_types(
 
 	let types: Vec<TokenStream> = types
 		.iter()
-		.filter(|ty| !ty.r#abstract)
 		.filter(|ty| ty.kind == StructureDefinitionKind::ComplexType)
 		.map(|ty| gen_types::generate_type_struct(ty, implemented_codes))
 		.collect::<Result<_, _>>()?;
@@ -77,6 +76,7 @@ pub fn generate_types(
 		use serde::{Serialize, Deserialize};
 		#[cfg(feature = "builders")]
 		use derive_builder::Builder;
+		use smart_default::SmartDefault;
 		use super::super::*;
 		use super::super::codes;
 		use super::super::resources::*;
@@ -123,23 +123,34 @@ pub fn generate_resources(
 	// Set generation variables.
 	let module_doc = " Generated code! Take a look at the generator-crate for changing this file!";
 
-	let mut resource_names = Vec::new();
 	let resource_defs: Vec<TokenStream> = resources
 		.iter()
-		.filter(|ty| !ty.r#abstract)
 		.filter(|ty| ty.kind == StructureDefinitionKind::Resource)
-		.inspect(|ty| resource_names.push(format_ident!("{}", ty.name)))
 		.map(|ty| gen_types::generate_type_struct(ty, implemented_codes))
 		.collect::<Result<_, _>>()?;
 
+	let non_abstract = resources
+		.iter()
+		.filter(|ty| ty.kind == StructureDefinitionKind::Resource && !ty.r#abstract);
+
+	let resource_names: Vec<_> = non_abstract.clone().map(|ty| map_type(&ty.name, false)).collect();
+	let base_resource_accessors: Vec<_> = non_abstract
+		.clone()
+		.map(|ty| match ty.base.as_deref() {
+			Some("Resource") => quote!(res.r),
+			Some("DomainResource") => quote!(res.dr.r),
+			_ => panic!("other bases not supported"),
+		})
+		.collect();
+	let domain_resource_names: Vec<_> = non_abstract
+		.clone()
+		.filter(|ty| ty.base.as_deref() == Some("DomainResource"))
+		.map(|ty| map_type(&ty.name, false))
+		.collect();
+
 	let resource_conversions = resource_conversion_impls(&resource_names);
 	let resource_type_impls = resource_type_impls(&resource_names);
-
-	let base_resource_impls = gen_traits::generate_base_resource(&resources, implemented_codes)?;
-	let domain_resource_impls =
-		gen_traits::generate_domain_resource(&resources, implemented_codes)?;
-	let typed_resource_impls = gen_traits::generate_typed_resource(&resources)?;
-	let named_resource_impls = gen_traits::generate_named_resource(&resources)?;
+	let named_resource_impls = generate_named_resource(&resources)?;
 
 	// Generate the code.
 	Ok(quote! {
@@ -150,6 +161,7 @@ pub fn generate_resources(
 		use serde::{Serialize, Deserialize};
 		#[cfg(feature = "builders")]
 		use derive_builder::Builder;
+		use smart_default::SmartDefault;
 		use super::super::*;
 		use super::super::codes;
 		use super::super::types::*;
@@ -167,6 +179,65 @@ pub fn generate_resources(
 				#[doc = stringify!(#resource_names)]
 				#resource_names(#resource_names),
 			)*
+		}
+
+		impl Resource {
+			/// Return the resource as base resource.
+			#[must_use]
+			#[inline]
+			pub fn as_base_resource(&self) -> &BaseResource {
+				match self {
+					#(
+						Self::#resource_names(res) => & #base_resource_accessors,
+					)*
+				}
+			}
+
+			/// Return the resource as mutable base resource.
+			#[must_use]
+			#[inline]
+			pub fn as_base_resource_mut(&mut self) -> &mut BaseResource {
+				match self {
+					#(
+						Self::#resource_names(res) => &mut #base_resource_accessors,
+					)*
+				}
+			}
+
+			/// Return the resource as domain resource.
+			#[must_use]
+			#[inline]
+			pub fn as_domain_resource(&self) -> Option<&DomainResource> {
+				match self {
+					#(
+						Self::#domain_resource_names(res) => Some(& res.dr),
+					)*
+					_ => None,
+				}
+			}
+
+			/// Return the resource as mutable domain resource.
+			#[must_use]
+			#[inline]
+			pub fn as_domain_resource_mut(&mut self) -> Option<&mut DomainResource> {
+				match self {
+					#(
+						Self::#domain_resource_names(res) => Some(&mut res.dr),
+					)*
+					_ => None,
+				}
+			}
+
+			/// Get the type of the resource
+			#[must_use]
+			#[inline]
+			pub fn resource_type(&self) -> ResourceType {
+				match self {
+					#(
+						Self::#resource_names(res) => res.resource_type,
+					)*
+				}
+			}
 		}
 
 		/// Resource type field of the FHIR resources.
@@ -215,10 +286,6 @@ pub fn generate_resources(
 
 		#resource_conversions
 		#resource_type_impls
-
-		#base_resource_impls
-		#domain_resource_impls
-		#typed_resource_impls
 		#named_resource_impls
 	})
 }
@@ -286,6 +353,41 @@ fn resource_type_impls(names: &[Ident]) -> TokenStream {
 	}
 }
 
+/// Generate the NamedResource trait and its implementations.
+pub fn generate_named_resource(resources: &[Type]) -> Result<TokenStream> {
+	let trait_definition = quote! {
+		/// Simple trait to supply (const) information about resources.
+		pub trait NamedResource {
+			/// The FHIR version of this resource.
+			const FHIR_VERSION: &'static str;
+			/// The ResourceType of this resouce.
+			const TYPE: ResourceType;
+		}
+	};
+
+	let trait_implementations: TokenStream = resources
+		.iter()
+		.filter(|ty| !ty.r#abstract)
+		.filter(|ty| ty.kind == StructureDefinitionKind::Resource)
+		.map(|ty| {
+			let name = format_ident!("{}", ty.name);
+			let version = &ty.version;
+
+			quote! {
+				impl NamedResource for #name {
+					const FHIR_VERSION: &'static str = #version;
+					const TYPE: ResourceType = ResourceType::#name;
+				}
+			}
+		})
+		.collect();
+
+	Ok(quote! {
+		#trait_definition
+		#trait_implementations
+	})
+}
+
 /// Map field name to proper snake case identifier, with escaped rust keywords.
 fn map_field_ident(name: &str) -> Ident {
 	match name.to_snake_case().as_str() {
@@ -301,7 +403,7 @@ fn map_field_ident(name: &str) -> Ident {
 }
 
 /// Map primitive type to Rust type.
-fn map_type(ty: &str) -> Ident {
+fn map_type(ty: &str, is_base: bool) -> Ident {
 	match ty {
 		"boolean" => format_ident!("bool"),
 		"id" | "string" | "code" | "markdown" | "xhtml" => format_ident!("String"),
@@ -317,6 +419,7 @@ fn map_type(ty: &str) -> Ident {
 		"instant" => format_ident!("Instant"),
 		"time" => format_ident!("Time"),
 		"integer64" => format_ident!("Integer64"), // JSON String, but i64 number
+		"Resource" if is_base => format_ident!("Base{ty}"),
 		_ => format_ident!("{ty}"),
 	}
 }
