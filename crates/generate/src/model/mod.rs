@@ -1,6 +1,7 @@
 //! Common model for codes and structures to generate code from.
 
 pub mod codes;
+pub mod params;
 pub mod structures;
 
 /// Internal publication status, for all versions.
@@ -19,6 +20,20 @@ pub enum StructureDefinitionKind {
 	Logical,
 	PrimitiveType,
 	Resource,
+}
+
+/// Version independent type of value that a search parameter may contain, and how the content is interpreted
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Hash)]
+pub enum SearchParamType {
+	Number,
+	Date,
+	String,
+	Token,
+	Reference,
+	Composite,
+	Quantity,
+	Uri,
+	Special,
 }
 
 /// Internal code system content mode, for all version.

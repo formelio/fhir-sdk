@@ -5,7 +5,7 @@ use std::collections::BTreeMap;
 use super::{PublicationStatus, StructureDefinitionKind};
 
 /// Type definition.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Type {
 	/// Name of the type.
 	pub name: String,

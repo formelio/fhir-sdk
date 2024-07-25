@@ -70,9 +70,24 @@ pub fn generate_code(version_folder: &str) -> Result<()> {
 		.collect::<Vec<_>>();
 	println!("Identifiable resources: {identifiable:?}");
 
-	let generated_code = generate::generate_resources(resources, &generated_codes)?;
+	let generated_code = generate::generate_resources(resources.clone(), &generated_codes)?;
 	fs::write(
 		format!("{base_folder}/../fhir-model/src/{version_folder}/resources/generated.rs"),
+		format_code(generated_code)?,
+	)?;
+
+	let search_params_file = fs::read_to_string(format!(
+		"{base_folder}/definitions/{version_folder}/search-parameters.json"
+	))?;
+	let search_params = match version_folder {
+		"stu3" => parse::params::parse_stu3(&search_params_file),
+		"r4b" => parse::params::parse_r4b(&search_params_file),
+		"r5" => parse::params::parse_r5(&search_params_file),
+		_ => panic!("Unrecognized version `{version_folder}`"),
+	};
+	let generated_code = generate::generate_search_params(search_params, resources)?;
+	fs::write(
+		format!("{base_folder}/../fhir-model/src/{version_folder}/params/generated.rs"),
 		format_code(generated_code)?,
 	)?;
 

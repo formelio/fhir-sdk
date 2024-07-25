@@ -2,11 +2,15 @@
 #![allow(clippy::fallible_impl_from)] // We want to panic on unexpected formats!
 
 pub mod codes;
+pub mod params;
 pub mod structures;
 
 use fhir_model::{r4b, r5, stu3};
 
-use crate::model::{CodeSystemContentMode, PublicationStatus, StructureDefinitionKind};
+use crate::model::params::SearchComparator;
+use crate::model::{
+	CodeSystemContentMode, PublicationStatus, SearchParamType, StructureDefinitionKind,
+};
 
 impl From<stu3::codes::PublicationStatus> for PublicationStatus {
 	fn from(value: stu3::codes::PublicationStatus) -> Self {
@@ -105,6 +109,101 @@ impl From<r5::codes::CodeSystemContentMode> for CodeSystemContentMode {
 			r5::codes::CodeSystemContentMode::Fragment => Self::Fragment,
 			r5::codes::CodeSystemContentMode::NotPresent => Self::NotPresent,
 			r5::codes::CodeSystemContentMode::Supplement => Self::Supplement,
+		}
+	}
+}
+
+impl From<r5::codes::SearchParamType> for SearchParamType {
+	fn from(value: r5::codes::SearchParamType) -> Self {
+		match value {
+			r5::codes::SearchParamType::Composite => SearchParamType::Composite,
+			r5::codes::SearchParamType::Date => SearchParamType::Date,
+			r5::codes::SearchParamType::Number => SearchParamType::Number,
+			r5::codes::SearchParamType::Quantity => SearchParamType::Quantity,
+			r5::codes::SearchParamType::Reference => SearchParamType::Reference,
+			r5::codes::SearchParamType::Special => SearchParamType::Special,
+			r5::codes::SearchParamType::String => SearchParamType::String,
+			r5::codes::SearchParamType::Token => SearchParamType::Token,
+			r5::codes::SearchParamType::Uri => SearchParamType::Uri,
+		}
+	}
+}
+
+impl From<r4b::codes::SearchParamType> for SearchParamType {
+	fn from(value: r4b::codes::SearchParamType) -> Self {
+		match value {
+			r4b::codes::SearchParamType::Composite => SearchParamType::Composite,
+			r4b::codes::SearchParamType::Date => SearchParamType::Date,
+			r4b::codes::SearchParamType::Number => SearchParamType::Number,
+			r4b::codes::SearchParamType::Quantity => SearchParamType::Quantity,
+			r4b::codes::SearchParamType::Reference => SearchParamType::Reference,
+			r4b::codes::SearchParamType::Special => SearchParamType::Special,
+			r4b::codes::SearchParamType::String => SearchParamType::String,
+			r4b::codes::SearchParamType::Token => SearchParamType::Token,
+			r4b::codes::SearchParamType::Uri => SearchParamType::Uri,
+		}
+	}
+}
+
+impl From<stu3::codes::SearchParamType> for SearchParamType {
+	fn from(value: stu3::codes::SearchParamType) -> Self {
+		match value {
+			stu3::codes::SearchParamType::Composite => SearchParamType::Composite,
+			stu3::codes::SearchParamType::Date => SearchParamType::Date,
+			stu3::codes::SearchParamType::Number => SearchParamType::Number,
+			stu3::codes::SearchParamType::Quantity => SearchParamType::Quantity,
+			stu3::codes::SearchParamType::Reference => SearchParamType::Reference,
+			stu3::codes::SearchParamType::String => SearchParamType::String,
+			stu3::codes::SearchParamType::Token => SearchParamType::Token,
+			stu3::codes::SearchParamType::Uri => SearchParamType::Uri,
+		}
+	}
+}
+
+impl From<r5::codes::SearchComparator> for SearchComparator {
+	fn from(value: r5::codes::SearchComparator) -> Self {
+		match value {
+			r5::codes::SearchComparator::Eq => SearchComparator::Eq,
+			r5::codes::SearchComparator::Ne => SearchComparator::Ne,
+			r5::codes::SearchComparator::Gt => SearchComparator::Gt,
+			r5::codes::SearchComparator::Lt => SearchComparator::Lt,
+			r5::codes::SearchComparator::Ge => SearchComparator::Ge,
+			r5::codes::SearchComparator::Le => SearchComparator::Le,
+			r5::codes::SearchComparator::Sa => SearchComparator::Sa,
+			r5::codes::SearchComparator::Eb => SearchComparator::Eb,
+			r5::codes::SearchComparator::Ap => SearchComparator::Ap,
+		}
+	}
+}
+
+impl From<r4b::codes::SearchComparator> for SearchComparator {
+	fn from(value: r4b::codes::SearchComparator) -> Self {
+		match value {
+			r4b::codes::SearchComparator::Eq => SearchComparator::Eq,
+			r4b::codes::SearchComparator::Ne => SearchComparator::Ne,
+			r4b::codes::SearchComparator::Gt => SearchComparator::Gt,
+			r4b::codes::SearchComparator::Lt => SearchComparator::Lt,
+			r4b::codes::SearchComparator::Ge => SearchComparator::Ge,
+			r4b::codes::SearchComparator::Le => SearchComparator::Le,
+			r4b::codes::SearchComparator::Sa => SearchComparator::Sa,
+			r4b::codes::SearchComparator::Eb => SearchComparator::Eb,
+			r4b::codes::SearchComparator::Ap => SearchComparator::Ap,
+		}
+	}
+}
+
+impl From<stu3::codes::SearchComparator> for SearchComparator {
+	fn from(value: stu3::codes::SearchComparator) -> Self {
+		match value {
+			stu3::codes::SearchComparator::Eq => SearchComparator::Eq,
+			stu3::codes::SearchComparator::Ne => SearchComparator::Ne,
+			stu3::codes::SearchComparator::Gt => SearchComparator::Gt,
+			stu3::codes::SearchComparator::Lt => SearchComparator::Lt,
+			stu3::codes::SearchComparator::Ge => SearchComparator::Ge,
+			stu3::codes::SearchComparator::Le => SearchComparator::Le,
+			stu3::codes::SearchComparator::Sa => SearchComparator::Sa,
+			stu3::codes::SearchComparator::Eb => SearchComparator::Eb,
+			stu3::codes::SearchComparator::Ap => SearchComparator::Ap,
 		}
 	}
 }

@@ -2,6 +2,7 @@
 
 mod comments;
 mod gen_codes;
+mod gen_params;
 mod gen_traits;
 mod gen_types;
 
@@ -11,7 +12,10 @@ use anyhow::Result;
 use inflector::Inflector;
 use proc_macro2::{Ident, TokenStream};
 use quote::{format_ident, quote};
+use regex::Regex;
 
+use crate::model::params::SearchParam;
+use crate::model::SearchParamType;
 use crate::model::{codes::Code, structures::Type, CodeSystemContentMode, StructureDefinitionKind};
 
 /// Generate the Rust code for the FHIR codes.
@@ -51,6 +55,34 @@ pub fn generate_codes(mut codes: Vec<Code>) -> Result<(TokenStream, HashMap<Stri
 		#(#codes)*
 	};
 	Ok((gen_enum, generated_codes))
+}
+
+/// Generate the Rust code for all resource search parameter enums
+pub fn generate_search_params(
+	search_params: Vec<SearchParam>,
+	resources: Vec<Type>,
+) -> Result<TokenStream> {
+	// Set generation variables.
+	let module_doc = " Generated code! Take a look at the generator-crate for changing this file!";
+
+	let simple_expr_regex = Regex::new(r"^[[:alnum:]\.]+$").unwrap();
+
+	// Search params of type "special" and params without a FHIRPath expression are
+	// currently impossible to generate code for.
+	let search_params: Vec<SearchParam> = search_params
+		.into_iter()
+		.filter(|sp| sp.r#type != SearchParamType::Special)
+		.filter(|sp| simple_expr_regex.is_match(&sp.expression))
+		.collect();
+
+	let enums = gen_params::generate_search_param_enums(resources, search_params);
+
+	Ok(quote! {
+		#![doc = #module_doc]
+		#![allow(clippy::too_many_lines)]
+
+		#(#enums)*
+	})
 }
 
 /// Generate the Rust code for the FHIR types.
