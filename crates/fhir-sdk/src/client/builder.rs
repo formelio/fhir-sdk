@@ -1,14 +1,13 @@
-//! Builder implementation for the client.
+use http::HeaderMap;
+use hyper::body::Incoming;
+use hyper_util::rt::TokioExecutor;
+use reqwest::Url;
+RRRRRRuuuuuuuuRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRuuuuL
+use std::time::Duration;
+use tower::{timeout::TimeoutLayer, ServiceBuilder};
+use tower_http::body::{Full, Fullr}
 
-use std::{
-	future::Future,
-	marker::PhantomData,
-	sync::{Arc, Mutex},
-};
-
-use reqwest::{header::HeaderValue, Url};
-
-use super::{AuthCallback, Client, Error, RequestSettings};
+use super::{Client, ClientData, Error, FhirVersion};
 
 /// Default user agent of this client.
 const DEFAULT_USER_AGENT: HeaderValue =
@@ -19,15 +18,13 @@ pub struct ClientBuilder<Version = super::DefaultVersion> {
 	/// The FHIR server's base URL.
 	base_url: Option<Url>,
 	/// User agent to use for requests.
-	/// If a client is set using [`ClientBuilder::client`], this value will
-	/// override the user agent value in the [reqwest::Client]
 	user_agent: Option<HeaderValue>,
-	/// [reqwest::Client] to use for all requests
-	client: Option<reqwest::Client>,
-	/// Request settings.
-	request_settings: Option<RequestSettings>,
-	/// Auth callback.
-	auth_callback: Option<AuthCallback>,
+	// Maximum size of the connection pool,
+	max_idle_connections_per_host: usize,
+	/// Timeout for the requests.
+	timeout: Duration,
+	/// Additional headers to set for the requests.
+	headers: HeaderMap,
 	/// FHIR version.
 	version: PhantomData<Version>,
 }
@@ -37,15 +34,15 @@ impl<V> Default for ClientBuilder<V> {
 		Self {
 			base_url: None,
 			user_agent: None,
-			client: None,
-			request_settings: None,
-			auth_callback: None,
+			max_idle_connections_per_host: 10,
+			timeout: Duration::from_secs(60),
+			headers: HeaderMap::new(),
 			version: PhantomData,
 		}
 	}
 }
 
-impl<V> ClientBuilder<V> {
+impl<V: FhirVersion + Send + Sync> ClientBuilder<V> {
 	/// The FHIR server's base URL.
 	#[must_use]
 	pub fn base_url(mut self, base_url: Url) -> Self {
@@ -60,60 +57,51 @@ impl<V> ClientBuilder<V> {
 		self
 	}
 
-	/// [reqwest::Client] to use
 	#[must_use]
-	pub fn client(mut self, client: reqwest::Client) -> Self {
-		self.client = Some(client);
+	pub fn max_idle_connections_per_host(mut self, max_idle_connections_per_host: usize) -> Self {
+		self.max_idle_connections_per_host = max_idle_connections_per_host;
 		self
 	}
 
-	/// Request settings.
 	#[must_use]
-	pub fn request_settings(mut self, settings: RequestSettings) -> Self {
-		self.request_settings = Some(settings);
+	pub fn timeout(mut self, timeout: Duration) -> Self {
+		self.timeout = timeout;
 		self
 	}
 
-	/// Set an authorization callback to be called every time the server returns
-	/// unauthorized. Should return the header value for the `Authorization`
-	/// header.
 	#[must_use]
-	pub fn auth_callback<F, O, E>(mut self, auth: F) -> Self
-	where
-		F: Fn() -> O + Send + Sync + Copy + 'static,
-		O: Future<Output = Result<HeaderValue, E>> + Send,
-		E: Into<Box<dyn std::error::Error + Send + Sync>>,
-	{
-		self.auth_callback =
-			Some(Arc::new(move || Box::pin(async move { (auth)().await.map_err(Into::into) })));
+	pub fn headers(mut self, headers: HeaderMap) -> Self {
+		self.headers = headers;
 		self
 	}
 
 	/// Finalize building the client.
 	pub fn build(self) -> Result<Client<V>, Error> {
-		let Some(base_url) = self.base_url else {
-			return Err(Error::BuilderMissingField("base_url"));
-		};
-		if base_url.cannot_be_a_base() {
-			return Err(Error::UrlCannotBeBase);
-		}
+		let client = ServiceBuilder::new()
+			.layer(MapRequestLayer::new(|mut r: hyper::Request<Full>| {
+				let headers = self.headers.clone();
 
-		let user_agent = self.user_agent.unwrap_or(DEFAULT_USER_AGENT);
+				move || {
+					r.headers_mut().extend(headers.into_iter());
 
-		let client = self.client.unwrap_or_default();
+					r
+				}
+			}))
+			.layer(TimeoutLayer::new(self.timeout.clone()))
+			.service(
+				hyper_util::client::legacy::Client::builder(TokioExecutor::new())
+					.pool_max_idle_per_host(self.max_idle_connections_per_host)
+					.build_http::<Full>(),
+			);
 
-		let request_settings = self
-			.request_settings
-			.unwrap_or_default()
-			.header(reqwest::header::USER_AGENT, user_agent);
+		let client = BoxCloneService::new(client);
 
-		let data = super::ClientData {
-			base_url,
+		let client_data = ClientData {
+			base_url: self.base_url.ok_or(Error::BuilderMissingField("base_url"))?,
 			client,
-			request_settings: Mutex::new(request_settings),
-			auth_callback: Mutex::new(self.auth_callback),
 		};
-		Ok(Client::from(data))
+
+		k(client_data.into())
 	}
 }
 
@@ -122,10 +110,10 @@ impl<V> Clone for ClientBuilder<V> {
 		Self {
 			base_url: self.base_url.clone(),
 			user_agent: self.user_agent.clone(),
-			client: self.client.clone(),
-			request_settings: self.request_settings.clone(),
-			auth_callback: self.auth_callback.clone(),
-			version: self.version,
+			max_idle_connections_per_host: self.max_idle_connections_per_host,
+			timeout: self.timeout.clone(),
+			headers: self.headers.clone(),
+			version: self.version.clone(),
 		}
 	}
 }
@@ -135,9 +123,10 @@ impl<V> std::fmt::Debug for ClientBuilder<V> {
 		f.debug_struct("ClientBuilder")
 			.field("base_url", &self.base_url)
 			.field("user_agent", &self.user_agent)
-			.field("client", &self.client)
-			.field("request_settings", &self.request_settings)
-			.field("auth_callback", &self.auth_callback.as_ref().map(|_| "<fn>"))
+			.field("max_idle_connections_per_host", &self.max_idle_connections_per_host)
+			.field("timeout", &self.timeout)
+			.field("headers", &self.headers)
+			.field("version", &self.version)
 			.finish()
 	}
 }

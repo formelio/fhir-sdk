@@ -1,7 +1,5 @@
 //! Client errors.
 
-use std::sync::Arc;
-
 #[cfg(feature = "r4b")]
 use fhir_model::r4b;
 #[cfg(feature = "r5")]
@@ -12,7 +10,7 @@ use reqwest::StatusCode;
 use thiserror::Error;
 
 /// FHIR REST Client Error.
-#[derive(Debug, Clone, Error)]
+#[derive(Debug, Error)]
 pub enum Error {
 	/// Builder is missing a field to construct the client.
 	#[error("Builder is missing field `{0}` to construct the client")]
@@ -56,11 +54,15 @@ pub enum Error {
 
 	/// Serialization/Deserialization error.
 	#[error("JSON error: {0}")]
-	Json(Arc<serde_json::Error>),
+	Json(#[from] serde_json::Error),
+
+	/// HTTP request building
+	#[error("HTTO error: {0}")]
+	Http(#[from] http::Error),
 
 	/// HTTP Request error.
 	#[error("Request error: {0}")]
-	Request(Arc<reqwest::Error>),
+	Request(#[from] hyper::Error),
 
 	/// HTTP error response.
 	#[error("Got error response ({0}): {1}")]
@@ -100,28 +102,4 @@ pub enum Error {
 	/// Unexpected resource type.
 	#[error("Unexpected resource type {0}")]
 	UnexpectedResourceType(String),
-}
-
-impl From<serde_json::Error> for Error {
-	fn from(error: serde_json::Error) -> Self {
-		Self::Json(Arc::new(error))
-	}
-}
-
-impl From<reqwest::Error> for Error {
-	fn from(error: reqwest::Error) -> Self {
-		Self::Request(Arc::new(error))
-	}
-}
-
-impl Error {
-	/// Whether the error should likely be retried.
-	#[must_use]
-	pub fn should_retry(&self) -> bool {
-		tracing::debug!("Checking if error `{self}` should be retried");
-		match self {
-			Self::Request(err) => err.is_connect() || err.is_request() || err.is_timeout(),
-			_ => false,
-		}
-	}
 }

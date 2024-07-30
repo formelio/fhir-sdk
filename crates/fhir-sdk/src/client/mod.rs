@@ -16,17 +16,7 @@ mod search;
 pub mod stu3;
 mod write;
 
-use std::{
-	future::Future,
-	marker::PhantomData,
-	pin::Pin,
-	sync::{Arc, Mutex},
-};
-
-pub use reqwest::{
-	header::{self, HeaderMap, HeaderValue},
-	StatusCode, Url,
-};
+use std::{future::Future, marker::PhantomData, pin::Pin, sync::Arc};
 
 use self::response::FhirResponse;
 pub use self::{
@@ -39,6 +29,15 @@ pub use self::{
 	},
 	write::ResourceWrite,
 };
+use futures::FutureExt;
+use http::{header, Request, Response};
+use hyper::{body::Incoming, service::Service};
+pub use reqwest::{
+	header::{HeaderMap, HeaderValue},
+	StatusCode, Url,
+};
+use tower::{util::BoxCloneService, BoxError, Service as _};
+use tower_http::body::Full;
 
 /// Trait implemented by the FHIR version markers to provide some version specific
 /// constants
@@ -96,11 +95,7 @@ struct ClientData {
 	/// The FHIR server's base URL.
 	base_url: Url,
 	/// HTTP request client.
-	client: reqwest::Client,
-	/// Request settings.
-	request_settings: Mutex<RequestSettings>,
-	/// Authorization callback method, returning the authorization header value.
-	auth_callback: Mutex<Option<AuthCallback>>,
+	client: BoxCloneService<Request<Full>, Response<Incoming>, BoxError>,
 }
 
 impl<V> From<ClientData> for Client<V> {
@@ -120,28 +115,6 @@ impl<V: FhirVersion + Send + Sync> Client<V> {
 	pub fn new(base_url: Url) -> Result<Self, Error> {
 		let client = Self::builder().base_url(base_url).build()?;
 		Ok(client.convert_version())
-	}
-
-	/// Get the request settings configured in this client.
-	#[must_use]
-	pub fn request_settings(&self) -> RequestSettings {
-		#[allow(clippy::expect_used)] // only happens on panics, so we can panic again.
-		self.0.request_settings.lock().expect("mutex poisened").clone()
-	}
-
-	/// Set the request settings for this client.
-	pub fn set_request_settings(&self, settings: RequestSettings) {
-		tracing::debug!("Setting new request settings");
-		#[allow(clippy::expect_used)] // only happens on panics, so we can panic again.
-		let mut request_settings = self.0.request_settings.lock().expect("mutex poisened");
-		*request_settings = settings;
-	}
-
-	/// Get the auth callback configured in this client.
-	#[must_use]
-	pub fn auth_callback(&self) -> Option<AuthCallback> {
-		#[allow(clippy::expect_used)] // only happens on panics, so we can panic again.
-		self.0.auth_callback.lock().expect("mutex poisened").clone()
 	}
 
 	/// Convert to a different version.
@@ -170,34 +143,8 @@ impl<V: FhirVersion + Send + Sync> Client<V> {
 	/// Run a request using the internal request settings, calling the auth
 	/// callback to retrieve a new Authorization header on `unauthtorized`
 	/// responses.
-	async fn run_request(
-		&self,
-		request: reqwest::RequestBuilder,
-	) -> Result<FhirResponse<V>, Error> {
-		// Try running the request
-		let mut request_settings = self.request_settings();
-		let response = request_settings
-			.make_request(request.try_clone().ok_or(Error::RequestNotClone)?)
-			.await?;
-
-		let base_url = self.0.base_url.clone();
-
-		// On authorization failure, retry after refreshing the authorization header.
-		if response.status() == StatusCode::UNAUTHORIZED {
-			if let Some(auth_callback) = self.auth_callback() {
-				tracing::info!("Hit unauthorized response, calling auth_callback");
-				let auth_value = (auth_callback)()
-					.await
-					.map_err(|err| Error::AuthCallback(format!("{err:#}")))?;
-				request_settings = request_settings.header(header::AUTHORIZATION, auth_value);
-				self.set_request_settings(request_settings.clone());
-				let response = request_settings.make_request(request).await?;
-
-				return Ok(FhirResponse::new(base_url, response));
-			}
-		}
-
-		Ok(FhirResponse::new(base_url, response))
+	async fn run_request(&self, request: Request<Full>) -> Result<FhirResponse<V>, Error> {
+		self.call(request).await
 	}
 
 	/// Send a HTTP GET to a generic URL. `url` has to be on the same origin as this
@@ -208,9 +155,11 @@ impl<V: FhirVersion + Send + Sync> Client<V> {
 			return Err(Error::DifferentOrigin(url.to_string()));
 		}
 
-		let request = self.0.client.get(url).header(header::ACCEPT, V::JSON_MIME_TYPE);
+		let req = Request::get(url.to_string())
+			.header(header::ACCEPT, V::JSON_MIME_TYPE)
+			.body(Full::default())?;
 
-		self.run_request(request).await
+		self.run_request(req).await
 	}
 
 	/// Get the URL with the configured base URL and the given path segments.
@@ -230,22 +179,27 @@ impl<V> Clone for Client<V> {
 
 impl std::fmt::Debug for ClientData {
 	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-		let auth_callback = match self.auth_callback.try_lock() {
-			Ok(inside) => {
-				if inside.is_some() {
-					"Some(<fn>)"
-				} else {
-					"None"
-				}
-			}
-			Err(_) => "<blocked>",
-		};
-
 		f.debug_struct("ClientData")
 			.field("base_url", &self.base_url)
 			.field("client", &self.client)
-			.field("request_settings", &self.request_settings)
-			.field("auth_callback", &auth_callback)
 			.finish()
+	}
+}
+
+impl<V> Service<Request<Full>> for Client<V> {
+	type Response = FhirResponse<V>;
+	type Error = Error;
+	type Future = Pin<Box<dyn Future<Output = Result<Self::Response, Self::Error>>>>;
+
+	fn call(&self, req: Request<Full>) -> Self::Future {
+		let base_url = self.0.base_url.clone();
+		let mut client = self.0.client.clone();
+		let res = async move {
+			let resp = client.call(req).await?;
+
+			Ok(FhirResponse::new(base_url, resp))
+		};
+
+		res.boxed()
 	}
 }
