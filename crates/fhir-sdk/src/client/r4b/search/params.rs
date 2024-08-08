@@ -177,22 +177,22 @@ pub enum TokenParam<'a> {
 
 impl<'a> TokenParam<'a> {
 	/// Token param for a code within a specific system
-	pub fn code_in_system(system: &'a str, code: &'a str) -> Self {
+	pub const fn code_in_system(system: &'a str, code: &'a str) -> Self {
 		Self::CodeInSystem { system, code, not: false }
 	}
 
 	/// Token param for any code within the given system
-	pub fn in_system(system: &'a str) -> Self {
+	pub const fn in_system(system: &'a str) -> Self {
 		Self::InSystem { system, not: false }
 	}
 
 	/// Token param for a specific code without specifying system
-	pub fn code(code: &'a str) -> Self {
+	pub const fn code(code: &'a str) -> Self {
 		Self::CodeInAnySystem { code, not: false }
 	}
 
 	/// Match a specific code that does not have a system
-	pub fn code_without_system(code: &'a str) -> Self {
+	pub const fn code_without_system(code: &'a str) -> Self {
 		Self::CodeWithoutSystem { code, not: false }
 	}
 }
