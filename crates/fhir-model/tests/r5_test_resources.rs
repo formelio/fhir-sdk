@@ -165,8 +165,8 @@ fn identifier_search() {
 		.build()
 		.unwrap();
 
-	assert_eq!(patient.identifier_with_system("system1").map(String::as_str), Some("bla1"));
-	assert_eq!(patient.identifier_with_type("system2", "code2").map(String::as_str), Some("bla2"));
+	assert_eq!(patient.identifier_with_system("system1"), Some("bla1"));
+	assert_eq!(patient.identifier_with_type("system2", "code2"), Some("bla2"));
 }
 
 #[test]
