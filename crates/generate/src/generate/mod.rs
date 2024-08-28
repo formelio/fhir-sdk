@@ -81,7 +81,7 @@ pub fn generate_types(
 		use super::super::codes;
 		use super::super::resources::*;
 		#[allow(unused_imports)] // Integer64 is unused in R4B.
-		use crate::{Base64Binary, Date, DateTime, Instant, Time, Integer64};
+		use crate::{Base64Binary, Date, DateTime, Decimal, Instant, Time, Integer64};
 
 		#(#types)*
 
@@ -154,7 +154,7 @@ pub fn generate_resources(
 		use super::super::codes;
 		use super::super::types::*;
 		#[allow(unused_imports)] // Integer64 is unused in R4B.
-		use crate::{Base64Binary, Date, DateTime, Instant, Time, Integer64};
+		use crate::{Base64Binary, Date, DateTime, Decimal, Instant, Time, Integer64};
 		use crate::error::UnknownResourceType;
 
 		#(#resource_defs)*
@@ -305,7 +305,7 @@ fn map_type(ty: &str) -> Ident {
 	match ty {
 		"boolean" => format_ident!("bool"),
 		"id" | "string" | "code" | "markdown" | "xhtml" => format_ident!("String"),
-		"decimal" => format_ident!("f64"), // Doesn't preserve precision :/
+		"decimal" => format_ident!("Decimal"),
 		"unsignedInt" => format_ident!("u32"),
 		"positiveInt" => format_ident!("NonZeroU32"),
 		"integer" => format_ident!("i32"),

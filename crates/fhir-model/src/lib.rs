@@ -18,11 +18,14 @@ use std::ops::{Deref, DerefMut};
 use std::str::FromStr;
 
 use base64::prelude::{Engine, BASE64_STANDARD};
+use bigdecimal::BigDecimal;
 use serde::{Deserialize, Serialize};
+use serde_json::value::RawValue;
 
 use crate::error::UnknownResourceType;
 
 pub use self::date_time::*;
+pub use bigdecimal;
 pub use time;
 
 /// Parsed parts of a FHIR reference. Can be one of local reference, relative
@@ -282,6 +285,21 @@ impl<'de> Deserialize<'de> for Base64Binary {
 	}
 }
 
+/// Wrapper around [BigDecimal] that always serializes
+/// the decimal as a JSON number.
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Deserialize, Hash, Default)]
+#[serde(transparent)]
+pub struct Decimal(BigDecimal);
+
+impl Serialize for Decimal {
+	fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
+	where
+		S: serde::Serializer,
+	{
+		RawValue::from_string(self.to_string()).unwrap().serialize(s)
+	}
+}
+
 /// Deref and From implementations for wrappers.
 macro_rules! wrapper_impls {
 	($wrapper:ident, $inner_type:ty) => {
@@ -317,3 +335,4 @@ wrapper_impls!(Integer64, i64);
 wrapper_impls!(Base64Binary, Vec<u8>);
 wrapper_impls!(Time, time::Time);
 wrapper_impls!(Instant, time::OffsetDateTime);
+wrapper_impls!(Decimal, BigDecimal);
