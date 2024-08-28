@@ -39,6 +39,8 @@ This is a [FHIR](https://www.hl7.org/fhir/) library in its early stages. The mod
 ## Example
 
 ```rust
+#![recursion_limit = "1024"]
+
 use fhir_sdk::r5::resources::Patient;
 use fhir_sdk::client::{*, r5::search::*};
 use fhir_sdk::TryStreamExt;
@@ -63,13 +65,9 @@ async fn main() -> Result<(), Error> {
     // Search for all patient with `active` = false, including pagination.
     let patients: Vec<Patient> = client
         .search()
-        .with(TokenParam::Standard {
-            name: "active",
-            system: None,
-            code: Some("false"),
-            not: false,
-        })
+        .with("active", TokenParam::code("false"))
         .send()
+        .await?
         .try_collect()
         .await?;
 
@@ -95,6 +93,8 @@ If you need sudo to run docker, use the `--sudo` or just `-s` flag on `cargo xta
 ### Authentication callback
 
 ```rust
+#![recursion_limit = "1024"]
+
 use fhir_sdk::r5::resources::Patient;
 use fhir_sdk::client::*;
 
@@ -123,6 +123,8 @@ async fn main() -> Result<(), Error> {
 ### Resource identifier access
 
 ```rust
+#![recursion_limit = "1024"]
+
 use fhir_sdk::r5::{
     codes::AdministrativeGender,
     resources::{IdentifiableResource, Patient},
@@ -147,7 +149,7 @@ async fn main() {
         .unwrap();
 
     // Check the identifier value.
-    assert_eq!(patient.identifier_with_system("MySystem").map(String::as_str), Some("ID"));
+    assert_eq!(patient.identifier_with_system("MySystem"), Some("ID"));
 }
 ```
 
