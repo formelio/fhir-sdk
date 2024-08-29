@@ -86,7 +86,7 @@ pub fn generate_types(
 		#(#types)*
 
 		/// Extension of a field.
-		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+		#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 		#[cfg_attr(feature = "builders", derive(Builder))]
 		#[serde(rename_all = "camelCase")]
 		#[cfg_attr(feature = "builders", builder(
@@ -160,7 +160,7 @@ pub fn generate_resources(
 		#(#resource_defs)*
 
 		/// Generic resource holding any FHIR resources.
-		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+		#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 		#[serde(tag = "resourceType")]
 		pub enum Resource {
 			#(
@@ -170,7 +170,7 @@ pub fn generate_resources(
 		}
 
 		/// Resource type field of the FHIR resources.
-		#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+		#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 		pub enum ResourceType {
 			#(
 				#[doc = stringify!(#resource_names)]

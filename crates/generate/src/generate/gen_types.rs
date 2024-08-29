@@ -73,12 +73,12 @@ pub fn generate_type_struct(
 
 	Ok(quote! {
 		#[doc = #doc_comment]
-		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+		#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 		#[serde(transparent)]
 		pub struct #ident(pub Box<#ident_inner>);
 
 		#[doc = #doc_comment]
-		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+		#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 		#[cfg_attr(feature = "builders", derive(Builder))]
 		#[serde(rename_all = "camelCase")]
 		#[cfg_attr(feature = "builders", builder(
@@ -370,143 +370,34 @@ fn generate_choice_field(
 		doc_comment.push(' ');
 	}
 
-	// If there are more than one possible target resource types, we define an enum
-	// Otherwise, we refer directly to the resource
-	let (target_type, target_defs) = if field.reference_target_resource_types.len() > 1 {
-		let target_type = format_ident!(
-			"{type_ident}{}ReferenceTarget",
-			field.name.replace("[x]", "").to_pascal_case()
-		);
+	let field_name = field.name.replace("[x]", "");
 
-		let enum_doc =
-			format!(" Target resources for the {} reference field in {type_ident}", field.name);
+	let enum_type = format_ident!("{type_ident}{}", field_name.to_pascal_case());
+	let enum_doc = format!(" Choice of types for the {} field in {type_ident}", field_name);
 
-		let variants = field.reference_target_resource_types.iter().map(|ty| {
-			let variant_type = format_ident!("{}", ty.to_pascal_case());
-			let variant_doc = format!(" Variant for {ty} target resources");
+	let (reference_struct_ident, reference_types) =
+		if !field.reference_target_resource_types.is_empty() {
+			let (ident, types) = generate_reference_types(
+				&type_ident,
+				&field_name,
+				&field.reference_target_resource_types,
+			);
 
-			quote! {
-				#[doc = #variant_doc]
-				#variant_type(#variant_type),
-			}
-		});
-
-		let match_arms = field.reference_target_resource_types.iter().map(|resource_type| {
-			let rt = format_ident!("{}", resource_type.to_pascal_case());
-
-			quote! {
-				Resource::#rt(r) => Ok(#target_type::#rt(r)),
-			}
-		});
-
-		let from_impls = field.reference_target_resource_types.iter().map(|resource_type| {
-			let rt = format_ident!("{}", resource_type.to_pascal_case());
-
-			quote! {
-				impl From<#rt> for #target_type {
-					fn from(resource: #rt) -> #target_type {
-						#target_type::#rt(resource)
-					}
-				}
-			}
-		});
-
-		let target_defs = quote! {
-			#[doc = #enum_doc]
-			#[derive(Debug, Clone, PartialEq)]
-			pub enum #target_type {
-				#(#variants)*
-			}
-
-			impl TryFrom<Resource> for #target_type {
-				type Error = WrongResourceType;
-
-				fn try_from(resource: Resource) -> Result<Self, Self::Error> {
-					match resource {
-						#(#match_arms)*
-						_ => Err(WrongResourceType),
-					}
-				}
-			}
-
-			#(#from_impls)*
+			(Some(ident), Some(types))
+		} else {
+			(None, None)
 		};
-
-		(Some(target_type), Some(target_defs))
-	} else if !field.reference_target_resource_types.is_empty() {
-		let resource_type = field.reference_target_resource_types.first().unwrap();
-		let target_type = format_ident!("{}", resource_type.to_pascal_case());
-
-		(Some(target_type), None)
-	} else {
-		(None, None)
-	};
-
-	let struct_type =
-		format_ident!("{type_ident}{}Reference", field.name.replace("[x]", "").to_pascal_case());
-
-	let struct_doc = format!(" Reference wrapper type of the {} field in {type_ident}", field.name);
-
-	let reference_struct = match target_type {
-		Some(target_type) => {
-			quote! {
-				#[doc = #struct_doc]
-				#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-				pub struct #struct_type {
-					#[doc = r" The resource that is being referred to. When doing searches, the client will fill this field if possible."]
-					#[serde(skip)]
-					pub target: Option<Box<#target_type>>,
-
-					#[doc = r" The FHIR Reference field"]
-					#[serde(flatten)]
-					pub reference: Reference,
-				}
-
-				impl From<Reference> for #struct_type {
-					fn from(reference: Reference) -> Self {
-						Self {
-							target: None,
-							reference,
-						}
-					}
-				}
-
-				impl ReferenceField for #struct_type {
-					fn set_target(&mut self, target: Resource) -> Result<(), WrongResourceType> {
-						self.target = Some(Box::new(target.try_into()?));
-
-						Ok(())
-					}
-
-					fn reference(&self) -> &Reference {
-						&self.reference
-					}
-
-					fn reference_mut(&mut self) -> &mut Reference {
-						&mut self.reference
-					}
-				}
-
-				#target_defs
-			}
-		}
-		None => {
-			quote! {}
-		}
-	};
-
-	let enum_type = format_ident!("{type_ident}{}", field.name.replace("[x]", "").to_pascal_case());
-	let enum_doc = format!(" Choice of types for the {} field in {type_ident}", field.name);
 
 	let variants = field.types.iter().map(|ty| {
 		let variant_ident = format_ident!("{}", ty.to_pascal_case());
-		let variant_type = if ty == "Reference" { struct_type.clone() } else { map_type(ty) };
+		let variant_type =
+			if ty == "Reference" { reference_struct_ident.clone().unwrap() } else { map_type(ty) };
 		let variant_doc = format!(" Variant accepting the {variant_ident} type.");
-		let rename = field.name.replace("[x]", &variant_ident.to_string());
+		let variant_field_name = format!("{field_name}{}", &variant_ident.to_string());
 
 		quote! {
 			#[doc = #variant_doc]
-			#[serde(rename = #rename)]
+			#[serde(rename = #variant_field_name)]
 			#variant_ident(#variant_type),
 		}
 	});
@@ -525,24 +416,25 @@ fn generate_choice_field(
 		}
 	});
 
-	let choice_enum = quote! {
-	#reference_struct
-
+	let choice_types = quote! {
 		#[doc = #enum_doc]
-		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+		#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 		#[serde(rename_all = "camelCase")]
 		pub enum #enum_type {
 			#(#variants)*
 		}
 
 		#[doc = #extension_doc]
-		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+		#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 		#[serde(rename_all = "camelCase")]
 		pub enum #extension_type {
 			#(#extension_variants)*
 		}
+
+		#reference_types
 	};
-	(doc_comment, (quote!(#enum_type), extension_type), choice_enum)
+
+	(doc_comment, (quote!(#enum_type), extension_type), choice_types)
 }
 
 /// Generate field information and sub-structs for a object field.
@@ -581,7 +473,7 @@ fn generate_object_field(
 	let object_struct_builder_name = object_struct_builder.to_string();
 	let object_struct = quote! {
 		#[doc = #struct_doc]
-		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+		#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 		#[cfg_attr(feature = "builders", derive(Builder))]
 		#[serde(rename_all = "camelCase")]
 		#[cfg_attr(feature = "builders", builder(pattern = "owned", name = #object_struct_builder_name, build_fn(error = "crate::error::BuilderError")))]
@@ -625,16 +517,39 @@ fn generate_reference_field(
 		doc_comment.push(' ');
 	}
 
+	let struct_type = format_ident!("{type_ident}{}Reference", field.name.to_pascal_case());
+
+	let (_, reference_types) =
+		generate_reference_types(&type_ident, &field.name, &field.target_resource_types);
+
+	(doc_comment, (quote!(#struct_type), format_ident!("FieldExtension")), reference_types)
+}
+
+pub fn generate_reference_types(
+	parent_ident: &Ident,
+	parent_field_name: &str,
+	target_types: &[String],
+) -> (Ident, TokenStream) {
+	let struct_type =
+		format_ident!("{parent_ident}{}Reference", parent_field_name.to_pascal_case());
+
+	let struct_doc =
+		format!(" Reference wrapper type of the {} field in {parent_ident}", parent_field_name);
+
 	// If there are more than one possible target resource types, we define an enum
 	// Otherwise, we refer directly to the resource
-	let (target_type, target_defs) = if field.target_resource_types.len() > 1 {
-		let target_type =
-			format_ident!("{type_ident}{}ReferenceTarget", field.name.to_pascal_case());
+	let (target_type, target_defs) = if target_types.len() > 1 {
+		let target_type = format_ident!(
+			"{parent_ident}{}ReferenceTarget",
+			parent_field_name.replace("[x]", "").to_pascal_case()
+		);
 
-		let enum_doc =
-			format!(" Target resources for the {} reference field in {type_ident}", field.name);
+		let enum_doc = format!(
+			" Target resources for the {} reference field in {parent_ident}",
+			parent_field_name
+		);
 
-		let variants = field.target_resource_types.iter().map(|ty| {
+		let variants = target_types.iter().map(|ty| {
 			let variant_type = format_ident!("{}", ty.to_pascal_case());
 			let variant_doc = format!(" Variant for {ty} target resources");
 
@@ -644,7 +559,7 @@ fn generate_reference_field(
 			}
 		});
 
-		let match_arms = field.target_resource_types.iter().map(|resource_type| {
+		let match_arms = target_types.iter().map(|resource_type| {
 			let rt = format_ident!("{}", resource_type.to_pascal_case());
 
 			quote! {
@@ -652,7 +567,7 @@ fn generate_reference_field(
 			}
 		});
 
-		let from_impls = field.target_resource_types.iter().map(|resource_type| {
+		let from_impls = target_types.iter().map(|resource_type| {
 			let rt = format_ident!("{}", resource_type.to_pascal_case());
 
 			quote! {
@@ -666,7 +581,7 @@ fn generate_reference_field(
 
 		let target_defs = quote! {
 			#[doc = #enum_doc]
-			#[derive(Debug, Clone, PartialEq)]
+			#[derive(Debug, Clone, PartialEq, Eq)]
 			pub enum #target_type {
 				#(#variants)*
 			}
@@ -685,21 +600,17 @@ fn generate_reference_field(
 			#(#from_impls)*
 		};
 
-		(target_type, Some(target_defs))
+		(Some(target_type), Some(target_defs))
 	} else {
-		let resource_type = field.target_resource_types.first().unwrap();
+		let resource_type = target_types.first().unwrap();
 		let target_type = format_ident!("{}", resource_type.to_pascal_case());
 
-		(target_type, None)
+		(Some(target_type), None)
 	};
 
-	let struct_type = format_ident!("{type_ident}{}Reference", field.name.to_pascal_case());
-
-	let struct_doc = format!(" Reference wrapper type of the {} field in {type_ident}", field.name);
-
-	let reference_struct = quote! {
+	let types = quote! {
 		#[doc = #struct_doc]
-		#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+		#[derive(Debug, Clone, Serialize, Deserialize)]
 		pub struct #struct_type {
 			#[doc = r" The resource that is being referred to. When doing searches, the client will fill this field if possible."]
 			#[serde(skip)]
@@ -709,6 +620,14 @@ fn generate_reference_field(
 			#[serde(flatten)]
 			pub reference: Reference,
 		}
+
+		impl PartialEq for #struct_type {
+			fn eq(&self, other: &Self) -> bool {
+				self.reference == other.reference
+			}
+		}
+
+		impl Eq for #struct_type {}
 
 		impl From<Reference> for #struct_type {
 			fn from(reference: Reference) -> Self {
@@ -738,7 +657,7 @@ fn generate_reference_field(
 		#target_defs
 	};
 
-	(doc_comment, (quote!(#struct_type), format_ident!("FieldExtension")), reference_struct)
+	(struct_type, types)
 }
 
 /// Construct the type of a field.
