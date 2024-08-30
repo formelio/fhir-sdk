@@ -12,8 +12,10 @@ pub struct Code {
 	/// Description.
 	pub description: Option<String>,
 	/// Status of the definition.
+	#[allow(unused)]
 	pub status: PublicationStatus,
 	/// Whether it is experimental.
+	#[allow(unused)]
 	pub experimental: bool,
 	/// Whether the codes are case sensitive.
 	pub case_sensitive: bool,

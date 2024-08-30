@@ -22,10 +22,13 @@ pub struct Type {
 	/// Base definition.
 	pub base: Option<String>,
 	/// Status of the definition.
+	#[allow(unused)]
 	pub status: PublicationStatus,
 	/// Whether it is experimental.
+	#[allow(unused)]
 	pub experimental: bool,
 	/// Type of this type.
+	#[allow(unused)]
 	pub r#type: String,
 	/// Elements.
 	pub elements: ObjectField,
@@ -144,15 +147,19 @@ pub struct ObjectField {
 	/// Whether this is a base type field.
 	pub is_base_field: bool,
 	/// Base type.
+	#[allow(unused)]
 	pub r#type: Option<String>,
 	/// Type name of this object.
+	#[allow(unused)]
 	pub type_name: Option<String>,
 	/// Content reference to re-use a type definition from somewhere else in
 	/// this type.
 	pub content_reference: Option<String>,
 	/// Whether this field is a modifier field.
+	#[allow(unused)]
 	pub is_modifier: bool,
 	/// Whether this field is part of the summary.
+	#[allow(unused)]
 	pub is_summary: bool,
 
 	/// Sub-fields.
@@ -257,8 +264,10 @@ pub struct CodeField {
 	/// ValueSet URL of the code.
 	pub code_url: Option<String>,
 	/// Whether this field is a modifier field.
+	#[allow(unused)]
 	pub is_modifier: bool,
 	/// Whether this field is part of the summary.
+	#[allow(unused)]
 	pub is_summary: bool,
 }
 
@@ -282,8 +291,10 @@ pub struct ChoiceField {
 	/// Name of the possible types.
 	pub types: Vec<String>,
 	/// Whether this field is a modifier field.
+	#[allow(unused)]
 	pub is_modifier: bool,
 	/// Whether this field is part of the summary.
+	#[allow(unused)]
 	pub is_summary: bool,
 	/// Possible target resource types
 	pub reference_target_resource_types: Vec<String>,
@@ -309,7 +320,9 @@ pub struct ReferenceField {
 	/// Possible target resource types
 	pub target_resource_types: Vec<String>,
 	/// Whether this field is a modifier field.
+	#[allow(unused)]
 	pub is_modifier: bool,
 	/// Whether this field is part of the summary.
+	#[allow(unused)]
 	pub is_summary: bool,
 }
