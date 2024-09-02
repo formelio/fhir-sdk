@@ -120,7 +120,7 @@ impl<'a> ParsedReference<'a> {
 		};
 
 		// Check if the resource type segment is actually a resource type
-		R::from_str(&parsed.1).is_ok().then(|| parsed)
+		R::from_str(parsed.1).is_ok().then_some(parsed)
 	}
 
 	/// Get the resource type that this reference points to as string reference.
@@ -180,7 +180,7 @@ impl<'a> ParsedReference<'a> {
 	/// references and turns relative references into absolute ones.
 	///
 	/// Panics for local references
-	pub fn with_base_url(self, mut base_url: &'a str) -> Self {
+	#[must_use] pub fn with_base_url(self, mut base_url: &'a str) -> Self {
 		if base_url.ends_with('/') {
 			base_url = base_url.strip_suffix('/').unwrap();
 		}

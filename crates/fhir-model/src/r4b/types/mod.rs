@@ -104,7 +104,7 @@ impl From<ParsedReference<'_>> for Reference {
 			extension: Vec::new(),
 			reference: Some(parsed.to_string()),
 			reference_ext: None,
-			r#type: parsed.resource_type().map(|rt| rt.to_string()),
+			r#type: parsed.resource_type().map(ToString::to_string),
 			r#type_ext: None,
 			identifier: None,
 			identifier_ext: None,

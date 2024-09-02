@@ -378,7 +378,7 @@ fn generate_choice_field(
 	let (reference_struct_ident, reference_types) =
 		if !field.reference_target_resource_types.is_empty() {
 			let (ident, types) = generate_reference_types(
-				&type_ident,
+				type_ident,
 				&field_name,
 				&field.reference_target_resource_types,
 			);
@@ -520,7 +520,7 @@ fn generate_reference_field(
 	let struct_type = format_ident!("{type_ident}{}Reference", field.name.to_pascal_case());
 
 	let (_, reference_types) =
-		generate_reference_types(&type_ident, &field.name, &field.target_resource_types);
+		generate_reference_types(type_ident, &field.name, &field.target_resource_types);
 
 	(doc_comment, (quote!(#struct_type), format_ident!("FieldExtension")), reference_types)
 }

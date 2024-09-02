@@ -23,7 +23,7 @@ impl Bundle {
 	///    `base_url` parameter as the root for relative references.
 	///
 	/// Conditional references and external reference resolution are unsupported
-	pub fn resolve_reference(
+	#[must_use] pub fn resolve_reference(
 		&self,
 		base_url: &str,
 		reference: &ParsedReference,
@@ -93,7 +93,7 @@ mod tests {
 		let reference = Reference::builder().reference(patient_urn.to_string()).build().unwrap();
 
 		let patient = Patient::builder().build().unwrap();
-		let bundle = test_bundle(&[(&patient_urn, &patient)]);
+		let bundle = test_bundle(&[(patient_urn, &patient)]);
 
 		assert_eq!(
 			bundle.resolve_reference(BASE_URL, &reference.parse().unwrap()),
@@ -257,7 +257,7 @@ mod tests {
 
 	#[test]
 	fn resolve_reference_relative_resolves() {
-		let patient_relative_url = format!("Patient/123");
+		let patient_relative_url = "Patient/123".to_string();
 		let patient_url = format!("{BASE_URL}/{patient_relative_url}");
 
 		let patient = Patient::builder().build().unwrap();
@@ -284,10 +284,10 @@ mod tests {
 
 	#[test]
 	fn resolve_reference_relative_resolves_versioned() {
-		let patient1_relative_url = format!("Patient/123/_history/1");
+		let patient1_relative_url = "Patient/123/_history/1".to_string();
 		let patient1_url = format!("{BASE_URL}/{patient1_relative_url}");
 
-		let patient2_relative_url = format!("Patient/123/_history/2");
+		let patient2_relative_url = "Patient/123/_history/2".to_string();
 		let patient2_url = format!("{BASE_URL}/{patient2_relative_url}");
 
 		let patient1 = Patient::builder()

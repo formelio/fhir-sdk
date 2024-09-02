@@ -244,14 +244,14 @@ impl PartialOrd for DateTime {
 impl Ord for DateTime {
 	fn cmp(&self, other: &Self) -> Ordering {
 		match (self, other) {
-			(DateTime::Date(ld), DateTime::Date(rd)) => ld.cmp(&rd),
+			(DateTime::Date(ld), DateTime::Date(rd)) => ld.cmp(rd),
 			(DateTime::Date(ld), DateTime::DateTime(Instant(rdtm))) => {
 				ld.partial_cmp(&rdtm.date()).unwrap()
 			}
 			(DateTime::DateTime(Instant(ldtm)), DateTime::Date(rd)) => {
 				ldtm.date().partial_cmp(rd).unwrap()
 			}
-			(DateTime::DateTime(ldtm), DateTime::DateTime(rdtm)) => ldtm.cmp(&rdtm),
+			(DateTime::DateTime(ldtm), DateTime::DateTime(rdtm)) => ldtm.cmp(rdtm),
 		}
 	}
 }

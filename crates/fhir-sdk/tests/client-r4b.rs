@@ -51,7 +51,7 @@ fn ensure_batch_succeeded(bundle: Bundle) {
 		.filter_map(|resource| <&OperationOutcome>::try_from(resource).ok())
 		.flat_map(|outcome| outcome.issue.iter().flatten())
 		.filter(|issue| matches!(issue.severity, IssueSeverity::Error | IssueSeverity::Fatal))
-		.flat_map(|issue| issue.diagnostics.as_ref())
+		.filter_map(|issue| issue.diagnostics.as_ref())
 		.collect();
 
 	assert!(batch_errors.is_empty(), "batch failed, diagnostics {:#?}", batch_errors);
