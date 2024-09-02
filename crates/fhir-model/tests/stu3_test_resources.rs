@@ -13,7 +13,7 @@ use fhir_model::{
 			Account, AccountCoverage, AccountCoverageCoverageReference, AccountOwnerReference,
 			AccountSubjectReference, Basic, Coverage, IdentifiableResource, NamedResource,
 			Organization, Patient, RequestGroup, RequestGroupAction, RequestGroupActionTiming,
-			Resource, StructureDefinition, TypedResource, WrongResourceType,
+			Resource, StructureDefinition, WrongResourceType,
 		},
 		types::{CodeableConcept, Coding, FieldExtension, Identifier, Reference},
 		LookupReferences, ReferenceField,

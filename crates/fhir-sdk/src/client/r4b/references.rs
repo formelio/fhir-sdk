@@ -1,4 +1,4 @@
-use fhir_model::r4b::resources::{Bundle, DomainResource, Resource, TypedResource};
+use fhir_model::r4b::resources::{Bundle, DomainResource, Resource, };
 use fhir_model::ParsedReference;
 use reqwest::Url;
 

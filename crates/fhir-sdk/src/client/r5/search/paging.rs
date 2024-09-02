@@ -4,7 +4,7 @@ use std::{collections::VecDeque, pin::Pin, task::Poll};
 
 use fhir_model::r5::{
 	codes::{BundleType, SearchEntryMode},
-	resources::{Bundle, BundleEntry, DomainResource, NamedResource, Resource, TypedResource},
+	resources::{Bundle, BundleEntry, DomainResource, NamedResource, Resource, },
 };
 use futures::{future::BoxFuture, ready, Future, FutureExt, Stream, StreamExt};
 use reqwest::Url;

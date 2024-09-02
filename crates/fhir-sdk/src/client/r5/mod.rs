@@ -12,7 +12,7 @@ use fhir_model::{
 		resources::{
 			BaseResource, Bundle, CapabilityStatement, NamedResource, Parameters,
 			ParametersParameter, ParametersParameterValue, Patient, Resource, ResourceType,
-			SubscriptionStatus, TypedResource,
+			SubscriptionStatus, 
 		},
 		types::Reference,
 	},

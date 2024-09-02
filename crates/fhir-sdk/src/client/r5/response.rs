@@ -1,4 +1,4 @@
-use fhir_model::r5::resources::{OperationOutcome, Resource, TypedResource};
+use fhir_model::r5::resources::{OperationOutcome, Resource, };
 use reqwest::Url;
 
 use crate::client::response::FhirResponse;

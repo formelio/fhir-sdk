@@ -138,7 +138,6 @@ pub fn generate_resources(
 	let base_resource_impls = gen_traits::generate_base_resource(&resources, implemented_codes)?;
 	let domain_resource_impls =
 		gen_traits::generate_domain_resource(&resources, implemented_codes)?;
-	let typed_resource_impls = gen_traits::generate_typed_resource(&resources)?;
 	let named_resource_impls = gen_traits::generate_named_resource(&resources)?;
 
 	// Generate the code.
@@ -167,6 +166,19 @@ pub fn generate_resources(
 				#[doc = stringify!(#resource_names)]
 				#resource_names(#resource_names),
 			)*
+		}
+
+		impl Resource {
+			/// Return the resource's type
+			#[must_use]
+			#[inline]
+			pub fn resource_type(&self) -> ResourceType {
+				match self {
+					#(
+						Self::#resource_names(_) => #resource_names::resource_type(),
+					)*
+				}
+			}
 		}
 
 		/// Resource type field of the FHIR resources.
@@ -218,7 +230,6 @@ pub fn generate_resources(
 
 		#base_resource_impls
 		#domain_resource_impls
-		#typed_resource_impls
 		#named_resource_impls
 	})
 }
