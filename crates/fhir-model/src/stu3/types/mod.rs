@@ -99,7 +99,18 @@ impl Reference {
 
 impl From<ParsedReference<'_>> for Reference {
 	fn from(parsed: ParsedReference<'_>) -> Self {
-		Self::builder().reference(parsed.to_string()).build().unwrap()
+		let reference = ReferenceInner {
+			id: None,
+			extension: Vec::new(),
+			reference: Some(parsed.to_string()),
+			reference_ext: None,
+			identifier: None,
+			identifier_ext: None,
+			display: None,
+			display_ext: None,
+		};
+
+		reference.into()
 	}
 }
 
