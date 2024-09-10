@@ -460,6 +460,7 @@ impl<'a> IncludeParam<'a> {
 		self
 	}
 
+	/// Set the target resource type
 	pub fn with_target_type(mut self, target_type: ResourceType) -> Self {
 		self.target_type = Some(target_type);
 		self
