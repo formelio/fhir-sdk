@@ -4,5 +4,6 @@
 		"r4b",
 		"r5",
 		"client"
-	]
+	],
+	"rust-analyzer.cargo.targetDir": true
 }
