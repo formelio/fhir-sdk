@@ -1,9 +1,12 @@
 //! FHIR Time, Date, DateTime and Instant types.
 
-use std::{cmp::Ordering, str::FromStr};
+use std::cmp::Ordering;
+use std::str::FromStr;
 
 use serde::{Deserialize, Serialize};
-use time::{error::Parse, format_description::well_known::Rfc3339, OffsetDateTime};
+use time::error::Parse;
+use time::format_description::well_known::Rfc3339;
+use time::OffsetDateTime;
 
 use crate::error::DateFormatError;
 
@@ -23,7 +26,8 @@ pub enum Date {
 	Date(time::Date),
 }
 
-/// Returned when the date did not contain enough information to form a [`time::Date`]
+/// Returned when the date did not contain enough information to form a
+/// [`time::Date`]
 #[derive(Debug)]
 pub struct InsufficientDatePrecision;
 
@@ -73,20 +77,26 @@ pub struct Time(#[serde(with = "serde_time")] pub time::Time);
 /// Serde module for serialize and deserialize function for the type.
 mod serde_time {
 	use serde::{Deserialize, Serialize};
-	use time::{format_description::FormatItem, macros::format_description};
+	use time::format_description::FormatItem;
+	use time::macros::format_description;
+
+	/// Time format `hh:mm`.
+	const TIME_MINUTE_FORMAT: &[FormatItem<'_>] = format_description!("[hour]:[minute]");
+
+	const OPTIONAL_SECONDS: FormatItem<'_> =
+		FormatItem::Optional(&FormatItem::Compound(format_description!(":[second]")));
 
 	/// Time format `hh:mm:ss`.
-	const TIME_FORMAT: &[FormatItem<'_>] = format_description!("[hour]:[minute]:[second]");
-	/// Time format for `hh:mm:ss[.SSS]`.
-	const TIME_FORMAT_SUBSEC: &[FormatItem<'_>] = fhir_time_format();
+	const TIME_FORMAT: &[FormatItem<'_>] =
+		&[FormatItem::Compound(TIME_MINUTE_FORMAT), OPTIONAL_SECONDS];
 
-	/// Time format with optional subseconds.
-	const fn fhir_time_format() -> &'static [FormatItem<'static>] {
+	/// Time format for `hh:mm:ss[.SSS]`.
+	const TIME_FORMAT_SUBSEC: &[FormatItem<'_>] = {
 		/// Optional subseconds.
 		const OPTIONAL_SUB_SECONDS: FormatItem<'_> =
 			FormatItem::Optional(&FormatItem::Compound(format_description!(".[subsecond]")));
 		&[FormatItem::Compound(TIME_FORMAT), OPTIONAL_SUB_SECONDS]
-	}
+	};
 
 	/// Serialize time, using subseconds iff appropriate.
 	#[allow(clippy::trivially_copy_pass_by_ref)] // Parameter types are set by serde.
