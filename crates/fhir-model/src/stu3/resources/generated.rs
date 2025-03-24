@@ -41234,8 +41234,10 @@ This element is labelled as a modifier because the implicit rules may provide ad
  This is the status of the DocumentReference object, which might be independent from the docStatus element.
 
 This element is labeled as a modifier because the status contains the codes that mark the document or reference as not currently valid. */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "status")]
-    pub status: codes::DocumentReferenceStatus,
+    pub status: Option<codes::DocumentReferenceStatus>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_status")]

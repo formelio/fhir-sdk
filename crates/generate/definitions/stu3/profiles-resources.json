@@ -83360,7 +83360,7 @@
               "short": "current | superseded | entered-in-error",
               "definition": "The status of this document reference.",
               "comment": "This is the status of the DocumentReference object, which might be independent from the docStatus element.\n\nThis element is labeled as a modifier because the status contains the codes that mark the document or reference as not currently valid.",
-              "min": 1,
+              "min": 0,
               "max": "1",
               "type": [
                 {
