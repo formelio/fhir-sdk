@@ -1,4 +1,4 @@
-use fhir_model::r5::resources::{OperationOutcome, Resource, };
+use fhir_model::r5::resources::{OperationOutcome, Resource};
 use reqwest::Url;
 
 use crate::client::response::FhirResponse;
@@ -43,7 +43,10 @@ impl FhirResponse<FhirR5> {
 }
 
 fn parse<R: TryFrom<Resource>>(base_url: &Url, body: &str) -> Result<R, Error> {
-	let mut resource: Resource = serde_json::from_str(body)?;
+	let mut resource: Resource = match serde_json::from_str(body) {
+		Ok(o) => o,
+		Err(e) => Err(Error::Json(body.to_string(), e.into()))?,
+	};
 	let resource_type = resource.resource_type();
 
 	populate_reference_targets(base_url, &mut resource);

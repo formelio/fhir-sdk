@@ -275,7 +275,7 @@ impl<'a> PatchViaJson<'a> {
 
 		operation.insert("op".to_owned(), "add".into());
 		operation.insert("path".to_owned(), path.into().into());
-		operation.insert("value".to_owned(), serde_json::to_value(value)?);
+		operation.insert("value".to_owned(), serde_json::json!(value));
 
 		self.operations.push(operation);
 		Ok(self)
@@ -302,7 +302,7 @@ impl<'a> PatchViaJson<'a> {
 
 		operation.insert("op".to_owned(), "test".into());
 		operation.insert("path".to_owned(), path.into().into());
-		operation.insert("value".to_owned(), serde_json::to_value(value)?);
+		operation.insert("value".to_owned(), serde_json::json!(value));
 
 		self.operations.push(operation);
 		Ok(self)
@@ -321,7 +321,7 @@ impl<'a> PatchViaJson<'a> {
 
 		operation.insert("op".to_owned(), "replace".into());
 		operation.insert("path".to_owned(), path.into().into());
-		operation.insert("value".to_owned(), serde_json::to_value(value)?);
+		operation.insert("value".to_owned(), serde_json::json!(value));
 
 		self.operations.push(operation);
 		Ok(self)

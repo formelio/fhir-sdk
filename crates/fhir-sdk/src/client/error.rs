@@ -55,8 +55,8 @@ pub enum Error {
 	AuthCallback(String),
 
 	/// Serialization/Deserialization error.
-	#[error("JSON error: {0}")]
-	Json(Arc<serde_json::Error>),
+	#[error("Failed to parse '{0}': '{1}'")]
+	Json(String, Arc<serde_json::Error>),
 
 	/// HTTP Request error.
 	#[error("Request error: {0}")]
@@ -100,12 +100,6 @@ pub enum Error {
 	/// Unexpected resource type.
 	#[error("Unexpected resource type {0}")]
 	UnexpectedResourceType(String),
-}
-
-impl From<serde_json::Error> for Error {
-	fn from(error: serde_json::Error) -> Self {
-		Self::Json(Arc::new(error))
-	}
 }
 
 impl From<reqwest::Error> for Error {
