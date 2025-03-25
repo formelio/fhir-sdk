@@ -83632,7 +83632,7 @@
               "max": "1",
               "type": [
                 {
-                  "code": "instant"
+                  "code": "dateTime"
                 }
               ],
               "isSummary": true,

@@ -41317,7 +41317,7 @@ This element is labeled as a modifier because the status contains the codes that
 
  Referencing/indexing time is used for tracking, organizing versions and searching. */
     #[serde(rename = "indexed")]
-    pub indexed: Instant,
+    pub indexed: DateTime,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     #[serde(rename = "_indexed")]
