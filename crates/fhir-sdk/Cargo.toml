@@ -44,7 +44,10 @@ fhir-model = { path = "../fhir-model", version = "0.8.0", default-features = fal
 futures = { version = "0.3", optional = true }
 ordered-stream = { git = "https://github.com/formelio/ordered-stream.git", branch = "master", optional = true }
 pin-project-lite = { version = "0.2", optional = true }
-reqwest = { version = "0.12", features = [
+reqwest = { version = "0.12", default-features = false, features = [
+  "charset",
+  "http2",
+  "macos-system-configuration",
   "json",
   "rustls-tls",
 ], optional = true }
