@@ -23,7 +23,7 @@ pub struct ClientBuilder<Version = super::DefaultVersion> {
 	/// override the user agent value in the [reqwest::Client]
 	user_agent: Option<HeaderValue>,
 	/// [reqwest::Client] to use for all requests
-	client: Option<reqwest::Client>,
+	client: Option<reqwest_middleware::ClientWithMiddleware>,
 	/// Request settings.
 	request_settings: Option<RequestSettings>,
 	/// Auth callback.
@@ -63,7 +63,14 @@ impl<V> ClientBuilder<V> {
 	/// [reqwest::Client] to use
 	#[must_use]
 	pub fn client(mut self, client: reqwest::Client) -> Self {
-		self.client = Some(client);
+		use reqwest_middleware::ClientBuilder;
+		use reqwest_tracing::{SpanBackendWithUrl, TracingMiddleware};
+
+		self.client = Some(
+			reqwest_middleware::ClientBuilder::new(client)
+				.with(TracingMiddleware::<SpanBackendWithUrl>::new())
+				.build(),
+		);
 		self
 	}
 
@@ -100,7 +107,14 @@ impl<V> ClientBuilder<V> {
 
 		let user_agent = self.user_agent.unwrap_or(DEFAULT_USER_AGENT);
 
-		let client = self.client.unwrap_or_default();
+		let client = self.client.unwrap_or_else(|| {
+			use reqwest_middleware::ClientBuilder;
+			use reqwest_tracing::{SpanBackendWithUrl, TracingMiddleware};
+
+			reqwest_middleware::ClientBuilder::new(reqwest::Client::default())
+				.with(TracingMiddleware::<SpanBackendWithUrl>::new())
+				.build()
+		});
 
 		let request_settings = self
 			.request_settings

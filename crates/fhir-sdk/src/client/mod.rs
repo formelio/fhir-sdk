@@ -96,7 +96,7 @@ struct ClientData {
 	/// The FHIR server's base URL.
 	base_url: Url,
 	/// HTTP request client.
-	client: reqwest::Client,
+	client: reqwest_middleware::ClientWithMiddleware,
 	/// Request settings.
 	request_settings: Mutex<RequestSettings>,
 	/// Authorization callback method, returning the authorization header value.
@@ -172,7 +172,7 @@ impl<V: FhirVersion + Send + Sync> Client<V> {
 	/// responses.
 	async fn run_request(
 		&self,
-		request: reqwest::RequestBuilder,
+		request: reqwest_middleware::RequestBuilder,
 	) -> Result<FhirResponse<V>, Error> {
 		// Try running the request
 		let mut request_settings = self.request_settings();

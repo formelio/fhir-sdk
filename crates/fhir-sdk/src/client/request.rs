@@ -87,7 +87,7 @@ impl RequestSettings {
 	/// Make a HTTP request using the settings. Returns the response.
 	pub(crate) async fn make_request(
 		&self,
-		mut request: reqwest::RequestBuilder,
+		mut request: reqwest_middleware::RequestBuilder,
 	) -> Result<reqwest::Response, Error> {
 		if let Some(timeout) = self.timeout {
 			request = request.timeout(timeout);

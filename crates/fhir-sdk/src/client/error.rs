@@ -62,6 +62,10 @@ pub enum Error {
 	#[error("Request error: {0}")]
 	Request(Arc<reqwest::Error>),
 
+	/// HTTP RequestMiddleware error.
+	#[error("RequestMiddleare error: {0}")]
+	RequestMiddleware(Arc<reqwest_middleware::Error>),
+
 	/// HTTP error response.
 	#[error("Got error response ({0}): {1}")]
 	Response(StatusCode, String),
@@ -105,6 +109,12 @@ pub enum Error {
 impl From<reqwest::Error> for Error {
 	fn from(error: reqwest::Error) -> Self {
 		Self::Request(Arc::new(error))
+	}
+}
+
+impl From<reqwest_middleware::Error> for Error {
+	fn from(error: reqwest_middleware::Error) -> Self {
+		Self::RequestMiddleware(Arc::new(error))
 	}
 }
 
