@@ -447,7 +447,6 @@ dependencies = [
  "fhir-model 0.8.0",
  "futures",
  "once_cell",
- "ordered-stream",
  "pin-project-lite",
  "reqwest",
  "serde",
@@ -1078,15 +1077,6 @@ name = "once_cell"
 version = "1.21.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "42f5e15c9953c5e4ccceeb2e7382a716482c34515315f7b03532b8b4e8393d2d"
-
-[[package]]
-name = "ordered-stream"
-version = "0.2.0"
-source = "git+https://github.com/formelio/ordered-stream.git?branch=master#c53a900cffa33431beb663957fdf50f59ebccfea"
-dependencies = [
- "futures-core",
- "pin-project-lite",
-]
 
 [[package]]
 name = "owo-colors"
