@@ -20,7 +20,6 @@ use std::ops::{Deref, DerefMut};
 use std::str::FromStr;
 
 use base64::prelude::{Engine, BASE64_STANDARD};
-use bigdecimal::BigDecimal;
 use serde::{Deserialize, Serialize};
 use serde_json::value::RawValue;
 
@@ -29,7 +28,7 @@ use crate::error::UnknownResourceType;
 pub use self::date_time::*;
 #[cfg(feature = "search-params")]
 pub use self::params::*;
-pub use bigdecimal;
+pub use rust_decimal;
 pub use time;
 
 /// Parsed parts of a FHIR reference. Can be one of local reference, relative
@@ -290,11 +289,11 @@ impl<'de> Deserialize<'de> for Base64Binary {
 	}
 }
 
-/// Wrapper around [BigDecimal] that always serializes
+/// Wrapper around [rust_decimal::Decimal] that always serializes
 /// the decimal as a JSON number.
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Deserialize, Hash, Default)]
 #[serde(transparent)]
-pub struct Decimal(BigDecimal);
+pub struct Decimal(rust_decimal::Decimal);
 
 impl Serialize for Decimal {
 	fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
@@ -340,4 +339,4 @@ wrapper_impls!(Integer64, i64);
 wrapper_impls!(Base64Binary, Vec<u8>);
 wrapper_impls!(Time, time::Time);
 wrapper_impls!(Instant, time::OffsetDateTime);
-wrapper_impls!(Decimal, BigDecimal);
+wrapper_impls!(Decimal, rust_decimal::Decimal);
