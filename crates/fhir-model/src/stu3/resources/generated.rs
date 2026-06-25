@@ -7256,6 +7256,7 @@ pub struct Bundle(pub Box<BundleInner>);
  A container for a collection of resources.
 
  */
+#[serde_with::serde_as]
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 #[cfg_attr(feature = "builders", derive(Builder))]
 #[serde(rename_all = "camelCase")]
@@ -7376,6 +7377,7 @@ This element is labelled as a modifier because the implicit rules may provide ad
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
     #[serde(rename = "entry")]
+    #[serde_as(as = "serde_with::VecSkipError<_>")]
     pub entry: Vec<Option<BundleEntry>>,
     /// Extension field.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
