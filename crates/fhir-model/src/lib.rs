@@ -9,10 +9,6 @@ mod date_time;
 mod error;
 #[cfg(feature = "search-params")]
 mod params;
-#[cfg(feature = "r4b")]
-pub mod r4b;
-#[cfg(feature = "r5")]
-pub mod r5;
 #[cfg(feature = "stu3")]
 pub mod stu3;
 
