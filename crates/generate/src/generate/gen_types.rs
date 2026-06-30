@@ -535,10 +535,16 @@ pub fn generate_reference_types(
 
 	let struct_doc =
 		format!(" Reference wrapper type of the {} field in {parent_ident}", parent_field_name);
+	let target_types: Vec<_> = target_types
+		.iter()
+		.filter(|x| !super::super::IGNORED_TYPES.contains(&x.as_str()))
+		.collect();
 
 	// If there are more than one possible target resource types, we define an enum
 	// Otherwise, we refer directly to the resource
-	let (target_type, target_defs) = if target_types.len() > 1 {
+	let (target_type, target_defs) = if target_types.is_empty() {
+		(Some(format_ident!("Resource")), None)
+	} else if target_types.len() > 1 {
 		let target_type = format_ident!(
 			"{parent_ident}{}ReferenceTarget",
 			parent_field_name.replace("[x]", "").to_pascal_case()

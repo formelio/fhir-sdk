@@ -14,10 +14,12 @@ pub struct SearchParam {
 	/// Base types this search parameter applies to
 	pub base: Vec<String>,
 
-	/// The type of value that a search parameter may contain, and how the content is interpreted
+	/// The type of value that a search parameter may contain, and how the
+	/// content is interpreted
 	pub r#type: SearchParamType,
 
-	/// FHIRPath expression resolving to all the fields this search parameter points at
+	/// FHIRPath expression resolving to all the fields this search parameter
+	/// points at
 	#[allow(unused)]
 	pub expression: String,
 

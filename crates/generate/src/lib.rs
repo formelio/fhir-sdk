@@ -12,6 +12,87 @@ use proc_macro2::TokenStream;
 
 use crate::model::StructureDefinitionKind;
 
+const IGNORED_TYPES: &[&str] = &[
+	"Account",
+	// "ActivityDefinition",
+	// "AllergyIntolerance",
+	// "Appointment",
+	"AppointmentResponse",
+	"Basic",
+	// "BodySite",
+	// "CarePlan",
+	// "CareTeam",
+	"Claim",
+	"ClaimResponse",
+	"ClinicalImpression",
+	"Communication",
+	"CommunicationRequest",
+	// "Condition",
+	// "Coverage",
+	"DataElement",
+	// "Device",
+	// "DeviceRequest",
+	// "DeviceUseStatement",
+	// "DiagnosticReport",
+	"DocumentManifest",
+	// "DocumentReference",
+	"EligibilityRequest",
+	"EligibilityResponse",
+	// "Encounter",
+	"Endpoint",
+	"EnrollmentRequest",
+	"EnrollmentResponse",
+	// "EpisodeOfCare",
+	"ExplanationOfBenefit",
+	"FamilyMemberHistory",
+	// "Flag",
+	"Goal",
+	"Group",
+	"HealthcareService",
+	"ImagingStudy",
+	// "Immunization",
+	// "ImmunizationRecommendation",
+	"Library",
+	"List",
+	// "Location",
+	"Measure",
+	"Media",
+	// "MedicationAdministration",
+	// "MedicationDispense",
+	// "MedicationRequest",
+	// "MedicationStatement",
+	// "NutritionOrder",
+	// "Observation",
+	// "Organization",
+	// "Patient",
+	"PaymentNotice",
+	"PaymentReconciliation",
+	// "Person",
+	// "PlanDefinition",
+	// "Practitioner",
+	// "PractitionerRole",
+	// "Procedure",
+	// "ProcedureRequest",
+	"ProcessRequest",
+	"ProcessResponse",
+	// "Questionnaire",
+	"ReferralRequest",
+	// "RelatedPerson",
+	"RequestGroup",
+	"ResearchStudy",
+	"Schedule",
+	"Sequence",
+	"ServiceDefinition",
+	"Slot",
+	// "Specimen",
+	// "StructureDefinition",
+	// "StructureMap",
+	// "Substance",
+	"Task",
+	// "ValueSet",
+	"VisionPrescription",
+];
+
 /// Generate code for a FHIR version. Must match the folder name for the input
 /// data and the output folder name.
 pub fn generate_code(version_folder: &str) -> Result<()> {
@@ -34,12 +115,13 @@ pub fn generate_code(version_folder: &str) -> Result<()> {
 	let types_file = fs::read_to_string(format!(
 		"{base_folder}/definitions/{version_folder}/profiles-types.json"
 	))?;
-	let types = match version_folder {
+	let mut types = match version_folder {
 		"stu3" => parse::structures::parse_stu3(&types_file),
 		"r4b" => parse::structures::parse_r4b(&types_file),
 		"r5" => parse::structures::parse_r5(&types_file),
 		_ => panic!("Unrecognized version `{version_folder}`"),
 	};
+	types.retain(|x| !IGNORED_TYPES.contains(&x.name.as_str()));
 	let generated_code = generate::generate_types(types, &generated_codes)?;
 	fs::write(
 		format!("{base_folder}/../fhir-model/src/{version_folder}/types/generated.rs"),
@@ -49,12 +131,13 @@ pub fn generate_code(version_folder: &str) -> Result<()> {
 	let resources_file = fs::read_to_string(format!(
 		"{base_folder}/definitions/{version_folder}/profiles-resources.json"
 	))?;
-	let resources = match version_folder {
+	let mut resources = match version_folder {
 		"stu3" => parse::structures::parse_stu3(&resources_file),
 		"r4b" => parse::structures::parse_r4b(&resources_file),
 		"r5" => parse::structures::parse_r5(&resources_file),
 		_ => panic!("Unrecognized version `{version_folder}`"),
 	};
+	resources.retain(|x| !IGNORED_TYPES.contains(&x.name.as_str()));
 
 	let identifiable = resources
 		.iter()

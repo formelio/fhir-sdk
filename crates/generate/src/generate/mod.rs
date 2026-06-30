@@ -13,9 +13,10 @@ use inflector::Inflector;
 use proc_macro2::{Ident, TokenStream};
 use quote::{format_ident, quote};
 
-use crate::model::params::SearchParam;
-use crate::model::SearchParamType;
-use crate::model::{codes::Code, structures::Type, CodeSystemContentMode, StructureDefinitionKind};
+use crate::model::{
+	codes::Code, params::SearchParam, structures::Type, CodeSystemContentMode, SearchParamType,
+	StructureDefinitionKind,
+};
 
 /// Generate the Rust code for the FHIR codes.
 pub fn generate_codes(mut codes: Vec<Code>) -> Result<(TokenStream, HashMap<String, String>)> {
