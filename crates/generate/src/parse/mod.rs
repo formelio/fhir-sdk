@@ -7,9 +7,9 @@ pub mod structures;
 
 use fhir_model::{r4b, r5, stu3};
 
-use crate::model::params::SearchComparator;
 use crate::model::{
-	CodeSystemContentMode, PublicationStatus, SearchParamType, StructureDefinitionKind,
+	params::SearchComparator, CodeSystemContentMode, PublicationStatus, SearchParamType,
+	StructureDefinitionKind,
 };
 
 impl From<stu3::codes::PublicationStatus> for PublicationStatus {

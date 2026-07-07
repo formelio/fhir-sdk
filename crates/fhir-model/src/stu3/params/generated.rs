@@ -2,46 +2,6 @@
 #![allow(clippy::too_many_lines)]
 use crate::params::*;
 use super::super::resources;
-/// Search parameters for the Account resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum AccountSearchParameter {
-    /// How much is in account?
-    Balance,
-    /// Account number
-    Identifier,
-    /// Human-readable label
-    Name,
-    /// Who is responsible?
-    Owner,
-    /// What is account tied to?
-    Patient,
-    /// Transaction window
-    Period,
-    /// active | inactive | entered-in-error
-    Status,
-    /// What is account tied to?
-    Subject,
-    /// E.g. patient, expense, depreciation
-    Type,
-}
-impl ResourceSearchParameterDefinition for AccountSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Account"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Balance => "balance",
-            Self::Identifier => "identifier",
-            Self::Name => "name",
-            Self::Owner => "owner",
-            Self::Patient => "patient",
-            Self::Period => "period",
-            Self::Status => "status",
-            Self::Subject => "subject",
-            Self::Type => "type",
-        }
-    }
-}
 /// Search parameters for the ActivityDefinition resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum ActivityDefinitionSearchParameter {
@@ -257,40 +217,6 @@ impl ResourceSearchParameterDefinition for AppointmentSearchParameter {
         }
     }
 }
-/// Search parameters for the AppointmentResponse resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum AppointmentResponseSearchParameter {
-    /// The Person, Location/HealthcareService or Device that this appointment response replies for
-    Actor,
-    /// The appointment that the response is attached to
-    Appointment,
-    /// An Identifier in this appointment response
-    Identifier,
-    /// This Response is for this Location
-    Location,
-    /// The participants acceptance status for this appointment
-    PartStatus,
-    /// This Response is for this Patient
-    Patient,
-    /// This Response is for this Practitioner
-    Practitioner,
-}
-impl ResourceSearchParameterDefinition for AppointmentResponseSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "AppointmentResponse"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Actor => "actor",
-            Self::Appointment => "appointment",
-            Self::Identifier => "identifier",
-            Self::Location => "location",
-            Self::PartStatus => "part-status",
-            Self::Patient => "patient",
-            Self::Practitioner => "practitioner",
-        }
-    }
-}
 /// Search parameters for the AuditEvent resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum AuditEventSearchParameter {
@@ -361,37 +287,6 @@ impl ResourceSearchParameterDefinition for AuditEventSearchParameter {
             Self::Subtype => "subtype",
             Self::Type => "type",
             Self::User => "user",
-        }
-    }
-}
-/// Search parameters for the Basic resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum BasicSearchParameter {
-    /// Who created
-    Author,
-    /// Kind of Resource
-    Code,
-    /// When created
-    Created,
-    /// Business identifier
-    Identifier,
-    /// Identifies the focus of this resource
-    Patient,
-    /// Identifies the focus of this resource
-    Subject,
-}
-impl ResourceSearchParameterDefinition for BasicSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Basic"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Author => "author",
-            Self::Code => "code",
-            Self::Created => "created",
-            Self::Identifier => "identifier",
-            Self::Patient => "patient",
-            Self::Subject => "subject",
         }
     }
 }
@@ -705,150 +600,6 @@ impl ResourceSearchParameterDefinition for ChargeItemSearchParameter {
         }
     }
 }
-/// Search parameters for the Claim resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ClaimSearchParameter {
-    /// Member of the CareTeam
-    CareTeam,
-    /// The creation date for the Claim
-    Created,
-    /// Encounters associated with a billed line item
-    Encounter,
-    /// The party responsible for the entry of the Claim
-    Enterer,
-    /// Facility responsible for the goods and services
-    Facility,
-    /// The primary identifier of the financial resource
-    Identifier,
-    /// The target payor/insurer for the Claim
-    Insurer,
-    /// The reference to the providing organization
-    Organization,
-    /// Patient receiving the services
-    Patient,
-    /// The party receiving any payment for the Claim
-    Payee,
-    /// Processing priority requested
-    Priority,
-    /// Provider responsible for the Claim
-    Provider,
-    /// The kind of financial resource
-    Use,
-}
-impl ResourceSearchParameterDefinition for ClaimSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Claim"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::CareTeam => "care-team",
-            Self::Created => "created",
-            Self::Encounter => "encounter",
-            Self::Enterer => "enterer",
-            Self::Facility => "facility",
-            Self::Identifier => "identifier",
-            Self::Insurer => "insurer",
-            Self::Organization => "organization",
-            Self::Patient => "patient",
-            Self::Payee => "payee",
-            Self::Priority => "priority",
-            Self::Provider => "provider",
-            Self::Use => "use",
-        }
-    }
-}
-/// Search parameters for the ClaimResponse resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ClaimResponseSearchParameter {
-    /// The creation date
-    Created,
-    /// The contents of the disposition message
-    Disposition,
-    /// The identity of the claimresponse
-    Identifier,
-    /// The organization who generated this resource
-    Insurer,
-    /// The processing outcome
-    Outcome,
-    /// The subject of care.
-    Patient,
-    /// The expected paymentDate
-    PaymentDate,
-    /// The claim reference
-    Request,
-    /// The Provider of the claim
-    RequestProvider,
-}
-impl ResourceSearchParameterDefinition for ClaimResponseSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "ClaimResponse"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Created => "created",
-            Self::Disposition => "disposition",
-            Self::Identifier => "identifier",
-            Self::Insurer => "insurer",
-            Self::Outcome => "outcome",
-            Self::Patient => "patient",
-            Self::PaymentDate => "payment-date",
-            Self::Request => "request",
-            Self::RequestProvider => "request-provider",
-        }
-    }
-}
-/// Search parameters for the ClinicalImpression resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ClinicalImpressionSearchParameter {
-    /// When the assessment was documented
-    Date,
-    /// Patient or group assessed
-    Patient,
-    /// Action taken as part of assessment procedure
-    Action,
-    /// The clinician performing the assessment
-    Assessor,
-    /// Encounter or Episode created from
-    Context,
-    /// What was found
-    FindingCode,
-    /// What was found
-    FindingRef,
-    /// Business identifier
-    Identifier,
-    /// Record of a specific investigation
-    Investigation,
-    /// Reference to last assessment
-    Previous,
-    /// Relevant impressions of patient state
-    Problem,
-    /// draft | completed | entered-in-error
-    Status,
-    /// Patient or group assessed
-    Subject,
-}
-impl ResourceSearchParameterDefinition for ClinicalImpressionSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "ClinicalImpression"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Date => "date",
-            Self::Patient => "patient",
-            Self::Action => "action",
-            Self::Assessor => "assessor",
-            Self::Context => "context",
-            Self::FindingCode => "finding-code",
-            Self::FindingRef => "finding-ref",
-            Self::Identifier => "identifier",
-            Self::Investigation => "investigation",
-            Self::Previous => "previous",
-            Self::Problem => "problem",
-            Self::Status => "status",
-            Self::Subject => "subject",
-        }
-    }
-}
 /// Search parameters for the CodeSystem resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum CodeSystemSearchParameter {
@@ -901,128 +652,6 @@ impl ResourceSearchParameterDefinition for CodeSystemSearchParameter {
             Self::Title => "title",
             Self::Url => "url",
             Self::Version => "version",
-        }
-    }
-}
-/// Search parameters for the Communication resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum CommunicationSearchParameter {
-    /// Request fulfilled by this communication
-    BasedOn,
-    /// Message category
-    Category,
-    /// Encounter or episode leading to message
-    Context,
-    /// Instantiates protocol or definition
-    Definition,
-    /// Encounter leading to message
-    Encounter,
-    /// Unique identifier
-    Identifier,
-    /// A channel of communication
-    Medium,
-    /// Part of this action
-    PartOf,
-    /// Focus of message
-    Patient,
-    /// When received
-    Received,
-    /// Message recipient
-    Recipient,
-    /// Message sender
-    Sender,
-    /// When sent
-    Sent,
-    /// preparation | in-progress | suspended | aborted | completed | entered-in-error
-    Status,
-    /// Focus of message
-    Subject,
-}
-impl ResourceSearchParameterDefinition for CommunicationSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Communication"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::BasedOn => "based-on",
-            Self::Category => "category",
-            Self::Context => "context",
-            Self::Definition => "definition",
-            Self::Encounter => "encounter",
-            Self::Identifier => "identifier",
-            Self::Medium => "medium",
-            Self::PartOf => "part-of",
-            Self::Patient => "patient",
-            Self::Received => "received",
-            Self::Recipient => "recipient",
-            Self::Sender => "sender",
-            Self::Sent => "sent",
-            Self::Status => "status",
-            Self::Subject => "subject",
-        }
-    }
-}
-/// Search parameters for the CommunicationRequest resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum CommunicationRequestSearchParameter {
-    /// When request transitioned to being actionable
-    Authored,
-    /// Fulfills plan or proposal
-    BasedOn,
-    /// Message category
-    Category,
-    /// Encounter or episode leading to message
-    Context,
-    /// Encounter leading to message
-    Encounter,
-    /// Composite request this is part of
-    GroupIdentifier,
-    /// Unique identifier
-    Identifier,
-    /// A channel of communication
-    Medium,
-    /// When scheduled
-    Occurrence,
-    /// Focus of message
-    Patient,
-    /// Message urgency
-    Priority,
-    /// Message recipient
-    Recipient,
-    /// Request(s) replaced by this request
-    Replaces,
-    /// Individual making the request
-    Requester,
-    /// Message sender
-    Sender,
-    /// draft | active | suspended | cancelled | completed | entered-in-error | unknown
-    Status,
-    /// Focus of message
-    Subject,
-}
-impl ResourceSearchParameterDefinition for CommunicationRequestSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "CommunicationRequest"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Authored => "authored",
-            Self::BasedOn => "based-on",
-            Self::Category => "category",
-            Self::Context => "context",
-            Self::Encounter => "encounter",
-            Self::GroupIdentifier => "group-identifier",
-            Self::Identifier => "identifier",
-            Self::Medium => "medium",
-            Self::Occurrence => "occurrence",
-            Self::Patient => "patient",
-            Self::Priority => "priority",
-            Self::Recipient => "recipient",
-            Self::Replaces => "replaces",
-            Self::Requester => "requester",
-            Self::Sender => "sender",
-            Self::Status => "status",
-            Self::Subject => "subject",
         }
     }
 }
@@ -1444,55 +1073,6 @@ impl ResourceSearchParameterDefinition for CoverageSearchParameter {
         }
     }
 }
-/// Search parameters for the DataElement resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum DataElementSearchParameter {
-    /// A code for the data element (server may choose to do subsumption)
-    Code,
-    /// The data element publication date
-    Date,
-    /// Text search in the description of the data element.  This corresponds to the definition of the first DataElement.element.
-    Description,
-    /// External identifier for the data element
-    Identifier,
-    /// Intended jurisdiction for the data element
-    Jurisdiction,
-    /// Computationally friendly name of the data element
-    Name,
-    /// Name of the publisher of the data element
-    Publisher,
-    /// The current status of the data element
-    Status,
-    /// The stringency of the data element definition
-    Stringency,
-    /// The human-friendly name of the data element
-    Title,
-    /// The uri that identifies the data element
-    Url,
-    /// The business version of the data element
-    Version,
-}
-impl ResourceSearchParameterDefinition for DataElementSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "DataElement"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Code => "code",
-            Self::Date => "date",
-            Self::Description => "description",
-            Self::Identifier => "identifier",
-            Self::Jurisdiction => "jurisdiction",
-            Self::Name => "name",
-            Self::Publisher => "publisher",
-            Self::Status => "status",
-            Self::Stringency => "stringency",
-            Self::Title => "title",
-            Self::Url => "url",
-            Self::Version => "version",
-        }
-    }
-}
 /// Search parameters for the DetectedIssue resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum DetectedIssueSearchParameter {
@@ -1773,58 +1353,6 @@ impl ResourceSearchParameterDefinition for DiagnosticReportSearchParameter {
         }
     }
 }
-/// Search parameters for the DocumentManifest resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum DocumentManifestSearchParameter {
-    /// Unique Identifier for the set of documents
-    Identifier,
-    /// The subject of the set of documents
-    Patient,
-    /// Kind of document set
-    Type,
-    /// Who and/or what authored the manifest
-    Author,
-    /// Contents of this set of documents
-    ContentRef,
-    /// When this document manifest created
-    Created,
-    /// Human-readable description (title)
-    Description,
-    /// Intended to get notified about this set of documents
-    Recipient,
-    /// Identifiers of things that are related
-    RelatedId,
-    /// Related Resource
-    RelatedRef,
-    /// The source system/application/software
-    Source,
-    /// current | superseded | entered-in-error
-    Status,
-    /// The subject of the set of documents
-    Subject,
-}
-impl ResourceSearchParameterDefinition for DocumentManifestSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "DocumentManifest"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Identifier => "identifier",
-            Self::Patient => "patient",
-            Self::Type => "type",
-            Self::Author => "author",
-            Self::ContentRef => "content-ref",
-            Self::Created => "created",
-            Self::Description => "description",
-            Self::Recipient => "recipient",
-            Self::RelatedId => "related-id",
-            Self::RelatedRef => "related-ref",
-            Self::Source => "source",
-            Self::Status => "status",
-            Self::Subject => "subject",
-        }
-    }
-}
 /// Search parameters for the DocumentReference resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum DocumentReferenceSearchParameter {
@@ -1916,77 +1444,6 @@ impl ResourceSearchParameterDefinition for DocumentReferenceSearchParameter {
         }
     }
 }
-/// Search parameters for the EligibilityRequest resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum EligibilityRequestSearchParameter {
-    /// The creation date for the EOB
-    Created,
-    /// The party who is responsible for the request
-    Enterer,
-    /// Facility responsible for the goods and services
-    Facility,
-    /// The business identifier of the Eligibility
-    Identifier,
-    /// The reference to the providing organization
-    Organization,
-    /// The reference to the patient
-    Patient,
-    /// The reference to the provider
-    Provider,
-}
-impl ResourceSearchParameterDefinition for EligibilityRequestSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "EligibilityRequest"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Created => "created",
-            Self::Enterer => "enterer",
-            Self::Facility => "facility",
-            Self::Identifier => "identifier",
-            Self::Organization => "organization",
-            Self::Patient => "patient",
-            Self::Provider => "provider",
-        }
-    }
-}
-/// Search parameters for the EligibilityResponse resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum EligibilityResponseSearchParameter {
-    /// The creation date
-    Created,
-    /// The contents of the disposition message
-    Disposition,
-    /// The business identifier
-    Identifier,
-    /// The organization which generated this resource
-    Insurer,
-    /// The processing outcome
-    Outcome,
-    /// The EligibilityRequest reference
-    Request,
-    /// The EligibilityRequest organization
-    RequestOrganization,
-    /// The EligibilityRequest provider
-    RequestProvider,
-}
-impl ResourceSearchParameterDefinition for EligibilityResponseSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "EligibilityResponse"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Created => "created",
-            Self::Disposition => "disposition",
-            Self::Identifier => "identifier",
-            Self::Insurer => "insurer",
-            Self::Outcome => "outcome",
-            Self::Request => "request",
-            Self::RequestOrganization => "request-organization",
-            Self::RequestProvider => "request-provider",
-        }
-    }
-}
 /// Search parameters for the Encounter resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum EncounterSearchParameter {
@@ -2060,84 +1517,6 @@ impl ResourceSearchParameterDefinition for EncounterSearchParameter {
             Self::SpecialArrangement => "special-arrangement",
             Self::Status => "status",
             Self::Subject => "subject",
-        }
-    }
-}
-/// Search parameters for the Endpoint resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum EndpointSearchParameter {
-    /// Protocol/Profile/Standard to be used with this endpoint connection
-    ConnectionType,
-    /// Identifies this endpoint across multiple systems
-    Identifier,
-    /// A name that this endpoint can be identified by
-    Name,
-    /// The organization that is managing the endpoint
-    Organization,
-    /// The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)
-    PayloadType,
-    /// The current status of the Endpoint (usually expected to be active)
-    Status,
-}
-impl ResourceSearchParameterDefinition for EndpointSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Endpoint"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::ConnectionType => "connection-type",
-            Self::Identifier => "identifier",
-            Self::Name => "name",
-            Self::Organization => "organization",
-            Self::PayloadType => "payload-type",
-            Self::Status => "status",
-        }
-    }
-}
-/// Search parameters for the EnrollmentRequest resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum EnrollmentRequestSearchParameter {
-    /// The business identifier of the Enrollment
-    Identifier,
-    /// The organization who generated this resource
-    Organization,
-    /// The party to be enrolled
-    Patient,
-    /// The party to be enrolled
-    Subject,
-}
-impl ResourceSearchParameterDefinition for EnrollmentRequestSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "EnrollmentRequest"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Identifier => "identifier",
-            Self::Organization => "organization",
-            Self::Patient => "patient",
-            Self::Subject => "subject",
-        }
-    }
-}
-/// Search parameters for the EnrollmentResponse resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum EnrollmentResponseSearchParameter {
-    /// The business identifier of the EnrollmentResponse
-    Identifier,
-    /// The organization who generated this resource
-    Organization,
-    /// The reference to the claim
-    Request,
-}
-impl ResourceSearchParameterDefinition for EnrollmentResponseSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "EnrollmentResponse"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Identifier => "identifier",
-            Self::Organization => "organization",
-            Self::Request => "request",
         }
     }
 }
@@ -2221,95 +1600,6 @@ impl ResourceSearchParameterDefinition for ExpansionProfileSearchParameter {
         }
     }
 }
-/// Search parameters for the ExplanationOfBenefit resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ExplanationOfBenefitSearchParameter {
-    /// Member of the CareTeam
-    CareTeam,
-    /// The reference to the claim
-    Claim,
-    /// The plan under which the claim was adjudicated
-    Coverage,
-    /// The creation date for the EOB
-    Created,
-    /// The contents of the disposition message
-    Disposition,
-    /// Encounters associated with a billed line item
-    Encounter,
-    /// The party responsible for the entry of the Claim
-    Enterer,
-    /// Facility responsible for the goods and services
-    Facility,
-    /// The business identifier of the Explanation of Benefit
-    Identifier,
-    /// The reference to the providing organization
-    Organization,
-    /// The reference to the patient
-    Patient,
-    /// The party receiving any payment for the Claim
-    Payee,
-    /// The reference to the provider
-    Provider,
-}
-impl ResourceSearchParameterDefinition for ExplanationOfBenefitSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "ExplanationOfBenefit"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::CareTeam => "care-team",
-            Self::Claim => "claim",
-            Self::Coverage => "coverage",
-            Self::Created => "created",
-            Self::Disposition => "disposition",
-            Self::Encounter => "encounter",
-            Self::Enterer => "enterer",
-            Self::Facility => "facility",
-            Self::Identifier => "identifier",
-            Self::Organization => "organization",
-            Self::Patient => "patient",
-            Self::Payee => "payee",
-            Self::Provider => "provider",
-        }
-    }
-}
-/// Search parameters for the FamilyMemberHistory resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum FamilyMemberHistorySearchParameter {
-    /// A search by a condition code
-    Code,
-    /// When history was captured/updated
-    Date,
-    /// A search by a record identifier
-    Identifier,
-    /// The identity of a subject to list family member history items for
-    Patient,
-    /// Instantiates protocol or definition
-    Definition,
-    /// A search by a gender code of a family member
-    Gender,
-    /// A search by a relationship type
-    Relationship,
-    /// partial | completed | entered-in-error | health-unknown
-    Status,
-}
-impl ResourceSearchParameterDefinition for FamilyMemberHistorySearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "FamilyMemberHistory"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Code => "code",
-            Self::Date => "date",
-            Self::Identifier => "identifier",
-            Self::Patient => "patient",
-            Self::Definition => "definition",
-            Self::Gender => "gender",
-            Self::Relationship => "relationship",
-            Self::Status => "status",
-        }
-    }
-}
 /// Search parameters for the Flag resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum FlagSearchParameter {
@@ -2338,40 +1628,6 @@ impl ResourceSearchParameterDefinition for FlagSearchParameter {
             Self::Author => "author",
             Self::Identifier => "identifier",
             Self::Subject => "subject",
-        }
-    }
-}
-/// Search parameters for the Goal resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum GoalSearchParameter {
-    /// External Ids for this goal
-    Identifier,
-    /// Who this goal is intended for
-    Patient,
-    /// E.g. Treatment, dietary, behavioral, etc.
-    Category,
-    /// When goal pursuit begins
-    StartDate,
-    /// proposed | accepted | planned | in-progress | on-target | ahead-of-target | behind-target | sustaining | achieved | on-hold | cancelled | entered-in-error | rejected
-    Status,
-    /// Who this goal is intended for
-    Subject,
-    /// Reach goal on or before
-    TargetDate,
-}
-impl ResourceSearchParameterDefinition for GoalSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Goal"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Identifier => "identifier",
-            Self::Patient => "patient",
-            Self::Category => "category",
-            Self::StartDate => "start-date",
-            Self::Status => "status",
-            Self::Subject => "subject",
-            Self::TargetDate => "target-date",
         }
     }
 }
@@ -2415,46 +1671,6 @@ impl ResourceSearchParameterDefinition for GraphDefinitionSearchParameter {
         }
     }
 }
-/// Search parameters for the Group resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum GroupSearchParameter {
-    /// Descriptive or actual
-    Actual,
-    /// Kind of characteristic
-    Characteristic,
-    /// A composite of both characteristic and value
-    CharacteristicValue,
-    /// The kind of resources contained
-    Code,
-    /// Group includes or excludes
-    Exclude,
-    /// Unique id
-    Identifier,
-    /// Reference to the group member
-    Member,
-    /// The type of resources the group contains
-    Type,
-    /// Value held by characteristic
-    Value,
-}
-impl ResourceSearchParameterDefinition for GroupSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Group"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Actual => "actual",
-            Self::Characteristic => "characteristic",
-            Self::CharacteristicValue => "characteristic-value",
-            Self::Code => "code",
-            Self::Exclude => "exclude",
-            Self::Identifier => "identifier",
-            Self::Member => "member",
-            Self::Type => "type",
-            Self::Value => "value",
-        }
-    }
-}
 /// Search parameters for the GuidanceResponse resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum GuidanceResponseSearchParameter {
@@ -2477,49 +1693,6 @@ impl ResourceSearchParameterDefinition for GuidanceResponseSearchParameter {
             Self::Patient => "patient",
             Self::Request => "request",
             Self::Subject => "subject",
-        }
-    }
-}
-/// Search parameters for the HealthcareService resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum HealthcareServiceSearchParameter {
-    /// The Healthcare Service is currently marked as active
-    Active,
-    /// Service Category of the Healthcare Service
-    Category,
-    /// One of the HealthcareService's characteristics
-    Characteristic,
-    /// Technical endpoints providing access to services operated for the location
-    Endpoint,
-    /// External identifiers for this item
-    Identifier,
-    /// The location of the Healthcare Service
-    Location,
-    /// A portion of the Healthcare service name
-    Name,
-    /// The organization that provides this Healthcare Service
-    Organization,
-    /// One of the Program Names serviced by this HealthcareService
-    Programname,
-    /// The type of service provided by this healthcare service
-    Type,
-}
-impl ResourceSearchParameterDefinition for HealthcareServiceSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "HealthcareService"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Active => "active",
-            Self::Category => "category",
-            Self::Characteristic => "characteristic",
-            Self::Endpoint => "endpoint",
-            Self::Identifier => "identifier",
-            Self::Location => "location",
-            Self::Name => "name",
-            Self::Organization => "organization",
-            Self::Programname => "programname",
-            Self::Type => "type",
         }
     }
 }
@@ -2554,64 +1727,6 @@ impl ResourceSearchParameterDefinition for ImagingManifestSearchParameter {
             Self::Identifier => "identifier",
             Self::ImagingStudy => "imaging-study",
             Self::SelectedStudy => "selected-study",
-        }
-    }
-}
-/// Search parameters for the ImagingStudy resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ImagingStudySearchParameter {
-    /// Other identifiers for the Study
-    Identifier,
-    /// Who the study is about
-    Patient,
-    /// The accession identifier for the study
-    Accession,
-    /// The order for the image
-    Basedon,
-    /// The body site studied
-    Bodysite,
-    /// The context of the study
-    Context,
-    /// The type of the instance
-    DicomClass,
-    /// The endpoint for te study or series
-    Endpoint,
-    /// The modality of the series
-    Modality,
-    /// The person who performed the study
-    Performer,
-    /// The reason for the study
-    Reason,
-    /// The identifier of the series of images
-    Series,
-    /// When the study was started
-    Started,
-    /// The study identifier for the image
-    Study,
-    /// The instance unique identifier
-    Uid,
-}
-impl ResourceSearchParameterDefinition for ImagingStudySearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "ImagingStudy"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Identifier => "identifier",
-            Self::Patient => "patient",
-            Self::Accession => "accession",
-            Self::Basedon => "basedon",
-            Self::Bodysite => "bodysite",
-            Self::Context => "context",
-            Self::DicomClass => "dicom-class",
-            Self::Endpoint => "endpoint",
-            Self::Modality => "modality",
-            Self::Performer => "performer",
-            Self::Reason => "reason",
-            Self::Series => "series",
-            Self::Started => "started",
-            Self::Study => "study",
-            Self::Uid => "uid",
         }
     }
 }
@@ -2762,70 +1877,6 @@ impl ResourceSearchParameterDefinition for ImplementationGuideSearchParameter {
         }
     }
 }
-/// Search parameters for the Library resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum LibrarySearchParameter {
-    /// What resource is being referenced
-    ComposedOf,
-    /// The library publication date
-    Date,
-    /// What resource is being referenced
-    DependsOn,
-    /// What resource is being referenced
-    DerivedFrom,
-    /// The description of the library
-    Description,
-    /// The time during which the library is intended to be in use
-    Effective,
-    /// External identifier for the library
-    Identifier,
-    /// Intended jurisdiction for the library
-    Jurisdiction,
-    /// Computationally friendly name of the library
-    Name,
-    /// What resource is being referenced
-    Predecessor,
-    /// Name of the publisher of the library
-    Publisher,
-    /// The current status of the library
-    Status,
-    /// What resource is being referenced
-    Successor,
-    /// The human-friendly name of the library
-    Title,
-    /// Topics associated with the module
-    Topic,
-    /// The uri that identifies the library
-    Url,
-    /// The business version of the library
-    Version,
-}
-impl ResourceSearchParameterDefinition for LibrarySearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Library"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::ComposedOf => "composed-of",
-            Self::Date => "date",
-            Self::DependsOn => "depends-on",
-            Self::DerivedFrom => "derived-from",
-            Self::Description => "description",
-            Self::Effective => "effective",
-            Self::Identifier => "identifier",
-            Self::Jurisdiction => "jurisdiction",
-            Self::Name => "name",
-            Self::Predecessor => "predecessor",
-            Self::Publisher => "publisher",
-            Self::Status => "status",
-            Self::Successor => "successor",
-            Self::Title => "title",
-            Self::Topic => "topic",
-            Self::Url => "url",
-            Self::Version => "version",
-        }
-    }
-}
 /// Search parameters for the Linkage resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum LinkageSearchParameter {
@@ -2845,55 +1896,6 @@ impl ResourceSearchParameterDefinition for LinkageSearchParameter {
             Self::Author => "author",
             Self::Item => "item",
             Self::Source => "source",
-        }
-    }
-}
-/// Search parameters for the List resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ListSearchParameter {
-    /// What the purpose of this list is
-    Code,
-    /// When the list was prepared
-    Date,
-    /// Business identifier
-    Identifier,
-    /// If all resources have the same subject
-    Patient,
-    /// Context in which list created
-    Encounter,
-    /// Why list is empty
-    EmptyReason,
-    /// Actual entry
-    Item,
-    /// The annotation  - text content
-    Notes,
-    /// Who and/or what defined the list contents (aka Author)
-    Source,
-    /// current | retired | entered-in-error
-    Status,
-    /// If all resources have the same subject
-    Subject,
-    /// Descriptive name for the list
-    Title,
-}
-impl ResourceSearchParameterDefinition for ListSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "List"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Code => "code",
-            Self::Date => "date",
-            Self::Identifier => "identifier",
-            Self::Patient => "patient",
-            Self::Encounter => "encounter",
-            Self::EmptyReason => "empty-reason",
-            Self::Item => "item",
-            Self::Notes => "notes",
-            Self::Source => "source",
-            Self::Status => "status",
-            Self::Subject => "subject",
-            Self::Title => "title",
         }
     }
 }
@@ -2962,70 +1964,6 @@ impl ResourceSearchParameterDefinition for LocationSearchParameter {
         }
     }
 }
-/// Search parameters for the Measure resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum MeasureSearchParameter {
-    /// What resource is being referenced
-    ComposedOf,
-    /// The measure publication date
-    Date,
-    /// What resource is being referenced
-    DependsOn,
-    /// What resource is being referenced
-    DerivedFrom,
-    /// The description of the measure
-    Description,
-    /// The time during which the measure is intended to be in use
-    Effective,
-    /// External identifier for the measure
-    Identifier,
-    /// Intended jurisdiction for the measure
-    Jurisdiction,
-    /// Computationally friendly name of the measure
-    Name,
-    /// What resource is being referenced
-    Predecessor,
-    /// Name of the publisher of the measure
-    Publisher,
-    /// The current status of the measure
-    Status,
-    /// What resource is being referenced
-    Successor,
-    /// The human-friendly name of the measure
-    Title,
-    /// Topics associated with the module
-    Topic,
-    /// The uri that identifies the measure
-    Url,
-    /// The business version of the measure
-    Version,
-}
-impl ResourceSearchParameterDefinition for MeasureSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Measure"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::ComposedOf => "composed-of",
-            Self::Date => "date",
-            Self::DependsOn => "depends-on",
-            Self::DerivedFrom => "derived-from",
-            Self::Description => "description",
-            Self::Effective => "effective",
-            Self::Identifier => "identifier",
-            Self::Jurisdiction => "jurisdiction",
-            Self::Name => "name",
-            Self::Predecessor => "predecessor",
-            Self::Publisher => "publisher",
-            Self::Status => "status",
-            Self::Successor => "successor",
-            Self::Title => "title",
-            Self::Topic => "topic",
-            Self::Url => "url",
-            Self::Version => "version",
-        }
-    }
-}
 /// Search parameters for the MeasureReport resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum MeasureReportSearchParameter {
@@ -3045,58 +1983,6 @@ impl ResourceSearchParameterDefinition for MeasureReportSearchParameter {
             Self::Identifier => "identifier",
             Self::Patient => "patient",
             Self::Status => "status",
-        }
-    }
-}
-/// Search parameters for the Media resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum MediaSearchParameter {
-    /// Procedure that caused this media to be created
-    BasedOn,
-    /// Encounter / Episode associated with media
-    Context,
-    /// Date attachment was first created
-    Created,
-    /// When Media was collected
-    Date,
-    /// Observing Device
-    Device,
-    /// Identifier(s) for the image
-    Identifier,
-    /// The person who generated the image
-    Operator,
-    /// Who/What this Media is a record of
-    Patient,
-    /// Body part in media
-    Site,
-    /// Who/What this Media is a record of
-    Subject,
-    /// The type of acquisition equipment/process
-    Subtype,
-    /// photo | video | audio
-    Type,
-    /// Imaging view, e.g. Lateral or Antero-posterior
-    View,
-}
-impl ResourceSearchParameterDefinition for MediaSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Media"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::BasedOn => "based-on",
-            Self::Context => "context",
-            Self::Created => "created",
-            Self::Date => "date",
-            Self::Device => "device",
-            Self::Identifier => "identifier",
-            Self::Operator => "operator",
-            Self::Patient => "patient",
-            Self::Site => "site",
-            Self::Subject => "subject",
-            Self::Subtype => "subtype",
-            Self::Type => "type",
-            Self::View => "view",
         }
     }
 }
@@ -3893,80 +2779,6 @@ impl ResourceSearchParameterDefinition for PatientSearchParameter {
         }
     }
 }
-/// Search parameters for the PaymentNotice resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum PaymentNoticeSearchParameter {
-    /// Creation date fro the notice
-    Created,
-    /// The business identifier of the notice
-    Identifier,
-    /// The organization who generated this resource
-    Organization,
-    /// The type of payment notice
-    PaymentStatus,
-    /// The reference to the provider
-    Provider,
-    /// The Claim
-    Request,
-    /// The ClaimResponse
-    Response,
-    /// The date of the payment action
-    Statusdate,
-}
-impl ResourceSearchParameterDefinition for PaymentNoticeSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "PaymentNotice"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Created => "created",
-            Self::Identifier => "identifier",
-            Self::Organization => "organization",
-            Self::PaymentStatus => "payment-status",
-            Self::Provider => "provider",
-            Self::Request => "request",
-            Self::Response => "response",
-            Self::Statusdate => "statusdate",
-        }
-    }
-}
-/// Search parameters for the PaymentReconciliation resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum PaymentReconciliationSearchParameter {
-    /// The creation date
-    Created,
-    /// The contents of the disposition message
-    Disposition,
-    /// The business identifier of the Explanation of Benefit
-    Identifier,
-    /// The organization who generated this resource
-    Organization,
-    /// The processing outcome
-    Outcome,
-    /// The reference to the claim
-    Request,
-    /// The organization who generated this resource
-    RequestOrganization,
-    /// The reference to the provider who sumbitted the claim
-    RequestProvider,
-}
-impl ResourceSearchParameterDefinition for PaymentReconciliationSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "PaymentReconciliation"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Created => "created",
-            Self::Disposition => "disposition",
-            Self::Identifier => "identifier",
-            Self::Organization => "organization",
-            Self::Outcome => "outcome",
-            Self::Request => "request",
-            Self::RequestOrganization => "request-organization",
-            Self::RequestProvider => "request-provider",
-        }
-    }
-}
 /// Search parameters for the Person resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum PersonSearchParameter {
@@ -4345,59 +3157,6 @@ impl ResourceSearchParameterDefinition for ProcedureRequestSearchParameter {
         }
     }
 }
-/// Search parameters for the ProcessRequest resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ProcessRequestSearchParameter {
-    /// The action requested by this resource
-    Action,
-    /// The business identifier of the ProcessRequest
-    Identifier,
-    /// The organization who generated this request
-    Organization,
-    /// The provider who regenerated this request
-    Provider,
-}
-impl ResourceSearchParameterDefinition for ProcessRequestSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "ProcessRequest"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Action => "action",
-            Self::Identifier => "identifier",
-            Self::Organization => "organization",
-            Self::Provider => "provider",
-        }
-    }
-}
-/// Search parameters for the ProcessResponse resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ProcessResponseSearchParameter {
-    /// The business identifier of the Explanation of Benefit
-    Identifier,
-    /// The organization who generated this resource
-    Organization,
-    /// The reference to the claim
-    Request,
-    /// The Organization who is responsible the request transaction
-    RequestOrganization,
-    /// The Provider who is responsible the request transaction
-    RequestProvider,
-}
-impl ResourceSearchParameterDefinition for ProcessResponseSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "ProcessResponse"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Identifier => "identifier",
-            Self::Organization => "organization",
-            Self::Request => "request",
-            Self::RequestOrganization => "request-organization",
-            Self::RequestProvider => "request-provider",
-        }
-    }
-}
 /// Search parameters for the Provenance resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum ProvenanceSearchParameter {
@@ -4539,76 +3298,6 @@ impl ResourceSearchParameterDefinition for QuestionnaireResponseSearchParameter 
         }
     }
 }
-/// Search parameters for the ReferralRequest resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ReferralRequestSearchParameter {
-    /// Who the referral is about
-    Patient,
-    /// The type of the referral
-    Type,
-    /// Creation or activation date
-    AuthoredOn,
-    /// Request being fulfilled
-    BasedOn,
-    /// Part of encounter or episode of care
-    Context,
-    /// Instantiates protocol or definition
-    Definition,
-    /// Originating encounter
-    Encounter,
-    /// Part of common request
-    GroupIdentifier,
-    /// Business identifier
-    Identifier,
-    /// Proposal, plan or order
-    Intent,
-    /// When the service(s) requested in the referral should occur
-    OccurrenceDate,
-    /// The priority assigned to the referral
-    Priority,
-    /// The person that the referral was sent to
-    Recipient,
-    /// Request(s) replaced by this request
-    Replaces,
-    /// Individual making the request
-    Requester,
-    /// Actions requested as part of the referral
-    Service,
-    /// The specialty that the referral is for
-    Specialty,
-    /// The status of the referral
-    Status,
-    /// Patient referred to care or transfer
-    Subject,
-}
-impl ResourceSearchParameterDefinition for ReferralRequestSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "ReferralRequest"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Patient => "patient",
-            Self::Type => "type",
-            Self::AuthoredOn => "authored-on",
-            Self::BasedOn => "based-on",
-            Self::Context => "context",
-            Self::Definition => "definition",
-            Self::Encounter => "encounter",
-            Self::GroupIdentifier => "group-identifier",
-            Self::Identifier => "identifier",
-            Self::Intent => "intent",
-            Self::OccurrenceDate => "occurrence-date",
-            Self::Priority => "priority",
-            Self::Recipient => "recipient",
-            Self::Replaces => "replaces",
-            Self::Requester => "requester",
-            Self::Service => "service",
-            Self::Specialty => "specialty",
-            Self::Status => "status",
-            Self::Subject => "subject",
-        }
-    }
-}
 /// Search parameters for the RelatedPerson resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum RelatedPersonSearchParameter {
@@ -4667,110 +3356,6 @@ impl ResourceSearchParameterDefinition for RelatedPersonSearchParameter {
             Self::Identifier => "identifier",
             Self::Name => "name",
             Self::Patient => "patient",
-        }
-    }
-}
-/// Search parameters for the RequestGroup resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum RequestGroupSearchParameter {
-    /// The author of the request group
-    Author,
-    /// The date the request group was authored
-    Authored,
-    /// The context the request group applies to
-    Context,
-    /// The definition from which the request group is realized
-    Definition,
-    /// The encounter the request group applies to
-    Encounter,
-    /// The group identifier for the request group
-    GroupIdentifier,
-    /// External identifiers for the request group
-    Identifier,
-    /// The intent of the request group
-    Intent,
-    /// The participant in the requests in the group
-    Participant,
-    /// The identity of a patient to search for request groups
-    Patient,
-    /// The priority of the request group
-    Priority,
-    /// The status of the request group
-    Status,
-    /// The subject that the request group is about
-    Subject,
-}
-impl ResourceSearchParameterDefinition for RequestGroupSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "RequestGroup"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Author => "author",
-            Self::Authored => "authored",
-            Self::Context => "context",
-            Self::Definition => "definition",
-            Self::Encounter => "encounter",
-            Self::GroupIdentifier => "group-identifier",
-            Self::Identifier => "identifier",
-            Self::Intent => "intent",
-            Self::Participant => "participant",
-            Self::Patient => "patient",
-            Self::Priority => "priority",
-            Self::Status => "status",
-            Self::Subject => "subject",
-        }
-    }
-}
-/// Search parameters for the ResearchStudy resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ResearchStudySearchParameter {
-    /// Classifications for the study
-    Category,
-    /// When the study began and ended
-    Date,
-    /// Drugs, devices, conditions, etc. under study
-    Focus,
-    /// Business Identifier for study
-    Identifier,
-    /// Geographic region(s) for study
-    Jurisdiction,
-    /// Used to search for the study
-    Keyword,
-    /// Part of larger study
-    Partof,
-    /// The individual responsible for the study
-    Principalinvestigator,
-    /// Steps followed in executing study
-    Protocol,
-    /// Location involved in study execution
-    Site,
-    /// Organization responsible for the study
-    Sponsor,
-    /// draft | in-progress | suspended | stopped | completed | entered-in-error
-    Status,
-    /// Name for this study
-    Title,
-}
-impl ResourceSearchParameterDefinition for ResearchStudySearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "ResearchStudy"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Category => "category",
-            Self::Date => "date",
-            Self::Focus => "focus",
-            Self::Identifier => "identifier",
-            Self::Jurisdiction => "jurisdiction",
-            Self::Keyword => "keyword",
-            Self::Partof => "partof",
-            Self::Principalinvestigator => "principalinvestigator",
-            Self::Protocol => "protocol",
-            Self::Site => "site",
-            Self::Sponsor => "sponsor",
-            Self::Status => "status",
-            Self::Title => "title",
         }
     }
 }
@@ -4845,34 +3430,6 @@ impl ResourceSearchParameterDefinition for RiskAssessmentSearchParameter {
         }
     }
 }
-/// Search parameters for the Schedule resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ScheduleSearchParameter {
-    /// Is the schedule in active use
-    Active,
-    /// The individual(HealthcareService, Practitioner, Location, ...) to find a Schedule for
-    Actor,
-    /// Search for Schedule resources that have a period that contains this date specified
-    Date,
-    /// A Schedule Identifier
-    Identifier,
-    /// The type of appointments that can be booked into associated slot(s)
-    Type,
-}
-impl ResourceSearchParameterDefinition for ScheduleSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Schedule"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Active => "active",
-            Self::Actor => "actor",
-            Self::Date => "date",
-            Self::Identifier => "identifier",
-            Self::Type => "type",
-        }
-    }
-}
 /// Search parameters for the SearchParameter resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum SearchParameterSearchParameter {
@@ -4925,132 +3482,6 @@ impl ResourceSearchParameterDefinition for SearchParameterSearchParameter {
             Self::Type => "type",
             Self::Url => "url",
             Self::Version => "version",
-        }
-    }
-}
-/// Search parameters for the Sequence resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum SequenceSearchParameter {
-    /// Chromosome number of the reference sequence
-    Chromosome,
-    /// Search parameter for region of the reference DNA sequence string. This will refer to part of a locus or part of a gene where search region will be represented in 1-based system. Since the coordinateSystem can either be 0-based or 1-based, this search query will include the result of both coordinateSystem that contains the equivalent segment of the gene or whole genome sequence. For example, a search for sequence can be represented as `coordinate=1$lt345$gt123`, this means it will search for the Sequence resource on chromosome 1 and with position >123 and <345, where in 1-based system resource, all strings within region 1:124-344 will be revealed, while in 0-based system resource, all strings within region 1:123-344 will be revealed. You may want to check detail about 0-based v.s. 1-based above.
-    Coordinate,
-    /// End position (0-based exclusive, which menas the acid at this position will not be included, 1-based inclusive, which means the acid at this position will be included) of the reference sequence.
-    End,
-    /// The unique identity for a particular sequence
-    Identifier,
-    /// The subject that the observation is about
-    Patient,
-    /// Start position (0-based inclusive, 1-based inclusive, that means the nucleic acid or amino acid at this position will be included) of the reference sequence.
-    Start,
-    /// Amino Acid Sequence/ DNA Sequence / RNA Sequence
-    Type,
-}
-impl ResourceSearchParameterDefinition for SequenceSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Sequence"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Chromosome => "chromosome",
-            Self::Coordinate => "coordinate",
-            Self::End => "end",
-            Self::Identifier => "identifier",
-            Self::Patient => "patient",
-            Self::Start => "start",
-            Self::Type => "type",
-        }
-    }
-}
-/// Search parameters for the ServiceDefinition resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum ServiceDefinitionSearchParameter {
-    /// What resource is being referenced
-    ComposedOf,
-    /// The service definition publication date
-    Date,
-    /// What resource is being referenced
-    DependsOn,
-    /// What resource is being referenced
-    DerivedFrom,
-    /// The description of the service definition
-    Description,
-    /// The time during which the service definition is intended to be in use
-    Effective,
-    /// External identifier for the service definition
-    Identifier,
-    /// Intended jurisdiction for the service definition
-    Jurisdiction,
-    /// Computationally friendly name of the service definition
-    Name,
-    /// What resource is being referenced
-    Predecessor,
-    /// Name of the publisher of the service definition
-    Publisher,
-    /// The current status of the service definition
-    Status,
-    /// What resource is being referenced
-    Successor,
-    /// The human-friendly name of the service definition
-    Title,
-    /// Topics associated with the module
-    Topic,
-    /// The uri that identifies the service definition
-    Url,
-    /// The business version of the service definition
-    Version,
-}
-impl ResourceSearchParameterDefinition for ServiceDefinitionSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "ServiceDefinition"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::ComposedOf => "composed-of",
-            Self::Date => "date",
-            Self::DependsOn => "depends-on",
-            Self::DerivedFrom => "derived-from",
-            Self::Description => "description",
-            Self::Effective => "effective",
-            Self::Identifier => "identifier",
-            Self::Jurisdiction => "jurisdiction",
-            Self::Name => "name",
-            Self::Predecessor => "predecessor",
-            Self::Publisher => "publisher",
-            Self::Status => "status",
-            Self::Successor => "successor",
-            Self::Title => "title",
-            Self::Topic => "topic",
-            Self::Url => "url",
-            Self::Version => "version",
-        }
-    }
-}
-/// Search parameters for the Slot resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum SlotSearchParameter {
-    /// A Slot Identifier
-    Identifier,
-    /// The Schedule Resource that we are seeking a slot within
-    Schedule,
-    /// The type of appointments that can be booked into the slot
-    SlotType,
-    /// Appointment date/time.
-    Start,
-    /// The free/busy status of the appointment
-    Status,
-}
-impl ResourceSearchParameterDefinition for SlotSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Slot"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Identifier => "identifier",
-            Self::Schedule => "schedule",
-            Self::SlotType => "slot-type",
-            Self::Start => "start",
-            Self::Status => "status",
         }
     }
 }
@@ -5355,79 +3786,6 @@ impl ResourceSearchParameterDefinition for SupplyRequestSearchParameter {
         }
     }
 }
-/// Search parameters for the Task resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum TaskSearchParameter {
-    /// Search by creation date
-    AuthoredOn,
-    /// Search by requests this task is based on
-    BasedOn,
-    /// Search by business status
-    BusinessStatus,
-    /// Search by task code
-    Code,
-    /// Search by encounter or episode
-    Context,
-    /// Search by task focus
-    Focus,
-    /// Search by group identifier
-    GroupIdentifier,
-    /// Search for a task instance by its business identifier
-    Identifier,
-    /// Search by task intent
-    Intent,
-    /// Search by last modification date
-    Modified,
-    /// Search by responsible organization
-    Organization,
-    /// Search by task owner
-    Owner,
-    /// Search by task this task is part of
-    PartOf,
-    /// Search by patient
-    Patient,
-    /// Search by recommended type of performer (e.g., Requester, Performer, Scheduler).
-    Performer,
-    /// Search by period Task is/was underway
-    Period,
-    /// Search by task priority
-    Priority,
-    /// Search by task requester
-    Requester,
-    /// Search by task status
-    Status,
-    /// Search by subject
-    Subject,
-}
-impl ResourceSearchParameterDefinition for TaskSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "Task"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::AuthoredOn => "authored-on",
-            Self::BasedOn => "based-on",
-            Self::BusinessStatus => "business-status",
-            Self::Code => "code",
-            Self::Context => "context",
-            Self::Focus => "focus",
-            Self::GroupIdentifier => "group-identifier",
-            Self::Identifier => "identifier",
-            Self::Intent => "intent",
-            Self::Modified => "modified",
-            Self::Organization => "organization",
-            Self::Owner => "owner",
-            Self::PartOf => "part-of",
-            Self::Patient => "patient",
-            Self::Performer => "performer",
-            Self::Period => "period",
-            Self::Priority => "priority",
-            Self::Requester => "requester",
-            Self::Status => "status",
-            Self::Subject => "subject",
-        }
-    }
-}
 /// Search parameters for the TestReport resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum TestReportSearchParameter {
@@ -5554,38 +3912,6 @@ impl ResourceSearchParameterDefinition for ValueSetSearchParameter {
         }
     }
 }
-/// Search parameters for the VisionPrescription resource
-#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-pub enum VisionPrescriptionSearchParameter {
-    /// Return prescriptions with this external identifier
-    Identifier,
-    /// The identity of a patient to list dispenses for
-    Patient,
-    /// Return prescriptions with this encounter identifier
-    Encounter,
-    /// Return prescriptions written on this date
-    Datewritten,
-    /// Who authorizes the vision product
-    Prescriber,
-}
-impl ResourceSearchParameterDefinition for VisionPrescriptionSearchParameter {
-    fn resource_type(&self) -> &'static str {
-        "VisionPrescription"
-    }
-    fn code(&self) -> &'static str {
-        match self {
-            Self::Identifier => "identifier",
-            Self::Patient => "patient",
-            Self::Encounter => "encounter",
-            Self::Datewritten => "datewritten",
-            Self::Prescriber => "prescriber",
-        }
-    }
-}
-impl SearchableResource for resources::Account {
-    /// Parameters that can be used when searching Account resources
-    type Params = AccountSearchParameter;
-}
 impl SearchableResource for resources::ActivityDefinition {
     /// Parameters that can be used when searching ActivityDefinition resources
     type Params = ActivityDefinitionSearchParameter;
@@ -5602,17 +3928,9 @@ impl SearchableResource for resources::Appointment {
     /// Parameters that can be used when searching Appointment resources
     type Params = AppointmentSearchParameter;
 }
-impl SearchableResource for resources::AppointmentResponse {
-    /// Parameters that can be used when searching AppointmentResponse resources
-    type Params = AppointmentResponseSearchParameter;
-}
 impl SearchableResource for resources::AuditEvent {
     /// Parameters that can be used when searching AuditEvent resources
     type Params = AuditEventSearchParameter;
-}
-impl SearchableResource for resources::Basic {
-    /// Parameters that can be used when searching Basic resources
-    type Params = BasicSearchParameter;
 }
 impl SearchableResource for resources::Binary {
     /// Parameters that can be used when searching Binary resources
@@ -5642,29 +3960,9 @@ impl SearchableResource for resources::ChargeItem {
     /// Parameters that can be used when searching ChargeItem resources
     type Params = ChargeItemSearchParameter;
 }
-impl SearchableResource for resources::Claim {
-    /// Parameters that can be used when searching Claim resources
-    type Params = ClaimSearchParameter;
-}
-impl SearchableResource for resources::ClaimResponse {
-    /// Parameters that can be used when searching ClaimResponse resources
-    type Params = ClaimResponseSearchParameter;
-}
-impl SearchableResource for resources::ClinicalImpression {
-    /// Parameters that can be used when searching ClinicalImpression resources
-    type Params = ClinicalImpressionSearchParameter;
-}
 impl SearchableResource for resources::CodeSystem {
     /// Parameters that can be used when searching CodeSystem resources
     type Params = CodeSystemSearchParameter;
-}
-impl SearchableResource for resources::Communication {
-    /// Parameters that can be used when searching Communication resources
-    type Params = CommunicationSearchParameter;
-}
-impl SearchableResource for resources::CommunicationRequest {
-    /// Parameters that can be used when searching CommunicationRequest resources
-    type Params = CommunicationRequestSearchParameter;
 }
 impl SearchableResource for resources::CompartmentDefinition {
     /// Parameters that can be used when searching CompartmentDefinition resources
@@ -5694,10 +3992,6 @@ impl SearchableResource for resources::Coverage {
     /// Parameters that can be used when searching Coverage resources
     type Params = CoverageSearchParameter;
 }
-impl SearchableResource for resources::DataElement {
-    /// Parameters that can be used when searching DataElement resources
-    type Params = DataElementSearchParameter;
-}
 impl SearchableResource for resources::DetectedIssue {
     /// Parameters that can be used when searching DetectedIssue resources
     type Params = DetectedIssueSearchParameter;
@@ -5726,37 +4020,13 @@ impl SearchableResource for resources::DiagnosticReport {
     /// Parameters that can be used when searching DiagnosticReport resources
     type Params = DiagnosticReportSearchParameter;
 }
-impl SearchableResource for resources::DocumentManifest {
-    /// Parameters that can be used when searching DocumentManifest resources
-    type Params = DocumentManifestSearchParameter;
-}
 impl SearchableResource for resources::DocumentReference {
     /// Parameters that can be used when searching DocumentReference resources
     type Params = DocumentReferenceSearchParameter;
 }
-impl SearchableResource for resources::EligibilityRequest {
-    /// Parameters that can be used when searching EligibilityRequest resources
-    type Params = EligibilityRequestSearchParameter;
-}
-impl SearchableResource for resources::EligibilityResponse {
-    /// Parameters that can be used when searching EligibilityResponse resources
-    type Params = EligibilityResponseSearchParameter;
-}
 impl SearchableResource for resources::Encounter {
     /// Parameters that can be used when searching Encounter resources
     type Params = EncounterSearchParameter;
-}
-impl SearchableResource for resources::Endpoint {
-    /// Parameters that can be used when searching Endpoint resources
-    type Params = EndpointSearchParameter;
-}
-impl SearchableResource for resources::EnrollmentRequest {
-    /// Parameters that can be used when searching EnrollmentRequest resources
-    type Params = EnrollmentRequestSearchParameter;
-}
-impl SearchableResource for resources::EnrollmentResponse {
-    /// Parameters that can be used when searching EnrollmentResponse resources
-    type Params = EnrollmentResponseSearchParameter;
 }
 impl SearchableResource for resources::EpisodeOfCare {
     /// Parameters that can be used when searching EpisodeOfCare resources
@@ -5766,45 +4036,21 @@ impl SearchableResource for resources::ExpansionProfile {
     /// Parameters that can be used when searching ExpansionProfile resources
     type Params = ExpansionProfileSearchParameter;
 }
-impl SearchableResource for resources::ExplanationOfBenefit {
-    /// Parameters that can be used when searching ExplanationOfBenefit resources
-    type Params = ExplanationOfBenefitSearchParameter;
-}
-impl SearchableResource for resources::FamilyMemberHistory {
-    /// Parameters that can be used when searching FamilyMemberHistory resources
-    type Params = FamilyMemberHistorySearchParameter;
-}
 impl SearchableResource for resources::Flag {
     /// Parameters that can be used when searching Flag resources
     type Params = FlagSearchParameter;
-}
-impl SearchableResource for resources::Goal {
-    /// Parameters that can be used when searching Goal resources
-    type Params = GoalSearchParameter;
 }
 impl SearchableResource for resources::GraphDefinition {
     /// Parameters that can be used when searching GraphDefinition resources
     type Params = GraphDefinitionSearchParameter;
 }
-impl SearchableResource for resources::Group {
-    /// Parameters that can be used when searching Group resources
-    type Params = GroupSearchParameter;
-}
 impl SearchableResource for resources::GuidanceResponse {
     /// Parameters that can be used when searching GuidanceResponse resources
     type Params = GuidanceResponseSearchParameter;
 }
-impl SearchableResource for resources::HealthcareService {
-    /// Parameters that can be used when searching HealthcareService resources
-    type Params = HealthcareServiceSearchParameter;
-}
 impl SearchableResource for resources::ImagingManifest {
     /// Parameters that can be used when searching ImagingManifest resources
     type Params = ImagingManifestSearchParameter;
-}
-impl SearchableResource for resources::ImagingStudy {
-    /// Parameters that can be used when searching ImagingStudy resources
-    type Params = ImagingStudySearchParameter;
 }
 impl SearchableResource for resources::Immunization {
     /// Parameters that can be used when searching Immunization resources
@@ -5818,33 +4064,17 @@ impl SearchableResource for resources::ImplementationGuide {
     /// Parameters that can be used when searching ImplementationGuide resources
     type Params = ImplementationGuideSearchParameter;
 }
-impl SearchableResource for resources::Library {
-    /// Parameters that can be used when searching Library resources
-    type Params = LibrarySearchParameter;
-}
 impl SearchableResource for resources::Linkage {
     /// Parameters that can be used when searching Linkage resources
     type Params = LinkageSearchParameter;
-}
-impl SearchableResource for resources::List {
-    /// Parameters that can be used when searching List resources
-    type Params = ListSearchParameter;
 }
 impl SearchableResource for resources::Location {
     /// Parameters that can be used when searching Location resources
     type Params = LocationSearchParameter;
 }
-impl SearchableResource for resources::Measure {
-    /// Parameters that can be used when searching Measure resources
-    type Params = MeasureSearchParameter;
-}
 impl SearchableResource for resources::MeasureReport {
     /// Parameters that can be used when searching MeasureReport resources
     type Params = MeasureReportSearchParameter;
-}
-impl SearchableResource for resources::Media {
-    /// Parameters that can be used when searching Media resources
-    type Params = MediaSearchParameter;
 }
 impl SearchableResource for resources::Medication {
     /// Parameters that can be used when searching Medication resources
@@ -5898,14 +4128,6 @@ impl SearchableResource for resources::Patient {
     /// Parameters that can be used when searching Patient resources
     type Params = PatientSearchParameter;
 }
-impl SearchableResource for resources::PaymentNotice {
-    /// Parameters that can be used when searching PaymentNotice resources
-    type Params = PaymentNoticeSearchParameter;
-}
-impl SearchableResource for resources::PaymentReconciliation {
-    /// Parameters that can be used when searching PaymentReconciliation resources
-    type Params = PaymentReconciliationSearchParameter;
-}
 impl SearchableResource for resources::Person {
     /// Parameters that can be used when searching Person resources
     type Params = PersonSearchParameter;
@@ -5930,14 +4152,6 @@ impl SearchableResource for resources::ProcedureRequest {
     /// Parameters that can be used when searching ProcedureRequest resources
     type Params = ProcedureRequestSearchParameter;
 }
-impl SearchableResource for resources::ProcessRequest {
-    /// Parameters that can be used when searching ProcessRequest resources
-    type Params = ProcessRequestSearchParameter;
-}
-impl SearchableResource for resources::ProcessResponse {
-    /// Parameters that can be used when searching ProcessResponse resources
-    type Params = ProcessResponseSearchParameter;
-}
 impl SearchableResource for resources::Provenance {
     /// Parameters that can be used when searching Provenance resources
     type Params = ProvenanceSearchParameter;
@@ -5950,21 +4164,9 @@ impl SearchableResource for resources::QuestionnaireResponse {
     /// Parameters that can be used when searching QuestionnaireResponse resources
     type Params = QuestionnaireResponseSearchParameter;
 }
-impl SearchableResource for resources::ReferralRequest {
-    /// Parameters that can be used when searching ReferralRequest resources
-    type Params = ReferralRequestSearchParameter;
-}
 impl SearchableResource for resources::RelatedPerson {
     /// Parameters that can be used when searching RelatedPerson resources
     type Params = RelatedPersonSearchParameter;
-}
-impl SearchableResource for resources::RequestGroup {
-    /// Parameters that can be used when searching RequestGroup resources
-    type Params = RequestGroupSearchParameter;
-}
-impl SearchableResource for resources::ResearchStudy {
-    /// Parameters that can be used when searching ResearchStudy resources
-    type Params = ResearchStudySearchParameter;
 }
 impl SearchableResource for resources::ResearchSubject {
     /// Parameters that can be used when searching ResearchSubject resources
@@ -5974,25 +4176,9 @@ impl SearchableResource for resources::RiskAssessment {
     /// Parameters that can be used when searching RiskAssessment resources
     type Params = RiskAssessmentSearchParameter;
 }
-impl SearchableResource for resources::Schedule {
-    /// Parameters that can be used when searching Schedule resources
-    type Params = ScheduleSearchParameter;
-}
 impl SearchableResource for resources::SearchParameter {
     /// Parameters that can be used when searching SearchParameter resources
     type Params = SearchParameterSearchParameter;
-}
-impl SearchableResource for resources::Sequence {
-    /// Parameters that can be used when searching Sequence resources
-    type Params = SequenceSearchParameter;
-}
-impl SearchableResource for resources::ServiceDefinition {
-    /// Parameters that can be used when searching ServiceDefinition resources
-    type Params = ServiceDefinitionSearchParameter;
-}
-impl SearchableResource for resources::Slot {
-    /// Parameters that can be used when searching Slot resources
-    type Params = SlotSearchParameter;
 }
 impl SearchableResource for resources::Specimen {
     /// Parameters that can be used when searching Specimen resources
@@ -6022,10 +4208,6 @@ impl SearchableResource for resources::SupplyRequest {
     /// Parameters that can be used when searching SupplyRequest resources
     type Params = SupplyRequestSearchParameter;
 }
-impl SearchableResource for resources::Task {
-    /// Parameters that can be used when searching Task resources
-    type Params = TaskSearchParameter;
-}
 impl SearchableResource for resources::TestReport {
     /// Parameters that can be used when searching TestReport resources
     type Params = TestReportSearchParameter;
@@ -6037,8 +4219,4 @@ impl SearchableResource for resources::TestScript {
 impl SearchableResource for resources::ValueSet {
     /// Parameters that can be used when searching ValueSet resources
     type Params = ValueSetSearchParameter;
-}
-impl SearchableResource for resources::VisionPrescription {
-    /// Parameters that can be used when searching VisionPrescription resources
-    type Params = VisionPrescriptionSearchParameter;
 }

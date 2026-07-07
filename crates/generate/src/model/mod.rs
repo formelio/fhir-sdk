@@ -22,7 +22,8 @@ pub enum StructureDefinitionKind {
 	Resource,
 }
 
-/// Version independent type of value that a search parameter may contain, and how the content is interpreted
+/// Version independent type of value that a search parameter may contain, and
+/// how the content is interpreted
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Hash)]
 pub enum SearchParamType {
 	Number,

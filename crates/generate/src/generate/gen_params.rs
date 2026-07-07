@@ -2,8 +2,7 @@ use inflector::Inflector;
 use proc_macro2::TokenStream;
 use quote::{format_ident, quote};
 
-use crate::model::params::SearchParam;
-use crate::model::structures::Type;
+use crate::model::{params::SearchParam, structures::Type};
 
 pub fn generate_search_param_enums(
 	resource_params: &[(Type, Vec<&SearchParam>)],
