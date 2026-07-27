@@ -1,12 +1,15 @@
 use std::str::FromStr;
 
-use crate::client::search::{escape_value, IntoQuery, SearchParameter};
-use fhir_model::stu3::{
-	codes::{SearchComparator, SearchModifierCode},
-	resources::ResourceType,
+use fhir_model::{
+	ParsedReference,
+	stu3::{
+		codes::{SearchComparator, SearchModifierCode},
+		resources::ResourceType,
+	},
 };
-use fhir_model::ParsedReference;
 use thiserror::Error;
+
+use crate::client::search::{IntoQuery, SearchParameter, escape_value};
 
 /// Number search.
 ///
@@ -263,7 +266,8 @@ impl<'a> ReferenceParam<'a> {
 	}
 }
 
-/// Local references (to contained resources) cannot be used as search parameters
+/// Local references (to contained resources) cannot be used as search
+/// parameters
 #[derive(Debug, Error)]
 #[error("local references cannot be used as FHIR search parameters")]
 pub struct LocalReferenceUnusableAsParameter;
@@ -414,6 +418,12 @@ impl<'a> SearchParameter for UriParam<'a> {
 #[derive(Debug, Clone, Copy)]
 pub struct MissingParam(bool);
 
+impl MissingParam {
+	pub fn new(value: bool) -> Self {
+		Self(value)
+	}
+}
+
 impl SearchParameter for MissingParam {
 	fn modifier(&self) -> Option<&str> {
 		Some(SearchModifierCode::Missing.as_ref())
@@ -430,10 +440,12 @@ pub struct IncludeParam<'a> {
 	/// Resource type from which the join comes
 	pub source_type: ResourceType,
 
-	/// Field name to join on. Must be a search parameter of type reference for the [IncludeParam::source] resource type.
+	/// Field name to join on. Must be a search parameter of type reference for
+	/// the [IncludeParam::source] resource type.
 	pub field: &'a str,
 
-	/// Type of the target resource in the case the reference field can have multiple target resource types.
+	/// Type of the target resource in the case the reference field can have
+	/// multiple target resource types.
 	pub target_type: Option<ResourceType>,
 
 	/// Whether to recursively include.
