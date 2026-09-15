@@ -8,18 +8,64 @@ use std::fs;
 
 use fhir_model::{
 	r5::{
-		codes::{AccountStatus, CatalogType, Kind, RequestIntent, RequestStatus},
+		codes::{CatalogType, RequestIntent, RequestStatus},
 		resources::{
-			Account, AccountCoverage, AccountCoverageCoverageReference, AccountOwnerReference,
-			AccountSubjectReference, Basic, Coverage, IdentifiableResource, NamedResource,
-			Organization, Patient, RequestOrchestration, RequestOrchestrationAction,
-			RequestOrchestrationActionTiming, Resource, WrongResourceType,
+			IdentifiableResource, NamedResource, Organization, Patient, RequestOrchestration,
+			RequestOrchestrationAction, RequestOrchestrationActionTiming, Resource,
+			WrongResourceType,
 		},
 		types::{CodeableConcept, Coding, Identifier, Reference},
-		LookupReferences, ReferenceField,
 	},
 	Date, DateTime, ParsedReference,
 };
+
+/// Resource types excluded from generation via the generator's `IGNORED_TYPES`,
+/// so their example files cannot be deserialized into [`Resource`].
+const IGNORED_RESOURCE_TYPES: &[&str] = &[
+	"Account",
+	"AppointmentResponse",
+	"Basic",
+	"Claim",
+	"ClaimResponse",
+	"ClinicalImpression",
+	"Communication",
+	"CommunicationRequest",
+	"Endpoint",
+	"EnrollmentRequest",
+	"EnrollmentResponse",
+	"ExplanationOfBenefit",
+	"FamilyMemberHistory",
+	"Goal",
+	"Group",
+	"HealthcareService",
+	"ImagingStudy",
+	"Library",
+	"List",
+	"Measure",
+	"PaymentNotice",
+	"PaymentReconciliation",
+	"ResearchStudy",
+	"Schedule",
+	"Slot",
+	"Task",
+	"VisionPrescription",
+];
+
+/// Whether `value` is, or recursively contains, a resource of an ignored type.
+fn contains_ignored_resource(value: &Value) -> bool {
+	match value {
+		Value::Object(map) => {
+			if let Some(Value::String(resource_type)) = map.get("resourceType") {
+				if IGNORED_RESOURCE_TYPES.contains(&resource_type.as_str()) {
+					return true;
+				}
+			}
+			map.values().any(contains_ignored_resource)
+		}
+		Value::Array(array) => array.iter().any(contains_ignored_resource),
+		_ => false,
+	}
+}
 use serde_json::Value;
 
 use self::json_compare::assert_fhir_json_equal;
@@ -34,8 +80,14 @@ fn serialization_deserialization() {
 
 		println!("Checking file `{}`..", file.display());
 
-		let string = fs::read_to_string(file).expect("reading file");
+		let string = fs::read_to_string(&file).expect("reading file");
 		let json: Value = serde_json::from_str(&string).expect("deserialize to value");
+		// Skip examples that are, or contain (e.g. in `contained`), an ignored
+		// resource type, since those can't be deserialized into `Resource`.
+		if contains_ignored_resource(&json) {
+			println!("Skipping `{}`: ignored resource type", file.display());
+			continue;
+		}
 		let deserialized: Resource = serde_json::from_value(json.clone()).expect("deserializing");
 		let serialized = serde_json::to_value(&deserialized).expect("serializing");
 		assert_fhir_json_equal(&serialized, &json);
@@ -79,7 +131,7 @@ fn resource_conversion() {
 	let patient: Patient = resource.try_into().expect("It is a Patient resource");
 	let resource: Resource = patient.into();
 	let _patient: &Patient = (&resource).try_into().expect("It is a Patient resource");
-	let result: Result<Basic, WrongResourceType> = resource.try_into();
+	let result: Result<Organization, WrongResourceType> = resource.try_into();
 	assert!(result.is_err());
 }
 
@@ -289,59 +341,4 @@ fn codeable_concept() {
 	assert_eq!(codes1.next(), None);
 	let code3 = concept.code_with_system("system3");
 	assert_eq!(code3, Some("code3"));
-}
-
-#[test]
-fn reference_search_and_mutate() {
-	let reference = Reference::builder().build().unwrap();
-
-	let s: AccountSubjectReference = reference.clone().into();
-	let cr: AccountCoverageCoverageReference = reference.clone().into();
-	let c = AccountCoverage::builder().coverage(cr).build().unwrap();
-	let o: AccountOwnerReference = reference.clone().into();
-
-	let mut a = Account::builder()
-		.status(AccountStatus::Active)
-		.subject(vec![Some(s.clone())])
-		.coverage(vec![Some(c.clone())])
-		.owner(o.clone())
-		.build()
-		.unwrap();
-
-	// The resources we are going to refer to in the Account reference fields
-	let patient = Patient::builder().build().unwrap();
-	let organization = Organization::builder().build().unwrap();
-	let coverage = Coverage::builder()
-		.status("active".to_string())
-		.kind(Kind::Other)
-		.beneficiary(reference.clone().into())
-		.build()
-		.unwrap();
-
-	let mut fields = a.lookup_references();
-
-	assert_eq!(fields.len(), 3);
-
-	fields.get_mut(0).unwrap().set_target(patient.clone().into()).unwrap();
-	fields.get_mut(1).unwrap().set_target(coverage.clone().into()).unwrap();
-	fields.get_mut(2).unwrap().set_target(organization.clone().into()).unwrap();
-
-	let mut s2 = s.clone();
-	s2.set_target(patient.into()).unwrap();
-
-	let mut c2 = c.clone();
-	c2.coverage.set_target(coverage.into()).unwrap();
-
-	let mut o2 = o.clone();
-	o2.set_target(organization.into()).unwrap();
-
-	let a2 = Account::builder()
-		.status(AccountStatus::Active)
-		.subject(vec![Some(s2)])
-		.coverage(vec![Some(c2)])
-		.owner(o2)
-		.build()
-		.unwrap();
-
-	assert_eq!(a, a2);
 }
