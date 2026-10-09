@@ -5153,6 +5153,356 @@ impl LookupReferences for AuditEventEntityDetail {
         Vec::new()
     }
 }
+/** Base StructureDefinition for Basic Resource
+
+ **[Basic](http://hl7.org/fhir/StructureDefinition/Basic) v3.0.2**
+
+ Resource for non-supported content
+
+ Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.
+
+ */
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[serde(transparent)]
+pub struct Basic(pub Box<BasicInner>);
+/** Base StructureDefinition for Basic Resource
+
+ **[Basic](http://hl7.org/fhir/StructureDefinition/Basic) v3.0.2**
+
+ Resource for non-supported content
+
+ Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.
+
+ */
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[cfg_attr(feature = "builders", derive(Builder))]
+#[serde(rename_all = "camelCase")]
+#[cfg_attr(
+    feature = "builders",
+    builder(
+        pattern = "owned",
+        name = "BasicBuilder",
+        build_fn(error = "crate::error::BuilderError", name = "build_inner"),
+    )
+)]
+pub struct BasicInner {
+    /// Type of this FHIR resource.
+    #[doc(hidden)]
+    #[serde(default = "Basic::resource_type")]
+    #[cfg_attr(
+        feature = "builders",
+        builder(default = "ResourceType::Basic", setter(skip))
+    )]
+    resource_type: ResourceType,
+    /** **Logical id of this artifact**
+
+ The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
+
+ The only time that a resource does not have an id is when it is being submitted to the server using a create operation. */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "id")]
+    pub id: Option<String>,
+    /** **Metadata about the resource**
+
+ The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource.
+
+ */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "meta")]
+    pub meta: Option<Meta>,
+    /** **A set of rules under which this content was created**
+
+ A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content.
+
+ Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element.
+
+This element is labelled as a modifier because the implicit rules may provide additional knowledge about the resource that modifies it's meaning or interpretation. */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "implicitRules")]
+    pub implicit_rules: Option<String>,
+    /** **[Language](http://hl7.org/fhir/ValueSet/languages); Language of the resource content**
+
+ The base language in which the resource is written.
+
+ Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute). */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "language")]
+    pub language: Option<String>,
+    /** **Text summary of the resource, for human interpretation**
+
+ A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.
+
+ Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a "text blob" or where text is additionally entered raw or narrated and encoded in formation is added later. */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "text")]
+    pub text: Option<Narrative>,
+    /** **Contained, inline Resources**
+
+ These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.
+
+ This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again. */
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "contained")]
+    pub contained: Vec<Resource>,
+    /** **Additional Content defined by implementations**
+
+ May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+
+ There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "extension")]
+    pub extension: Vec<Extension>,
+    /** **Extensions that cannot be ignored**
+
+ May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.
+
+ There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone. */
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "modifierExtension")]
+    pub modifier_extension: Vec<Extension>,
+    /** **Business identifier**
+
+ Identifier assigned to the resource for business purposes, outside the context of FHIR.
+
+ */
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "identifier")]
+    pub identifier: Vec<Option<Identifier>>,
+    /// Extension field.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(rename = "_identifier")]
+    #[cfg_attr(feature = "builders", builder(default))]
+    pub identifier_ext: Vec<Option<FieldExtension>>,
+    /** **[BasicResourceType](http://hl7.org/fhir/ValueSet/basic-resource-type); Kind of Resource**
+
+ Identifies the 'type' of resource - equivalent to the resource name for other resources.
+
+ Because resource references will only be able to indicate 'Basic', the type of reference will need to be specified in a Profile identified as part of the resource.  Refer to the resource notes section for information on appropriate terminologies for this code.
+
+This element is labeled as a modifier because the it defines the meaning of the resource and cannot be ignored. */
+    #[serde(rename = "code")]
+    pub code: CodeableConcept,
+    /// Extension field.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "_code")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    pub code_ext: Option<FieldExtension>,
+    /** **Identifies the focus of this resource**
+
+ Identifies the patient, practitioner, device or any other resource that is the "focus" of this resource.
+
+ Optional as not all potential resources will have subjects.  Resources associated with multiple subjects can handle this via extension. */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "subject")]
+    pub subject: Option<BasicSubjectReference>,
+    /// Extension field.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "_subject")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    pub subject_ext: Option<FieldExtension>,
+    /** **When created**
+
+ Identifies when the resource was first created.
+
+ */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "created")]
+    pub created: Option<Date>,
+    /// Extension field.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "_created")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    pub created_ext: Option<FieldExtension>,
+    /** **Who created**
+
+ Indicates who was responsible for creating the resource instance.
+
+ */
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    #[serde(rename = "author")]
+    pub author: Option<BasicAuthorReference>,
+    /// Extension field.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "_author")]
+    #[cfg_attr(feature = "builders", builder(default, setter(strip_option)))]
+    pub author_ext: Option<FieldExtension>,
+}
+#[cfg(feature = "builders")]
+impl BasicBuilder {
+    #[doc = concat!("Finalize building ", "Basic", ".")]
+    pub fn build(self) -> Result<Basic, crate::error::BuilderError> {
+        self.build_inner().map(Into::into)
+    }
+}
+impl LookupReferences for Basic {
+    fn lookup_references(&mut self) -> Vec<Box<&mut dyn ReferenceField>> {
+        let mut refs: Vec<Box<&mut dyn ReferenceField>> = Vec::new();
+        if let Some(subject) = self.0.subject.as_mut() {
+            refs.push(Box::new(subject));
+        }
+        if let Some(author) = self.0.author.as_mut() {
+            refs.push(Box::new(author));
+        }
+        refs
+    }
+}
+impl From<BasicInner> for Basic {
+    fn from(inner: BasicInner) -> Self {
+        Self(Box::new(inner))
+    }
+}
+impl ::core::ops::Deref for Basic {
+    type Target = BasicInner;
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+impl ::core::ops::DerefMut for Basic {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
+}
+impl Basic {
+    /// Start building an instance.
+    #[cfg(feature = "builders")]
+    #[must_use]
+    pub fn builder() -> BasicBuilder {
+        BasicBuilder::default()
+    }
+}
+impl Basic {
+    /// Get the resource type for this FHIR resource.
+    #[must_use]
+    pub fn resource_type() -> ResourceType {
+        ResourceType::Basic
+    }
+}
+/// Reference wrapper type of the subject field in Basic
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BasicSubjectReference {
+    /// The resource that is being referred to. When doing searches, the client will fill this field if possible.
+    #[serde(skip)]
+    pub target: Option<Box<Resource>>,
+    /// The FHIR Reference field
+    #[serde(flatten)]
+    pub reference: Reference,
+}
+impl PartialEq for BasicSubjectReference {
+    fn eq(&self, other: &Self) -> bool {
+        self.reference == other.reference
+    }
+}
+impl Eq for BasicSubjectReference {}
+impl Hash for BasicSubjectReference {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        self.reference.hash(state);
+    }
+}
+impl From<Reference> for BasicSubjectReference {
+    fn from(reference: Reference) -> Self {
+        Self { target: None, reference }
+    }
+}
+impl ReferenceField for BasicSubjectReference {
+    fn set_target(&mut self, target: Resource) -> Result<(), WrongResourceType> {
+        self.target = Some(Box::new(target.try_into()?));
+        Ok(())
+    }
+    fn reference(&self) -> &Reference {
+        &self.reference
+    }
+    fn reference_mut(&mut self) -> &mut Reference {
+        &mut self.reference
+    }
+}
+/// Reference wrapper type of the author field in Basic
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct BasicAuthorReference {
+    /// The resource that is being referred to. When doing searches, the client will fill this field if possible.
+    #[serde(skip)]
+    pub target: Option<Box<BasicAuthorReferenceTarget>>,
+    /// The FHIR Reference field
+    #[serde(flatten)]
+    pub reference: Reference,
+}
+impl PartialEq for BasicAuthorReference {
+    fn eq(&self, other: &Self) -> bool {
+        self.reference == other.reference
+    }
+}
+impl Eq for BasicAuthorReference {}
+impl Hash for BasicAuthorReference {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        self.reference.hash(state);
+    }
+}
+impl From<Reference> for BasicAuthorReference {
+    fn from(reference: Reference) -> Self {
+        Self { target: None, reference }
+    }
+}
+impl ReferenceField for BasicAuthorReference {
+    fn set_target(&mut self, target: Resource) -> Result<(), WrongResourceType> {
+        self.target = Some(Box::new(target.try_into()?));
+        Ok(())
+    }
+    fn reference(&self) -> &Reference {
+        &self.reference
+    }
+    fn reference_mut(&mut self) -> &mut Reference {
+        &mut self.reference
+    }
+}
+/// Target resources for the author reference field in Basic
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+pub enum BasicAuthorReferenceTarget {
+    /// Variant for Patient target resources
+    Patient(Patient),
+    /// Variant for Practitioner target resources
+    Practitioner(Practitioner),
+    /// Variant for RelatedPerson target resources
+    RelatedPerson(RelatedPerson),
+}
+impl TryFrom<Resource> for BasicAuthorReferenceTarget {
+    type Error = WrongResourceType;
+    fn try_from(resource: Resource) -> Result<Self, Self::Error> {
+        match resource {
+            Resource::Patient(r) => Ok(BasicAuthorReferenceTarget::Patient(r)),
+            Resource::Practitioner(r) => Ok(BasicAuthorReferenceTarget::Practitioner(r)),
+            Resource::RelatedPerson(r) => {
+                Ok(BasicAuthorReferenceTarget::RelatedPerson(r))
+            }
+            _ => Err(WrongResourceType),
+        }
+    }
+}
+impl From<Patient> for BasicAuthorReferenceTarget {
+    fn from(resource: Patient) -> BasicAuthorReferenceTarget {
+        BasicAuthorReferenceTarget::Patient(resource)
+    }
+}
+impl From<Practitioner> for BasicAuthorReferenceTarget {
+    fn from(resource: Practitioner) -> BasicAuthorReferenceTarget {
+        BasicAuthorReferenceTarget::Practitioner(resource)
+    }
+}
+impl From<RelatedPerson> for BasicAuthorReferenceTarget {
+    fn from(resource: RelatedPerson) -> BasicAuthorReferenceTarget {
+        BasicAuthorReferenceTarget::RelatedPerson(resource)
+    }
+}
 /** Base StructureDefinition for Binary Resource
 
  **[Binary](http://hl7.org/fhir/StructureDefinition/Binary) v3.0.2**
@@ -80897,6 +81247,8 @@ pub enum Resource {
     Appointment(Appointment),
     #[doc = stringify!(AuditEvent)]
     AuditEvent(AuditEvent),
+    #[doc = stringify!(Basic)]
+    Basic(Basic),
     #[doc = stringify!(Binary)]
     Binary(Binary),
     #[doc = stringify!(BodySite)]
@@ -81057,6 +81409,7 @@ impl Resource {
             Self::AllergyIntolerance(_) => AllergyIntolerance::resource_type(),
             Self::Appointment(_) => Appointment::resource_type(),
             Self::AuditEvent(_) => AuditEvent::resource_type(),
+            Self::Basic(_) => Basic::resource_type(),
             Self::Binary(_) => Binary::resource_type(),
             Self::BodySite(_) => BodySite::resource_type(),
             Self::Bundle(_) => Bundle::resource_type(),
@@ -81151,6 +81504,8 @@ pub enum ResourceType {
     Appointment,
     #[doc = stringify!(AuditEvent)]
     AuditEvent,
+    #[doc = stringify!(Basic)]
+    Basic,
     #[doc = stringify!(Binary)]
     Binary,
     #[doc = stringify!(BodySite)]
@@ -81309,6 +81664,7 @@ impl ::std::str::FromStr for ResourceType {
             stringify!(AllergyIntolerance) => Ok(ResourceType::AllergyIntolerance),
             stringify!(Appointment) => Ok(ResourceType::Appointment),
             stringify!(AuditEvent) => Ok(ResourceType::AuditEvent),
+            stringify!(Basic) => Ok(ResourceType::Basic),
             stringify!(Binary) => Ok(ResourceType::Binary),
             stringify!(BodySite) => Ok(ResourceType::BodySite),
             stringify!(Bundle) => Ok(ResourceType::Bundle),
@@ -81566,6 +81922,38 @@ impl<'a> TryFrom<&'a mut Resource> for &'a mut AuditEvent {
     fn try_from(resource: &'a mut Resource) -> Result<Self, Self::Error> {
         match resource {
             Resource::AuditEvent(r) => Ok(r),
+            _ => Err(WrongResourceType),
+        }
+    }
+}
+impl From<Basic> for Resource {
+    fn from(resource: Basic) -> Self {
+        Self::Basic(resource)
+    }
+}
+impl TryFrom<Resource> for Basic {
+    type Error = WrongResourceType;
+    fn try_from(resource: Resource) -> Result<Self, Self::Error> {
+        match resource {
+            Resource::Basic(r) => Ok(r),
+            _ => Err(WrongResourceType),
+        }
+    }
+}
+impl<'a> TryFrom<&'a Resource> for &'a Basic {
+    type Error = WrongResourceType;
+    fn try_from(resource: &'a Resource) -> Result<Self, Self::Error> {
+        match resource {
+            Resource::Basic(r) => Ok(r),
+            _ => Err(WrongResourceType),
+        }
+    }
+}
+impl<'a> TryFrom<&'a mut Resource> for &'a mut Basic {
+    type Error = WrongResourceType;
+    fn try_from(resource: &'a mut Resource) -> Result<Self, Self::Error> {
+        match resource {
+            Resource::Basic(r) => Ok(r),
             _ => Err(WrongResourceType),
         }
     }
@@ -83948,6 +84336,7 @@ impl ResourceType {
             Self::AllergyIntolerance => stringify!(AllergyIntolerance),
             Self::Appointment => stringify!(Appointment),
             Self::AuditEvent => stringify!(AuditEvent),
+            Self::Basic => stringify!(Basic),
             Self::Binary => stringify!(Binary),
             Self::BodySite => stringify!(BodySite),
             Self::Bundle => stringify!(Bundle),
@@ -84261,6 +84650,56 @@ impl BaseResource for Appointment {
     }
 }
 impl BaseResource for AuditEvent {
+    #[inline]
+    fn id(&self) -> &Option<String> {
+        &self.id
+    }
+    #[inline]
+    fn id_mut(&mut self) -> &mut Option<String> {
+        &mut self.id
+    }
+    #[inline]
+    fn set_id(&mut self, value: Option<String>) {
+        self.id = value;
+    }
+    #[inline]
+    fn meta(&self) -> &Option<Meta> {
+        &self.meta
+    }
+    #[inline]
+    fn meta_mut(&mut self) -> &mut Option<Meta> {
+        &mut self.meta
+    }
+    #[inline]
+    fn set_meta(&mut self, value: Option<Meta>) {
+        self.meta = value;
+    }
+    #[inline]
+    fn implicit_rules(&self) -> &Option<String> {
+        &self.implicit_rules
+    }
+    #[inline]
+    fn implicit_rules_mut(&mut self) -> &mut Option<String> {
+        &mut self.implicit_rules
+    }
+    #[inline]
+    fn set_implicit_rules(&mut self, value: Option<String>) {
+        self.implicit_rules = value;
+    }
+    #[inline]
+    fn language(&self) -> &Option<String> {
+        &self.language
+    }
+    #[inline]
+    fn language_mut(&mut self) -> &mut Option<String> {
+        &mut self.language
+    }
+    #[inline]
+    fn set_language(&mut self, value: Option<String>) {
+        self.language = value;
+    }
+}
+impl BaseResource for Basic {
     #[inline]
     fn id(&self) -> &Option<String> {
         &self.id
@@ -88021,6 +88460,7 @@ impl Resource {
             Self::AllergyIntolerance(r) => r,
             Self::Appointment(r) => r,
             Self::AuditEvent(r) => r,
+            Self::Basic(r) => r,
             Self::Binary(r) => r,
             Self::BodySite(r) => r,
             Self::Bundle(r) => r,
@@ -88107,6 +88547,7 @@ impl Resource {
             Self::AllergyIntolerance(r) => r,
             Self::Appointment(r) => r,
             Self::AuditEvent(r) => r,
+            Self::Basic(r) => r,
             Self::Binary(r) => r,
             Self::BodySite(r) => r,
             Self::Bundle(r) => r,
@@ -88420,6 +88861,56 @@ impl DomainResource for Appointment {
     }
 }
 impl DomainResource for AuditEvent {
+    #[inline]
+    fn text(&self) -> &Option<Narrative> {
+        &self.text
+    }
+    #[inline]
+    fn text_mut(&mut self) -> &mut Option<Narrative> {
+        &mut self.text
+    }
+    #[inline]
+    fn set_text(&mut self, value: Option<Narrative>) {
+        self.text = value;
+    }
+    #[inline]
+    fn contained(&self) -> &Vec<Resource> {
+        &self.contained
+    }
+    #[inline]
+    fn contained_mut(&mut self) -> &mut Vec<Resource> {
+        &mut self.contained
+    }
+    #[inline]
+    fn set_contained(&mut self, value: Vec<Resource>) {
+        self.contained = value;
+    }
+    #[inline]
+    fn extension(&self) -> &Vec<Extension> {
+        &self.extension
+    }
+    #[inline]
+    fn extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.extension
+    }
+    #[inline]
+    fn set_extension(&mut self, value: Vec<Extension>) {
+        self.extension = value;
+    }
+    #[inline]
+    fn modifier_extension(&self) -> &Vec<Extension> {
+        &self.modifier_extension
+    }
+    #[inline]
+    fn modifier_extension_mut(&mut self) -> &mut Vec<Extension> {
+        &mut self.modifier_extension
+    }
+    #[inline]
+    fn set_modifier_extension(&mut self, value: Vec<Extension>) {
+        self.modifier_extension = value;
+    }
+}
+impl DomainResource for Basic {
     #[inline]
     fn text(&self) -> &Option<Narrative> {
         &self.text
@@ -92030,6 +92521,7 @@ impl Resource {
             Self::AllergyIntolerance(r) => Some(r),
             Self::Appointment(r) => Some(r),
             Self::AuditEvent(r) => Some(r),
+            Self::Basic(r) => Some(r),
             Self::BodySite(r) => Some(r),
             Self::CapabilityStatement(r) => Some(r),
             Self::CarePlan(r) => Some(r),
@@ -92114,6 +92606,7 @@ impl Resource {
             Self::AllergyIntolerance(r) => Some(r),
             Self::Appointment(r) => Some(r),
             Self::AuditEvent(r) => Some(r),
+            Self::Basic(r) => Some(r),
             Self::BodySite(r) => Some(r),
             Self::CapabilityStatement(r) => Some(r),
             Self::CarePlan(r) => Some(r),
@@ -92215,6 +92708,10 @@ impl NamedResource for Appointment {
 impl NamedResource for AuditEvent {
     const FHIR_VERSION: &'static str = "3.0.2";
     const TYPE: ResourceType = ResourceType::AuditEvent;
+}
+impl NamedResource for Basic {
+    const FHIR_VERSION: &'static str = "3.0.2";
+    const TYPE: ResourceType = ResourceType::Basic;
 }
 impl NamedResource for Binary {
     const FHIR_VERSION: &'static str = "3.0.2";

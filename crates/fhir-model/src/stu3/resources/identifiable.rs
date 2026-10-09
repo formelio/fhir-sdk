@@ -170,7 +170,7 @@ impl_identifiable_resource!([
 	AllergyIntolerance,
 	Appointment,
 	// AppointmentResponse,
-	// Basic,
+	Basic,
 	BodySite,
 	CarePlan,
 	CareTeam,

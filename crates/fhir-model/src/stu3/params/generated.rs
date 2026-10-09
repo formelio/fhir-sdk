@@ -290,6 +290,37 @@ impl ResourceSearchParameterDefinition for AuditEventSearchParameter {
         }
     }
 }
+/// Search parameters for the Basic resource
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
+pub enum BasicSearchParameter {
+    /// Who created
+    Author,
+    /// Kind of Resource
+    Code,
+    /// When created
+    Created,
+    /// Business identifier
+    Identifier,
+    /// Identifies the focus of this resource
+    Patient,
+    /// Identifies the focus of this resource
+    Subject,
+}
+impl ResourceSearchParameterDefinition for BasicSearchParameter {
+    fn resource_type(&self) -> &'static str {
+        "Basic"
+    }
+    fn code(&self) -> &'static str {
+        match self {
+            Self::Author => "author",
+            Self::Code => "code",
+            Self::Created => "created",
+            Self::Identifier => "identifier",
+            Self::Patient => "patient",
+            Self::Subject => "subject",
+        }
+    }
+}
 /// Search parameters for the Binary resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum BinarySearchParameter {
@@ -3931,6 +3962,10 @@ impl SearchableResource for resources::Appointment {
 impl SearchableResource for resources::AuditEvent {
     /// Parameters that can be used when searching AuditEvent resources
     type Params = AuditEventSearchParameter;
+}
+impl SearchableResource for resources::Basic {
+    /// Parameters that can be used when searching Basic resources
+    type Params = BasicSearchParameter;
 }
 impl SearchableResource for resources::Binary {
     /// Parameters that can be used when searching Binary resources
