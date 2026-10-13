@@ -18,7 +18,7 @@ const IGNORED_TYPES: &[&str] = &[
 	// "AllergyIntolerance",
 	// "Appointment",
 	"AppointmentResponse",
-	"Basic",
+	// "Basic",
 	// "BodySite",
 	// "CarePlan",
 	// "CareTeam",

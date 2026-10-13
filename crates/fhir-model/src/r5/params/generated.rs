@@ -449,6 +449,37 @@ impl ResourceSearchParameterDefinition for AuditEventSearchParameter {
         }
     }
 }
+/// Search parameters for the Basic resource
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
+pub enum BasicSearchParameter {
+    /// Business identifier
+    Identifier,
+    /// Identifies the focus of this resource
+    Patient,
+    /// Kind of Resource
+    Code,
+    /// Who created
+    Author,
+    /// When created
+    Created,
+    /// Identifies the focus of this resource
+    Subject,
+}
+impl ResourceSearchParameterDefinition for BasicSearchParameter {
+    fn resource_type(&self) -> &'static str {
+        "Basic"
+    }
+    fn code(&self) -> &'static str {
+        match self {
+            Self::Identifier => "identifier",
+            Self::Patient => "patient",
+            Self::Code => "code",
+            Self::Author => "author",
+            Self::Created => "created",
+            Self::Subject => "subject",
+        }
+    }
+}
 /// Search parameters for the BiologicallyDerivedProduct resource
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum BiologicallyDerivedProductSearchParameter {
@@ -6511,6 +6542,10 @@ impl SearchableResource for resources::ArtifactAssessment {
 impl SearchableResource for resources::AuditEvent {
     /// Parameters that can be used when searching AuditEvent resources
     type Params = AuditEventSearchParameter;
+}
+impl SearchableResource for resources::Basic {
+    /// Parameters that can be used when searching Basic resources
+    type Params = BasicSearchParameter;
 }
 impl SearchableResource for resources::BiologicallyDerivedProduct {
     /// Parameters that can be used when searching BiologicallyDerivedProduct resources
